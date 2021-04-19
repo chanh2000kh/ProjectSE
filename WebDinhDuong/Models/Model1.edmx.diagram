@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e094278a357e49f082b8d96618881de1" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyDinhDuongModel.Admin" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDinhDuongModel.Buoi" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDinhDuongModel.KeHoach" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDinhDuongModel.MonAn" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDinhDuongModel.NguoiDung" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDinhDuongModel.Thu" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDinhDuongModel.ThucDon" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyDinhDuongModel.FK__KeHoach__IdBuoi__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDinhDuongModel.FK__KeHoach__IdThu__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDinhDuongModel.FK__KeHoach__IdThucD__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDinhDuongModel.FK__ThucDon__IdMonAn__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDinhDuongModel.FK__ThucDon__IdNguoi__1B0907CE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

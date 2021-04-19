@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLyDinhDuongModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Buoi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KeHoaches" Relationship="Self.FK__KeHoach__IdBuoi__1ED998B2" FromRole="Buoi" ToRole="KeHoach" />
+  </EntityType>
+  <EntityType Name="KeHoach">
+    <Key>
+      <PropertyRef Name="IdThucDon" />
+      <PropertyRef Name="IdBuoi" />
+      <PropertyRef Name="IdThu" />
+    </Key>
+    <Property Name="IdThucDon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdBuoi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdThu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Buoi" Relationship="Self.FK__KeHoach__IdBuoi__1ED998B2" FromRole="KeHoach" ToRole="Buoi" />
+    <NavigationProperty Name="Thu" Relationship="Self.FK__KeHoach__IdThu__1FCDBCEB" FromRole="KeHoach" ToRole="Thu" />
+    <NavigationProperty Name="ThucDon" Relationship="Self.FK__KeHoach__IdThucD__1DE57479" FromRole="KeHoach" ToRole="ThucDon" />
+  </EntityType>
+  <EntityType Name="MonAn">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Calo" Type="Double" />
+    <Property Name="Carb" Type="Double" />
+    <Property Name="Fat" Type="Double" />
+    <Property Name="Protein" Type="Double" />
+    <Property Name="ThongTin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ThucDons" Relationship="Self.FK__ThucDon__IdMonAn__1A14E395" FromRole="MonAn" ToRole="ThucDon" />
+  </EntityType>
+  <EntityType Name="NguoiDung">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ChieuCao" Type="Int32" />
+    <Property Name="CanNang" Type="Int32" />
+    <Property Name="TanSuatHoatDong" Type="Int32" />
+    <Property Name="MucTieu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CanNagMongMuon" Type="Int32" />
+    <Property Name="Thang" Type="Int32" />
+    <NavigationProperty Name="ThucDons" Relationship="Self.FK__ThucDon__IdNguoi__1B0907CE" FromRole="NguoiDung" ToRole="ThucDon" />
+  </EntityType>
+  <EntityType Name="Thu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KeHoaches" Relationship="Self.FK__KeHoach__IdThu__1FCDBCEB" FromRole="Thu" ToRole="KeHoach" />
+  </EntityType>
+  <EntityType Name="ThucDon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdMonAn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IdNguoiDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KeHoaches" Relationship="Self.FK__KeHoach__IdThucD__1DE57479" FromRole="ThucDon" ToRole="KeHoach" />
+    <NavigationProperty Name="MonAn" Relationship="Self.FK__ThucDon__IdMonAn__1A14E395" FromRole="ThucDon" ToRole="MonAn" />
+    <NavigationProperty Name="NguoiDung" Relationship="Self.FK__ThucDon__IdNguoi__1B0907CE" FromRole="ThucDon" ToRole="NguoiDung" />
+  </EntityType>
+  <Association Name="FK__KeHoach__IdBuoi__1ED998B2">
+    <End Role="Buoi" Type="Self.Buoi" Multiplicity="1" />
+    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buoi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KeHoach">
+        <PropertyRef Name="IdBuoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KeHoach__IdThu__1FCDBCEB">
+    <End Role="Thu" Type="Self.Thu" Multiplicity="1" />
+    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Thu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KeHoach">
+        <PropertyRef Name="IdThu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KeHoach__IdThucD__1DE57479">
+    <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="1" />
+    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThucDon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KeHoach">
+        <PropertyRef Name="IdThucDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThucDon__IdMonAn__1A14E395">
+    <End Role="MonAn" Type="Self.MonAn" Multiplicity="0..1" />
+    <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonAn">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ThucDon">
+        <PropertyRef Name="IdMonAn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThucDon__IdNguoi__1B0907CE">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
+    <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ThucDon">
+        <PropertyRef Name="IdNguoiDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanLyDinhDuongEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Buois" EntityType="Self.Buoi" />
+    <EntitySet Name="KeHoaches" EntityType="Self.KeHoach" />
+    <EntitySet Name="MonAns" EntityType="Self.MonAn" />
+    <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
+    <EntitySet Name="Thus" EntityType="Self.Thu" />
+    <EntitySet Name="ThucDons" EntityType="Self.ThucDon" />
+    <AssociationSet Name="FK__KeHoach__IdBuoi__1ED998B2" Association="Self.FK__KeHoach__IdBuoi__1ED998B2">
+      <End Role="Buoi" EntitySet="Buois" />
+      <End Role="KeHoach" EntitySet="KeHoaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KeHoach__IdThu__1FCDBCEB" Association="Self.FK__KeHoach__IdThu__1FCDBCEB">
+      <End Role="Thu" EntitySet="Thus" />
+      <End Role="KeHoach" EntitySet="KeHoaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KeHoach__IdThucD__1DE57479" Association="Self.FK__KeHoach__IdThucD__1DE57479">
+      <End Role="ThucDon" EntitySet="ThucDons" />
+      <End Role="KeHoach" EntitySet="KeHoaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThucDon__IdMonAn__1A14E395" Association="Self.FK__ThucDon__IdMonAn__1A14E395">
+      <End Role="MonAn" EntitySet="MonAns" />
+      <End Role="ThucDon" EntitySet="ThucDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThucDon__IdNguoi__1B0907CE" Association="Self.FK__ThucDon__IdNguoi__1B0907CE">
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+      <End Role="ThucDon" EntitySet="ThucDons" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
