@@ -18,6 +18,7 @@ namespace WebDinhDuong.Models
         public string IdBuoi { get; set; }
         public string IdThu { get; set; }
         public string GhiChu { get; set; }
+        public Nullable<System.DateTime> NgayLapKeHoach { get; set; }
     
         public virtual Buoi Buoi { get; set; }
         public virtual Thu Thu { get; set; }

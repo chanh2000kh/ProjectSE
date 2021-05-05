@@ -27,6 +27,7 @@ namespace WebDinhDuong.Models
         public Nullable<double> Fat { get; set; }
         public Nullable<double> Protein { get; set; }
         public string ThongTin { get; set; }
+        public byte[] HinhAnh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThucDon> ThucDons { get; set; }

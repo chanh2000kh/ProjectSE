@@ -5,7 +5,6 @@ using WebDinhDuong.Models;
 
 namespace WebDinhDuong.Controllers
 {
-    HJH
 
     public class HomeController : Controller
     {

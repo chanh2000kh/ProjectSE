@@ -5,30 +5,29 @@ Thành viên nhóm : Nguyễn Đức Chánh - 18110083 - Lớp thứ 7
                   Trần Phương Linh - 18110146 - Lớp thứ 4
                   Bùi Ngọc Lâm - 18110140 -Lớp thứ 4
 Danh sách các yêu cầu của đề tài:
-1.Chọn giới tính của khách hàng 
-2. Xác định mục tiêu: tăng cân, giảm cân  hay giữ cân 
-3. Xác định level hoạt động hàng ngày: ít hoạt động, sport 1-3 tuần, 3-5 tuần,...Chọn môn thể thao nào mà bạn hay chơi
-4. Chọn độ tuổi
-5. Chọn chiều cao, cân nặng 
-6. Chọn mục tiêu cân nặng
-7. Lựa chọn món sở thích , không thích 
-8. Chọn tính trạng tình trạng sức khỏe (chọn bệnh đang mắc phải hay tiền sử bệnh )
-9. Chọn số buổi ăn/ngày  
-10. Chọn thời gian cho mục tiêu giảm cân hay tăng cân
-11. Xem tính toán nhu cầu calo cần thiết
-12. Xem kế hoạch chi tiết cho từng ngày 
-13. Chọn giờ ăn cho mỗi bữa ăn trong ngày
-14. Thông báo giờ ăn cho khách hàng
-15. Xây dựng kế hoạch dinh dưỡng khác
-16. Xóa chế độ dinh dưỡng
-17. Xây dựng thực đơn phù hợp với từng nghề nghiệp, tình trạng bệnh lý(hiện tại là bệnh đái tháo đường và mỡ máu)
-18. Mỗi món ăn bao gồm các thông số như calo, khối lượng và tỷ lệ của protein, glucid, lipid, chất xơ, các vitamin...
-19. Người dùng có thể lên thực đơn cá nhân hoặc nhóm.
-20. Thêm tính năng kết bạn, tạo nhóm
-21. Kiểm tra thể trạng
-22. Cung cấp tin tức
+1.Đăng nhập, đăng ký
+2.Chọn và nhập thông tin User
+3.Chỉnh sửa thông tin User 
+4.Thêm thực đơn trong ngày
+5.Xem chỉ số BMI và lượng calo cần thiết mỗi ngày
+6.Xem thông tin dinh dưỡng 
+7.Xem thông tin món ăn, thực phẩm 
+8.Tìm kiếm món ăn, thực phẩm
+9.Lập kế hoạch dinh dưỡng
+10.Xem kế hoạch dinh dưỡng
+11.Xem lịch sử hoạt động
+12.Quản lý người dùng
+13.Quản lý danh sách món ăn
+14.Quản lý thông tin dinh dưỡng
+15.Quản lý danh sách kế hoạch
+16.Quản lý đánh giá, nhận xét
 
 
-Hướng dẫn sử dụng:
-1.
-2.
+Hướng dẫn cài đặt code phiên bản 1.0:
+1.Tạo project ASP.NET Framework
+2.Tạo class Entity trong thư mục Models, kết nối với SQL Server Database QuanLyDinhDuong
+3.Tạo thụ mục Assets, copy các file css, js, image từ 2 layouts có sẵn trang mạng vào 2 thư mục User, Food
+4.Layout Food hiển thị danh sach các món ăn, tìm kiếm món ăn, xem thông tin dinh dưỡng của món ăn.
+5.Layout User hiện thị thông tin của người dùng, cho phép người dùng nhập, sửa , xóa thông tin cá nhân
+6.Tạo class Controller HomeControler viết code chức năng tìm kiếm và load dữ liệu món ăn
+7.Tạo class UserInformation viết các code chức năng hiện thị thông tin và nhập thông tin User
