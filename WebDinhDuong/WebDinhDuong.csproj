@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -14,7 +16,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebDinhDuong</RootNamespace>
     <AssemblyName>WebDinhDuong</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -25,6 +27,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,10 +53,23 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -61,11 +77,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -110,6 +123,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -128,11 +142,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Start.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+
     <Compile Include="Controllers\UserInformationController.cs" />
     <Compile Include="Enum\GioiTinh.cs" />
     <Compile Include="Enum\MucTieu.cs" />
     <Compile Include="Enum\TanSuatHoatDong.cs" />
+
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SignupController.cs" />
+
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +211,7 @@
     <Compile Include="Services\SqlUserInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+
     <Content Include="Assets\Food\css\bootstrap.min.css" />
     <Content Include="Assets\Food\css\font-awesome.min.css" />
     <Content Include="Assets\Food\css\fontello-codes.css" />
@@ -308,6 +329,173 @@
     <Content Include="Assets\User\images\img-sp1.png" />
     <Content Include="Assets\User\js\jquery-2.1.4.min.js" />
     <Content Include="Assets\User\js\jquery-ui.js" />
+
+    <Content Include="Assets\Assets_login_register\css\bootstrap.css" />
+    <Content Include="Assets\Assets_login_register\css\demo-page.css" />
+    <Content Include="Assets\Assets_login_register\css\examples.css" />
+    <Content Include="Assets\Assets_login_register\css\font-awesome.css" />
+    <Content Include="Assets\Assets_login_register\css\geochart.css" />
+    <Content Include="Assets\Assets_login_register\css\hover.css" />
+    <Content Include="Assets\Assets_login_register\css\magnific-popup.css" />
+    <Content Include="Assets\Assets_login_register\css\style.css" />
+    <Content Include="Assets\Assets_login_register\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Assets_login_register\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\Assets_login_register\images\1.jpg" />
+    <Content Include="Assets\Assets_login_register\images\404.png" />
+    <Content Include="Assets\Assets_login_register\images\b3.png" />
+    <Content Include="Assets\Assets_login_register\images\climate.jpg" />
+    <Content Include="Assets\Assets_login_register\images\close.png" />
+    <Content Include="Assets\Assets_login_register\images\ftr-icons.png" />
+    <Content Include="Assets\Assets_login_register\images\icon.png" />
+    <Content Include="Assets\Assets_login_register\images\login.jpg" />
+    <Content Include="Assets\Assets_login_register\images\mess.png" />
+    <Content Include="Assets\Assets_login_register\images\next.png" />
+    <Content Include="Assets\Assets_login_register\images\p1.png" />
+    <Content Include="Assets\Assets_login_register\images\p2.png" />
+    <Content Include="Assets\Assets_login_register\images\p3.png" />
+    <Content Include="Assets\Assets_login_register\images\p4.png" />
+    <Content Include="Assets\Assets_login_register\images\p5.png" />
+    <Content Include="Assets\Assets_login_register\images\p6.png" />
+    <Content Include="Assets\Assets_login_register\images\p7.png" />
+    <Content Include="Assets\Assets_login_register\images\p8.png" />
+    <Content Include="Assets\Assets_login_register\images\prev.png" />
+    <Content Include="Assets\Assets_login_register\images\pro1.jpg" />
+    <Content Include="Assets\Assets_login_register\images\pro10.jpg" />
+    <Content Include="Assets\Assets_login_register\images\pro12.jpg" />
+    <Content Include="Assets\Assets_login_register\images\pro2.jpg" />
+    <Content Include="Assets\Assets_login_register\images\pro3.jpg" />
+    <Content Include="Assets\Assets_login_register\images\pro4.jpg" />
+    <Content Include="Assets\Assets_login_register\images\pro5.jpg" />
+    <Content Include="Assets\Assets_login_register\images\pro6.jpg" />
+    <Content Include="Assets\Assets_login_register\images\pro7.jpg" />
+    <Content Include="Assets\Assets_login_register\images\pro8.jpg" />
+    <Content Include="Assets\Assets_login_register\images\pro9.jpg" />
+    <Content Include="Assets\Assets_login_register\images\reg.png" />
+    <Content Include="Assets\Assets_login_register\images\search.png" />
+    <Content Include="Assets\Assets_login_register\images\shoppy.jpg" />
+    <Content Include="Assets\Assets_login_register\images\tick.png" />
+    <Content Include="Assets\Assets_login_register\images\visit.png" />
+    <Content Include="Assets\Assets_login_register\js\bars.js" />
+    <Content Include="Assets\Assets_login_register\js\bootstrap.js" />
+    <Content Include="Assets\Assets_login_register\js\Chart.min.js" />
+    <Content Include="Assets\Assets_login_register\js\chartinator.js" />
+    <Content Include="Assets\Assets_login_register\js\gmaps.js" />
+    <Content Include="Assets\Assets_login_register\js\jquery-2.1.1.min.js" />
+    <Content Include="Assets\Assets_login_register\js\jquery.magnific-popup.js" />
+    <Content Include="Assets\Assets_login_register\js\jquery.nicescroll.js" />
+    <Content Include="Assets\Assets_login_register\js\modernizr.min.js" />
+    <Content Include="Assets\Assets_login_register\js\nivo-lightbox.min.js" />
+    <Content Include="Assets\Assets_login_register\js\scripts.js" />
+    <Content Include="Assets\Assets_login_register\js\skycons.js" />
+    <Content Include="Assets\css\bootstrap.min.css" />
+    <Content Include="Assets\css\font-awesome.min.css" />
+    <Content Include="Assets\css\fontello-codes.css" />
+    <Content Include="Assets\css\fontello-embedded.css" />
+    <Content Include="Assets\css\fontello-ie7-codes.css" />
+    <Content Include="Assets\css\fontello-ie7.css" />
+    <Content Include="Assets\css\fontello.css" />
+    <Content Include="Assets\css\jquery-ui.css" />
+    <Content Include="Assets\css\magnific-popup.css" />
+    <Content Include="Assets\css\owl.carousel.css" />
+    <Content Include="Assets\css\owl.theme.default.css" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\fonts\fontello.svg" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\images\about_img.jpg" />
+    <Content Include="Assets\images\author_img_1.jpg" />
+    <Content Include="Assets\images\author_img_2.jpg" />
+    <Content Include="Assets\images\author_img_3.jpg" />
+    <Content Include="Assets\images\author_img_4.jpg" />
+    <Content Include="Assets\images\device_img.png" />
+    <Content Include="Assets\images\dish_thumb_1.jpg" />
+    <Content Include="Assets\images\dish_thumb_2.jpg" />
+    <Content Include="Assets\images\dish_thumb_3.jpg" />
+    <Content Include="Assets\images\dish_thumb_4.jpg" />
+    <Content Include="Assets\images\error_img.png" />
+    <Content Include="Assets\images\ft-logo.png" />
+    <Content Include="Assets\images\left_img.jpg" />
+    <Content Include="Assets\images\logo.png" />
+    <Content Include="Assets\images\map_marker.png" />
+    <Content Include="Assets\images\menu_dish_1.jpg" />
+    <Content Include="Assets\images\menu_dish_10.jpg" />
+    <Content Include="Assets\images\menu_dish_11.jpg" />
+    <Content Include="Assets\images\menu_dish_12.jpg" />
+    <Content Include="Assets\images\menu_dish_13.jpg" />
+    <Content Include="Assets\images\menu_dish_14.jpg" />
+    <Content Include="Assets\images\menu_dish_15.jpg" />
+    <Content Include="Assets\images\menu_dish_16.jpg" />
+    <Content Include="Assets\images\menu_dish_17.jpg" />
+    <Content Include="Assets\images\menu_dish_18.jpg" />
+    <Content Include="Assets\images\menu_dish_2.jpg" />
+    <Content Include="Assets\images\menu_dish_3.jpg" />
+    <Content Include="Assets\images\menu_dish_4.jpg" />
+    <Content Include="Assets\images\menu_dish_5.jpg" />
+    <Content Include="Assets\images\menu_dish_6.jpg" />
+    <Content Include="Assets\images\menu_dish_7.jpg" />
+    <Content Include="Assets\images\menu_dish_8.jpg" />
+    <Content Include="Assets\images\menu_dish_9.jpg" />
+    <Content Include="Assets\images\page_header.jpg" />
+    <Content Include="Assets\images\post_img_1.jpg" />
+    <Content Include="Assets\images\post_img_2.jpg" />
+    <Content Include="Assets\images\post_img_3.jpg" />
+    <Content Include="Assets\images\quote_icon.png" />
+    <Content Include="Assets\images\related_post_1.jpg" />
+    <Content Include="Assets\images\related_post_2.jpg" />
+    <Content Include="Assets\images\right_img.jpg" />
+    <Content Include="Assets\images\service_1.jpg" />
+    <Content Include="Assets\images\service_2.jpg" />
+    <Content Include="Assets\images\service_3.jpg" />
+    <Content Include="Assets\images\service_4.jpg" />
+    <Content Include="Assets\images\service_5.jpg" />
+    <Content Include="Assets\images\service_6.jpg" />
+    <Content Include="Assets\images\slider_1.jpg" />
+    <Content Include="Assets\images\slider_2.jpg" />
+    <Content Include="Assets\images\slider_3.jpg" />
+    <Content Include="Assets\images\team_img_1.jpg" />
+    <Content Include="Assets\images\team_img_2.jpg" />
+    <Content Include="Assets\images\team_img_3.jpg" />
+    <Content Include="Assets\images\team_img_4.jpg" />
+    <Content Include="Assets\images\ui-icons_444444_256x240.png" />
+    <Content Include="Assets\images\ui-icons_555555_256x240.png" />
+    <Content Include="Assets\images\user_img_1.jpg" />
+    <Content Include="Assets\images\user_img_2.jpg" />
+    <Content Include="Assets\images\user_img_3.jpg" />
+    <Content Include="Assets\images\welcome_img.jpg" />
+    <Content Include="Assets\images\zoom_1.jpg" />
+    <Content Include="Assets\images\zoom_2.jpg" />
+    <Content Include="Assets\images\zoom_3.jpg" />
+    <Content Include="Assets\images\zoom_4.jpg" />
+    <Content Include="Assets\images\zoom_5.jpg" />
+    <Content Include="Assets\images\zoom_6.jpg" />
+    <Content Include="Assets\images\zoom_7.jpg" />
+    <Content Include="Assets\images\zoom_8.jpg" />
+    <Content Include="Assets\images\zoom_9.jpg" />
+    <Content Include="Assets\images\zoom_small_1.jpg" />
+    <Content Include="Assets\images\zoom_small_2.jpg" />
+    <Content Include="Assets\images\zoom_small_3.jpg" />
+    <Content Include="Assets\images\zoom_small_4.jpg" />
+    <Content Include="Assets\images\zoom_small_5.jpg" />
+    <Content Include="Assets\images\zoom_small_6.jpg" />
+    <Content Include="Assets\images\zoom_small_7.jpg" />
+    <Content Include="Assets\images\zoom_small_8.jpg" />
+    <Content Include="Assets\images\zoom_small_9.jpg" />
+    <Content Include="Assets\js\bootstrap.js" />
+    <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\date.js" />
+    <Content Include="Assets\js\jquery-ui.js" />
+    <Content Include="Assets\js\jquery.magnific-popup.js" />
+    <Content Include="Assets\js\jquery.magnific-popup.min.js" />
+    <Content Include="Assets\js\jquery.min.js" />
+    <Content Include="Assets\js\jquery.sticky.js" />
+    <Content Include="Assets\js\menumaker.js" />
+    <Content Include="Assets\js\menumaker.min.js" />
+    <Content Include="Assets\js\multiple-carousel.js" />
+    <Content Include="Assets\js\npm.js" />
+    <Content Include="Assets\js\owl.carousel.min.js" />
+    <Content Include="Assets\js\popup-gallery.js" />
+    <Content Include="Assets\js\sticky-header.js" />
+
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -354,6 +542,15 @@
     <Content Include="Models\QuanLyDinhDuong.edmx.diagram">
       <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
     </Content>
+    <Content Include="Assets\Assets_login_register\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Assets_login_register\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Assets_login_register\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Assets_login_register\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Assets_login_register\fonts\FontAwesome.otf" />
+    <Content Include="Assets\Assets_login_register\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\Assets_login_register\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\Assets_login_register\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\Assets_login_register\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -381,9 +578,15 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\MenuMon.cshtml" />
     <Content Include="Views\Home\TimKiem.cshtml" />
+
     <Content Include="Views\UserInformation\Index.cshtml" />
     <Content Include="Views\UserInformation\Edit.cshtml" />
     <Content Include="Views\UserInformation\Details.cshtml" />
+
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Signup\Signup.cshtml" />
+    <Content Include="Views\Login\Login_failed.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -403,6 +606,10 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -437,7 +644,13 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
