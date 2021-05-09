@@ -7,6 +7,6 @@ namespace WebDinhDuong.Enum
 {
     public enum TanSuatHoatDong
     {
-       High, Medium,Low
+      Cao, BinhThuong, Thap
     }
 }

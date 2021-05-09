@@ -31,6 +31,7 @@ namespace WebDinhDuong.Models
         public virtual DbSet<Buoi> Buois { get; set; }
         public virtual DbSet<DanhGiaNhanXet> DanhGiaNhanXets { get; set; }
         public virtual DbSet<KeHoach> KeHoaches { get; set; }
+        public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<MonAn> MonAns { get; set; }
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }

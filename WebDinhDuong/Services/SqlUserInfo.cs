@@ -9,14 +9,11 @@ namespace WebDinhDuong.Services
 {
     public class SqlUserInfo
     {
-        private QuanLyDinhDuongEntities db= new QuanLyDinhDuongEntities();
-        public SqlUserInfo(QuanLyDinhDuongEntities db)
-        {
-            this.db = db;
-        }
+        QuanLyDinhDuongEntities db = new QuanLyDinhDuongEntities();
+
         public SqlUserInfo() { }
         public void Add(NguoiDung nguoiDung)
-        {
+        {           
             db.NguoiDungs.Add(nguoiDung);
             db.SaveChanges();
 
@@ -27,9 +24,14 @@ namespace WebDinhDuong.Services
             db.NguoiDungs.Remove(nguoidung);
             db.SaveChanges();
         }
+        public int getCount()
+        {
+           return db.NguoiDungs.Count();
+        }
 
         public NguoiDung GetUser(String id)
         {
+            
             return db.NguoiDungs.FirstOrDefault(r => r.Id == id);
         }
 

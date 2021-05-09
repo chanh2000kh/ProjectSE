@@ -16,8 +16,8 @@ namespace WebDinhDuong.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public string Password { get; set; }
-        public string Mail { get; set; }
-        public string Role { get; set; }
+        public string IdLogin { get; set; }
+    
+        public virtual Login Login { get; set; }
     }
 }

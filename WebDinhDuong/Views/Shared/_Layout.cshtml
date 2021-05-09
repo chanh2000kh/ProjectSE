@@ -78,18 +78,19 @@
                                 </li>
 
                                 <li class="has-sub">
-                                    <a href="~/Views/UserInformation/Index" class="dropdown-toggle"data-toggle="dropdown" >
+                                    <a href="" class="dropdown-toggle"data-toggle="dropdown" >
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                        
                                     </a>
                                     <ul>
-                                        <li><a href="blog-default.html">Login</a></li>
-                                        <li><a href="blog-single.html">Resgister</a></li>
+                                        <li><a href="/Login/Login">Login</a></li>
+                                        <li><a href="/Register/Register">Resgister</a></li>
+                                        <li><a href="">Logout</a></li>
                                         <li><a href="/UserInformation/Index">Information</a></li>
                                     </ul>
 
-                                <li class="active"> @Html.ActionLink("Đăng nhập", "Login", "Login")</li>
-                                <li class="active">@Html.ActionLink("Đăng kí", "Signup", "Signup") </li>
+                                @*<li class="active"> @Html.ActionLink("Đăng nhập", "Login", "Login")</li>
+                                <li class="active">@Html.ActionLink("Đăng kí", "Register", "Register") </li>*@
 
 
 

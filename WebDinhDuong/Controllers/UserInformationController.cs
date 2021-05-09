@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebDinhDuong.Enum;
 using WebDinhDuong.Models;
 using WebDinhDuong.Services;
 
@@ -10,21 +11,12 @@ namespace WebDinhDuong.Controllers
 {
     public class UserInformationController : Controller
     {
-        SqlUserInfo db = new SqlUserInfo();
+        SqlUserInfo dbUser = new SqlUserInfo();
+        SqlLogin dbLogin = new SqlLogin();
 
-        // GET: UserInformation
-        public ActionResult Index()
+         public ActionResult Index()
         {
-            return View();
-        }
-        public ActionResult Edit ()
-        {
-            return View();
-        }
-        [HttpGet]   // use to edit, create restaurant
-        public ActionResult Edit(String id)
-        {
-            var model = db.GetUser("1");
+            var model = dbUser.GetUser(Session["ID"].ToString());
             if (model == null)
             {
                 return HttpNotFound();
@@ -32,72 +24,85 @@ namespace WebDinhDuong.Controllers
             return View(model);
         }
 
-        [HttpPost]  //use to post, write restaurant
-        [ValidateAntiForgeryToken] //thuoc tinh ngan chan mot yeu cau gia mao
-        public ActionResult Edit(NguoiDung nguoiDung)
+        [HttpGet]  
+        public ActionResult Edit()
         {
-           
-            if (String.IsNullOrEmpty(nguoiDung.Name))
-            {
-                ModelState.AddModelError(nameof(nguoiDung.Name), "The name is required");      //thong bao loi khi Name co gia tri null/ rong
-            }
-            if (String.IsNullOrEmpty(nguoiDung.Password.ToString()))
-            {
-                ModelState.AddModelError(nameof(nguoiDung.Password), "Password is required");      //thong bao loi khi Name co gia tri null/ rong
-            }
-            if (String.IsNullOrEmpty(nguoiDung.Mail.ToString()))
-            {
-                ModelState.AddModelError(nameof(nguoiDung.Mail), "Email is required");      //thong bao loi khi Name co gia tri null/ rong
-            }
-            if (String.IsNullOrEmpty(nguoiDung.ChieuCao.ToString()))
-            {
-                ModelState.AddModelError(nameof(nguoiDung.ChieuCao), "Your height is required");      //thong bao loi khi Name co gia tri null/ rong
-            }
-            if (String.IsNullOrEmpty(nguoiDung.CanNang.ToString()))
-            {
-                ModelState.AddModelError(nameof(nguoiDung.CanNang), "Your weight's ID is required");
-                //thong bao loi khi Name co gia tri null/ rong
-            }
-            if (String.IsNullOrEmpty(nguoiDung.TanSuatHoatDong.ToString()))
-            {
-                ModelState.AddModelError(nameof(nguoiDung.TanSuatHoatDong), "Level of activity is required");      //thong bao loi khi Name co gia tri null/ rong
-            }
-            if (String.IsNullOrEmpty(nguoiDung.MucTieu.ToString()))
-            {
-                ModelState.AddModelError(nameof(nguoiDung.MucTieu), "Your goal is required");      //thong bao loi khi Name co gia tri null/ rong
-            }
-            if (String.IsNullOrEmpty(nguoiDung.CanNangMongMuon.ToString()))
-            {
-                ModelState.AddModelError(nameof(nguoiDung.CanNangMongMuon), "Goal of height is required");      //thong bao loi khi Name co gia tri null/ rong
-            }
-            if (String.IsNullOrEmpty(nguoiDung.Thang.ToString()))
-            {
-                ModelState.AddModelError(nameof(nguoiDung.Thang), "Time is required");      //thong bao loi khi Name co gia tri null/ rong
-            }
+            var modeluser = dbUser.GetUser(Session["ID"].ToString());
+            var modellogin=dbLogin.GetAccFormId(Session["ID"].ToString());
+            UserView user = new UserView();
+            user.id = modeluser.Id;
+            user.name = modeluser.Name;
+            user.email = modellogin.Email;
+            user.password = modellogin.Password;
+            user.height = (int)modeluser.ChieuCao;
+            user.weight = (int)modeluser.CanNang;
+            user.gender = modeluser.GioiTinh;
+            user.goal = modeluser.MucTieu;
+            user.gweight = (int)modeluser.CanNangMongMuon;
+            user.time = (int)modeluser.Thang;
+            user.frequanecy = modeluser.TanSuatHoatDong;
+            user.idlogin = "1";
 
 
-
-            
-            if (ModelState.IsValid)
-            {
-                db.Update(nguoiDung);
-                TempData["Message"] = "You have saved the product!";
-                return RedirectToAction("Details", new { id =nguoiDung.Id });
-            }
-            return View(nguoiDung);
-          
+            return View(user);
         }
 
-        [HttpGet]
-        public ActionResult Details(string id)
+        [HttpPost]  //use to post, write restaurant       
+        public ActionResult Edit(FormCollection model)
         {
-            var model = db.GetUser(id);
+            //List<String> tansuat = new List<string>();
+            //tansuat.Add("High");
+            //tansuat.Add("Medium");
+            //tansuat.Add("Slow");
+
+            //List<String> muctieu = new List<string>();
+            //tansuat.Add("Losing_weight");
+            //tansuat.Add("Gaining_weight");
+            //tansuat.Add("Put_on_weight");
+
+            //List<String> gioitinh = new List<string>();
+            //tansuat.Add("Femaie");
+            //tansuat.Add("Male");
+            //tansuat.Add("Other");
+
+            //ViewBag.TanSuatHoatDong = new SelectList(tansuat,nguoiDung.TanSuatHoatDong);
+            //ViewBag.MucTieu = new SelectList(muctieu,nguoiDung.MucTieu);
+            //ViewBag.GioiTinh = new SelectList(gioitinh, nguoiDung.GioiTinh);
+
+            string name = model["Name"];
+            string gioitinh = model["Gender"];
+            string tansuat = model["Frequency"];
+            string height = model["Height"];
+            string weight = model["Weight"];
+            string goal = model["Goal"];
+            string goalweight = model["Goalweight"];
+            string time = model["Time"];
+
+            NguoiDung user = new NguoiDung();
+            user.Id = Session["ID"].ToString();
+            user.Name = name;
+            user.MucTieu = goal;
+            user.TanSuatHoatDong = tansuat;
+            user.CanNang = int.Parse(weight.ToString());
+            user.ChieuCao = int.Parse(height.ToString());
+            user.CanNangMongMuon= int.Parse(goalweight.ToString());
+            user.Thang = int.Parse(time.ToString());
+            user.GioiTinh = gioitinh;
+            user.IdLogin = "1";
+
+            dbUser.Update(user);
+         
+           return RedirectToAction("Details");
+         }
+                   
+        public ActionResult Details()
+        {
+            var model = dbUser.GetUser(Session["ID"].ToString());
             if (model == null)
             {
                 return View("NotFound");
             }
             return View(model);
         }
-
     }
 }

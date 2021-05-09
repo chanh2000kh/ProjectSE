@@ -6,8 +6,7 @@
     </Key>
     <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="100" />
-    <Property Name="Password" Type="nvarchar" MaxLength="100" />
-    <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+    <Property Name="IdLogin" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Buoi">
     <Key>
@@ -37,6 +36,15 @@
     <Property Name="GhiChu" Type="ntext" />
     <Property Name="NgayLapKeHoach" Type="date" />
   </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="Role" Type="int" />
+  </EntityType>
   <EntityType Name="MonAn">
     <Key>
       <PropertyRef Name="Id" />
@@ -56,15 +64,14 @@
     </Key>
     <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="100" />
-    <Property Name="Password" Type="nvarchar" MaxLength="100" />
-    <Property Name="Mail" Type="nvarchar" MaxLength="100" />
     <Property Name="ChieuCao" Type="int" />
     <Property Name="CanNang" Type="int" />
-    <Property Name="TanSuatHoatDong" Type="int" />
+    <Property Name="TanSuatHoatDong" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="MucTieu" Type="nvarchar" MaxLength="100" />
     <Property Name="CanNangMongMuon" Type="int" />
     <Property Name="Thang" Type="int" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="100" />
+    <Property Name="IdLogin" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -163,6 +170,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Admin_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="IdLogin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_DanhGiaNhanXet_NguoiDung1">
     <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
     <End Role="DanhGiaNhanXet" Type="Self.DanhGiaNhanXet" Multiplicity="*" />
@@ -172,6 +191,18 @@
       </Principal>
       <Dependent Role="DanhGiaNhanXet">
         <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NguoiDung_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NguoiDung">
+        <PropertyRef Name="IdLogin" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -211,6 +242,7 @@
     <EntitySet Name="Buoi" EntityType="Self.Buoi" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DanhGiaNhanXet" EntityType="Self.DanhGiaNhanXet" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KeHoach" EntityType="Self.KeHoach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MonAn" EntityType="Self.MonAn" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -237,9 +269,17 @@
       <End Role="NguoiDung" EntitySet="NguoiDung" />
       <End Role="ThucDon" EntitySet="ThucDon" />
     </AssociationSet>
+    <AssociationSet Name="FK_Admin_Login" Association="Self.FK_Admin_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
     <AssociationSet Name="FK_DanhGiaNhanXet_NguoiDung1" Association="Self.FK_DanhGiaNhanXet_NguoiDung1">
       <End Role="NguoiDung" EntitySet="NguoiDung" />
       <End Role="DanhGiaNhanXet" EntitySet="DanhGiaNhanXet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NguoiDung_Login" Association="Self.FK_NguoiDung_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

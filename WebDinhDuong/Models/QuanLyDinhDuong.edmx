@@ -4,15 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QuanLyDinhDuongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QuanLyDinhDuongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="Password" Type="nvarchar" MaxLength="100" />
-          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdLogin" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Buoi">
           <Key>
@@ -42,6 +41,15 @@
           <Property Name="GhiChu" Type="ntext" />
           <Property Name="NgayLapKeHoach" Type="date" />
         </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="Role" Type="int" />
+        </EntityType>
         <EntityType Name="MonAn">
           <Key>
             <PropertyRef Name="Id" />
@@ -61,15 +69,14 @@
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="Password" Type="nvarchar" MaxLength="100" />
-          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
           <Property Name="ChieuCao" Type="int" />
           <Property Name="CanNang" Type="int" />
-          <Property Name="TanSuatHoatDong" Type="int" />
+          <Property Name="TanSuatHoatDong" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="MucTieu" Type="nvarchar" MaxLength="100" />
           <Property Name="CanNangMongMuon" Type="int" />
           <Property Name="Thang" Type="int" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdLogin" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -168,6 +175,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Admin_Login">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="IdLogin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DanhGiaNhanXet_NguoiDung1">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
           <End Role="DanhGiaNhanXet" Type="Self.DanhGiaNhanXet" Multiplicity="*" />
@@ -177,6 +196,18 @@
             </Principal>
             <Dependent Role="DanhGiaNhanXet">
               <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NguoiDung_Login">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung">
+              <PropertyRef Name="IdLogin" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -216,6 +247,7 @@
           <EntitySet Name="Buoi" EntityType="Self.Buoi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DanhGiaNhanXet" EntityType="Self.DanhGiaNhanXet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KeHoach" EntityType="Self.KeHoach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MonAn" EntityType="Self.MonAn" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -242,13 +274,20 @@
             <End Role="NguoiDung" EntitySet="NguoiDung" />
             <End Role="ThucDon" EntitySet="ThucDon" />
           </AssociationSet>
+          <AssociationSet Name="FK_Admin_Login" Association="Self.FK_Admin_Login">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
           <AssociationSet Name="FK_DanhGiaNhanXet_NguoiDung1" Association="Self.FK_DanhGiaNhanXet_NguoiDung1">
             <End Role="NguoiDung" EntitySet="NguoiDung" />
             <End Role="DanhGiaNhanXet" EntitySet="DanhGiaNhanXet" />
           </AssociationSet>
+          <AssociationSet Name="FK_NguoiDung_Login" Association="Self.FK_NguoiDung_Login">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="NguoiDung" EntitySet="NguoiDung" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QuanLyDinhDuongModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -258,8 +297,8 @@
           </Key>
           <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdLogin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Login" Relationship="Self.FK_Admin_Login" FromRole="Admin" ToRole="Login" />
         </EntityType>
         <EntityType Name="Buoi">
           <Key>
@@ -294,6 +333,17 @@
           <NavigationProperty Name="Thu" Relationship="Self.FK__KeHoach__IdThu__45F365D3" FromRole="KeHoach" ToRole="Thu" />
           <NavigationProperty Name="ThucDon" Relationship="Self.FK__KeHoach__IdThucD__440B1D61" FromRole="KeHoach" ToRole="ThucDon" />
         </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="Int32" />
+          <NavigationProperty Name="Admins" Relationship="Self.FK_Admin_Login" FromRole="Login" ToRole="Admin" />
+          <NavigationProperty Name="NguoiDungs" Relationship="Self.FK_NguoiDung_Login" FromRole="Login" ToRole="NguoiDung" />
+        </EntityType>
         <EntityType Name="MonAn">
           <Key>
             <PropertyRef Name="Id" />
@@ -314,16 +364,16 @@
           </Key>
           <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ChieuCao" Type="Int32" />
           <Property Name="CanNang" Type="Int32" />
-          <Property Name="TanSuatHoatDong" Type="Int32" />
+          <Property Name="TanSuatHoatDong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MucTieu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CanNangMongMuon" Type="Int32" />
           <Property Name="Thang" Type="Int32" />
           <Property Name="GioiTinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdLogin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DanhGiaNhanXets" Relationship="Self.FK_DanhGiaNhanXet_NguoiDung1" FromRole="NguoiDung" ToRole="DanhGiaNhanXet" />
+          <NavigationProperty Name="Login" Relationship="Self.FK_NguoiDung_Login" FromRole="NguoiDung" ToRole="Login" />
           <NavigationProperty Name="ThucDons" Relationship="Self.FK__ThucDon__IdNguoi__412EB0B6" FromRole="NguoiDung" ToRole="ThucDon" />
         </EntityType>
         <EntityType Name="sysdiagram">
@@ -367,6 +417,18 @@
           <NavigationProperty Name="MonAn" Relationship="Self.FK__ThucDon__IdMonAn__403A8C7D" FromRole="ThucDon" ToRole="MonAn" />
           <NavigationProperty Name="NguoiDung" Relationship="Self.FK__ThucDon__IdNguoi__412EB0B6" FromRole="ThucDon" ToRole="NguoiDung" />
         </EntityType>
+        <Association Name="FK_Admin_Login">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="IdLogin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__KeHoach__IdBuoi__44FF419A">
           <End Role="Buoi" Type="Self.Buoi" Multiplicity="1" />
           <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
@@ -415,6 +477,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_NguoiDung_Login">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung">
+              <PropertyRef Name="IdLogin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ThucDon__IdMonAn__403A8C7D">
           <End Role="MonAn" Type="Self.MonAn" Multiplicity="0..1" />
           <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="*" />
@@ -444,12 +518,17 @@
           <EntitySet Name="Buois" EntityType="Self.Buoi" />
           <EntitySet Name="DanhGiaNhanXets" EntityType="Self.DanhGiaNhanXet" />
           <EntitySet Name="KeHoaches" EntityType="Self.KeHoach" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
           <EntitySet Name="MonAns" EntityType="Self.MonAn" />
           <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="ThongTinDinhDuongs" EntityType="Self.ThongTinDinhDuong" />
           <EntitySet Name="Thus" EntityType="Self.Thu" />
           <EntitySet Name="ThucDons" EntityType="Self.ThucDon" />
+          <AssociationSet Name="FK_Admin_Login" Association="Self.FK_Admin_Login">
+            <End Role="Login" EntitySet="Logins" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
           <AssociationSet Name="FK__KeHoach__IdBuoi__44FF419A" Association="Self.FK__KeHoach__IdBuoi__44FF419A">
             <End Role="Buoi" EntitySet="Buois" />
             <End Role="KeHoach" EntitySet="KeHoaches" />
@@ -465,6 +544,10 @@
           <AssociationSet Name="FK__KeHoach__IdThucD__440B1D61" Association="Self.FK__KeHoach__IdThucD__440B1D61">
             <End Role="ThucDon" EntitySet="ThucDons" />
             <End Role="KeHoach" EntitySet="KeHoaches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NguoiDung_Login" Association="Self.FK_NguoiDung_Login">
+            <End Role="Login" EntitySet="Logins" />
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
           </AssociationSet>
           <AssociationSet Name="FK__ThucDon__IdMonAn__403A8C7D" Association="Self.FK__ThucDon__IdMonAn__403A8C7D">
             <End Role="MonAn" EntitySet="MonAns" />
@@ -527,8 +610,7 @@
               <MappingFragment StoreEntitySet="Admin">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="IdLogin" ColumnName="IdLogin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -561,6 +643,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="QuanLyDinhDuongModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MonAns">
             <EntityTypeMapping TypeName="QuanLyDinhDuongModel.MonAn">
               <MappingFragment StoreEntitySet="MonAn">
@@ -580,8 +672,6 @@
               <MappingFragment StoreEntitySet="NguoiDung">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="ChieuCao" ColumnName="ChieuCao" />
                 <ScalarProperty Name="CanNang" ColumnName="CanNang" />
                 <ScalarProperty Name="TanSuatHoatDong" ColumnName="TanSuatHoatDong" />
@@ -589,6 +679,7 @@
                 <ScalarProperty Name="CanNangMongMuon" ColumnName="CanNangMongMuon" />
                 <ScalarProperty Name="Thang" ColumnName="Thang" />
                 <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="IdLogin" ColumnName="IdLogin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
