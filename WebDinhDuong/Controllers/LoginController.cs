@@ -13,22 +13,33 @@ namespace WebDinhDuong.Controllers
        
         public ActionResult Login()
         {
+            DisplayUsername.passusername = null;
             return View();
         }
         [HttpPost]
-        public ActionResult Login(Admin log_kh)
+        public ActionResult Login(NguoiDung log_kh, Admin a)
         {
 
-            var user_kh = db.Admins.Where(x => x.Mail == log_kh.Mail && x.Password == log_kh.Password && x.Role == "0").Count();
+            var user_kh = db.NguoiDungs.Where(x => x.Mail == log_kh.Mail && x.Password == log_kh.Password ).Count();
+            var admin = db.Admins.Where(x => x.Mail == log_kh.Mail && x.Password == log_kh.Password ).Count();
 
+            string username = log_kh.Mail;
+            string pass = log_kh.Password;
+            string adminname = a.Mail;
+            DisplayUsername.Getusername(username,pass);
 
             if (user_kh > 0)
-                return View("~/Areas/Admin/Views/Home_admin/Home_admin.cshtml");
+                return View("~/Views/Home/Index.cshtml");
+
+
+            else if (admin > 0) return View();
             else
             {
                 ViewBag.error = "Login failed";
                 return RedirectToAction("Login_failed");
             }
+
+
         }
     }
 }

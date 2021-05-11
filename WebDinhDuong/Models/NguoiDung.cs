@@ -11,13 +11,16 @@ namespace WebDinhDuong.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class NguoiDung
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NguoiDung()
         {
+            this.DanhGiaNhanXets = new HashSet<DanhGiaNhanXet>();
             this.ThucDons = new HashSet<ThucDon>();
+            this.ThucDons1 = new HashSet<ThucDon>();
         }
     
         public string Id { get; set; }
@@ -26,12 +29,19 @@ namespace WebDinhDuong.Models
         public string Mail { get; set; }
         public Nullable<int> ChieuCao { get; set; }
         public Nullable<int> CanNang { get; set; }
-        public Nullable<int> TanSuatHoatDong { get; set; }
+        public string TanSuatHoatDong { get; set; }
         public string MucTieu { get; set; }
-        public Nullable<int> CanNagMongMuon { get; set; }
+        public Nullable<int> CanNangMongMuon { get; set; }
         public Nullable<int> Thang { get; set; }
+        public string GioiTinh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DanhGiaNhanXet> DanhGiaNhanXets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThucDon> ThucDons { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThucDon> ThucDons1 { get; set; }
+        
+
     }
 }

@@ -3,7 +3,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-@model WebDinhDuong.Models.Admin
+@model WebDinhDuong.Models.NguoiDung
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -34,24 +34,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <h1>Sign Up</h1>
             </div>
             <div class="signup-block">
-                <form>
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @type = "text", @name = "email", @placeholder = "Name", @required = "" } })
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @type = "text", @name = "email",  @placeholder = "Name", @required = "" } })
 
                     @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @type = "text", @name = "email", @placeholder = "Email", @required = "" } })
                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", @name = "Password", @placeholder = "Passwword", @required = "" } })
 
-                    <div class="forgot-top-grids">
-                        <div class="forgot-grid">
-                            <ul>
-                                <li>
-                                    <input type="checkbox" id="brand1" value="">
-                                    <label for="brand1"><span></span>I agree to the terms</label>
-                                </li>
-                            </ul>
-                        </div>
 
-                        <div class="clearfix"> </div>
-                    </div>
                     <input type="submit" name="Sign In" value="Sign up">
                 </form>
                 <div class="sign-down">

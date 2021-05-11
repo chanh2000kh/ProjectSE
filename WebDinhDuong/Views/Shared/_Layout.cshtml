@@ -66,17 +66,34 @@
                     <div class="navigation">
                         <div id="navigation">
                             <ul>
-                                <li class="active"><a href="index">Home</a></li>
+                                <li class="active"> @Html.ActionLink("Home", "Index", "Home")</li>
 
-                                <li class="has-sub">
-                                    <a href="blog-default.html">Blog</a>
-                                    <ul>
-                                        <li><a href="blog-default.html">Blog Default</a></li>
-                                        <li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li>
-                                <li class="active"> @Html.ActionLink("Đăng nhập", "Login", "Login")</li>
-                                <li class="active">@Html.ActionLink("Đăng kí", "Signup", "Signup") </li>
+                                @*<li class="has-sub">
+            <a href="blog-default.html">Blog</a>
+            <ul>
+                <li><a href="blog-default.html">Blog Default</a></li>
+                <li><a href="blog-single.html">Blog Single</a></li>
+            </ul>
+        </li>*@
+                                <li class="active">@Html.ActionLink("Món Ăn", "MonAn", "MonAn") </li>
+                                @if (DisplayUsername.passusername != null)
+                                {
+                                    <li class="active">@Html.ActionLink("Profile", "Index", "Profile") </li>
+                                    <li class="active"> @Html.ActionLink("BMI", "Index", "BMI_Calo")</li>
+                                    <li class="active"> @Html.ActionLink("Thực đơn", "Index", "ThucDon")</li>
+                                    <li class="active"> @Html.ActionLink("Log out", "Login", "Login")</li>
+
+                                    <li class="active  " style="color:red">  Welcome @DisplayUsername.passusername </li>
+
+                                }
+                                else
+                                {
+                                    <li class="active"> @Html.ActionLink("Đăng nhập", "Login", "Login")</li>
+                                    <li class="active">@Html.ActionLink("Đăng kí", "Signup", "Signup") </li>
+                                }
+
+
+
 
 
                             </ul>
@@ -88,6 +105,9 @@
         </div>
     </div>
     @RenderBody()
+
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="~/Assets/js/jquery.min.js" type="text/javascript"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -97,7 +117,9 @@
     <script type="text/javascript" src="~/Assets/js/sticky-header.js"></script>
     <script type="text/javascript" src="~/Assets/js/owl.carousel.min.js"></script>
     <script type="text/javascript" src="~/Assets/js/multiple-carousel.js"></script>
-    <script type="text/javascript" src=~/Assets/"js/jquery-ui.js"></script>
+    @*<script type="text/javascript" src=~/Assets/"js/jquery-ui.js"></script>*@
     <script type="text/javascript" src="~/Assets/js/date.js"></script>
+    <script type="text/javascript" src="~/Assets/js/jquery-ui.js"></script>
+    @RenderSection("jsFooter", required: false)
 </body>
 </html>

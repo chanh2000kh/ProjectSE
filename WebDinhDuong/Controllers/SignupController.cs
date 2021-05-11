@@ -17,22 +17,34 @@ namespace WebDinhDuong.Controllers
 
             return View();
         }
-       
-        
+        public ActionResult SignupFailed()
+        {
+
+            return View();
+        }
+
+
 
         //POST: Register
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Signup(Admin a)
+        public ActionResult Signup(NguoiDung a)
         {
-
-            a.Role = "0";
             
-            db.Admins.Add(a);
-            db.SaveChanges();
+            var login = db.NguoiDungs.Where(s => s.Mail.Equals(a.Mail)).FirstOrDefault();
+            var login2 = db.Admins.Where(s => s.Mail.Equals(a.Mail)).FirstOrDefault();
+            if (login == null && login2==null)
+            {
+                
+                a.Id = (db.NguoiDungs.Count() + 1).ToString();
+                db.NguoiDungs.Add(a);
+                db.SaveChanges();
 
-            return View("~/Views/Login/Login.cshtml");
+                return View("~/Views/Login/Login.cshtml");
+            }
+            else return View("~/Views/Signup/SignupFailed.cshtml");
 
         }
+       
     }
 }

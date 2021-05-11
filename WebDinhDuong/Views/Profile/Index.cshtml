@@ -1,0 +1,136 @@
+﻿@model WebDinhDuong.Models.NguoiDung
+@{
+    //var relatedProducts = (List<WebDinhDuong.Models.NguoiDung>)ViewBag.RelatedProducts;
+    var user = (List<WebDinhDuong.Models.NguoiDung>)ViewBag.listuser;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+
+                    <form method="post">
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Name</label><input id="Name" name="Name" type="text" class="form-control" value="@user[0].Name"></div>
+                            <div class="col-md-12"><label class="labels">Email</label><input id="Mail" name="Mail" type="text" class="form-control" value="@user[0].Mail"></div>
+                            <div class="col-md-12"><label class="labels">Giới tính</label>
+                                                   <select class="form-control" id="GioiTinh" name="GioiTinh">
+                                                       @if (user[0].GioiTinh == "Nam" || user[0].GioiTinh ==null)
+                                                       {
+                                                           <option value="Nam">Nam</option>
+                                                           <option value="Nữ">Nữ</option>
+                                                       }
+                                                       @if (user[0].GioiTinh == "Nữ")
+
+                                                       {
+                                                           <option value="Nữ">Nữ</option>
+                                                           <option value="Nam">Nam</option>
+                                                           
+                                                       }
+
+                                                   </select>
+                            </div>
+                            <div class="col-md-12"><label class="labels">Chiều cao(cm)</label><input id="ChieuCao" name="ChieuCao" type="text" class="form-control" placeholder="Nhập chiều cao" value="@user[0].ChieuCao"></div>
+                            <div class="col-md-12">
+                                <label class="labels">Tần suất hoạt động</label>
+                                <select class="form-control" id="TanSuatHoatDong" name="TanSuatHoatDong">
+                                    @if (user[0].TanSuatHoatDong == "Ít hoặc không" || user[0].TanSuatHoatDong == null)
+                                    {
+                                        <option value="Ít hoặc không">Ít hoặc không</option>
+                                        <option value="Nhẹ">Vận động nhẹ</option>
+                                        <option value="Vừa phải">Ít hoặc không</option>
+                                        <option value="Nhiều">Vận động nhiều</option>
+
+                                        <option value="Nặng">Vận động nặng</option>
+                                    }
+                                    @if (user[0].TanSuatHoatDong == "Nhẹ" )
+                                    {
+                                        <option value="Nhẹ">Vận động nhẹ</option>
+                                        <option value="Ít hoặc không">Ít hoặc không</option>
+                                        <option value="Vừa phải">Ít hoặc không</option>
+                                        <option value="Nhiều">Vận động nhiều</option>
+
+                                        <option value="Nặng">Vận động nặng</option>
+                                    } @if (user[0].TanSuatHoatDong == "Vừa phải" )
+                                    {
+                                        <option value="Vừa phải">Ít hoặc không</option>
+                                        <option value="Ít hoặc không">Ít hoặc không</option>
+                                        <option value="Nhẹ">Vận động nhẹ</option>
+
+                                        <option value="Nhiều">Vận động nhiều</option>
+
+                                        <option value="Nặng">Vận động nặng</option>
+                                    } @if (user[0].TanSuatHoatDong == "Nhiều" )
+                                    {
+                                        <option value="Nhiều">Vận động nhiều</option>
+                                        <option value="Ít hoặc không">Ít hoặc không</option>
+                                        <option value="Nhẹ">Vận động nhẹ</option>
+                                        <option value="Vừa phải">Ít hoặc không</option>
+
+
+                                        <option value="Nặng">Vận động nặng</option>
+                                    } @if (user[0].TanSuatHoatDong == "Nặng" )
+                                    {
+                                        <option value="Nặng">Vận động nặng</option>
+                                        <option value="Ít hoặc không">Ít hoặc không</option>
+                                        <option value="Nhẹ">Vận động nhẹ</option>
+                                        <option value="Vừa phải">Ít hoặc không</option>
+                                        <option value="Nhiều">Vận động nhiều</option>
+
+
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-md-12"><label class="labels">Cân nặng(kg)</label><input type="text" id="CanNang" name="CanNang" class="form-control" placeholder="Nhập cân nặng" value="@user[0].CanNang"></div>
+                            <div class="col-md-12"><label class="labels">Cân nặng mong muốn(kg)</label><input type="text" id="CanNangMongMuon" name="CanNangMongMuon" class="form-control" placeholder="Nhập cân nặng mong muốn" value="@user[0].CanNangMongMuon"></div>
+                            @*<div class="col-md-12"><label class="labels">Mục tiêu</label><input type="text" id="MucTieu" name="MucTieu" class="form-control" placeholder="Mục tiêu" value="@user[0].MucTieu"></div>*@
+
+
+                            <div class="col-md-12"><label class="labels">Số tháng đạt mục tiêu</label><input type="text" id="Thang" name="Thang" class="form-control" placeholder="Nhập số tháng đạt được mục tiêu" value="@user[0].Thang"></div>
+                            
+                                <div class="col-md-12">
+
+                                    <label class="labels"> Chọn mục tiêu</label>
+                                    <select class="form-control" id="MucTieu" name="MucTieu">
+                                        @if (@user[0].MucTieu == "Tăng cân" || @user[0].MucTieu == null)
+                                        {
+                                            <option value="Tăng cân">   Tăng cân </option>
+                                            <option value="Giảm cân">   Giảm cân</option>
+                                            <option value="Cân đối">    Cân đối</option>
+                                        }
+                                        @if (@user[0].MucTieu == "Giảm cân")
+                                        {
+
+                                            <option value="Giảm cân">   Giảm cân</option>
+                                            <option value="Tăng cân">   Tăng cân </option>
+                                            <option value="Cân đối">    Cân đối</option>
+                                        }
+                                        @if (@user[0].MucTieu == "Cân đối")
+                                        {
+                                            <option value="Cân đối">    Cân đối</option>
+                                            <option value="Tăng cân">   Tăng cân </option>
+                                            <option value="Giảm cân">   Giảm cân</option>
+
+                                        }
+                                    </select>
+                                </div>
+                                <br /><br />
+                            </div>
+
+                            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+</form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+

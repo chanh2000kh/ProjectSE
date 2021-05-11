@@ -1,0 +1,122 @@
+﻿@model List<WebDinhDuong.Models.FoodItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section jsFooter{
+
+    <script src="~/Assets/js/foodcontroler.js"></script>
+}
+@if (Model.Count > 0)
+{
+
+    Double calo = 0;
+    Double fat = 0;
+    Double proterin = 0;
+    Double carb = 0;
+    foreach (var item in Model)
+    {
+        Double t = Convert.ToDouble(item.Product.Calo);
+        Double pr = Convert.ToDouble(item.Product.Protein);
+        Double ft = Convert.ToDouble(item.Product.Fat);
+        Double cb = Convert.ToDouble(item.Product.Carb);
+        Double quality = Convert.ToDouble(item.Quanlity);
+        Double sumcalo = t * quality;
+        Double sumpr = pr * quality;
+        Double sumcb = cb * quality;
+        Double sumft = ft * quality;
+
+        calo += sumcalo;
+        proterin += sumpr;
+        carb += sumcb;
+        fat += sumft;
+
+    }
+    <br />
+    <div> Tổng calo: @calo </div>
+    <br />
+    <div> Tổng proterin: @proterin </div>
+    <br />
+    <div> Tổng Fat: @fat </div>
+    <br />
+    <div> Tổng Carb: @carb </div>
+    <br />
+
+
+}
+
+<div class="content">
+
+    <div class="section group">
+
+        @if (Model.Count > 0)
+        {
+            <div class="cart">
+                <p>
+                    Chào mừng bạn đến với thực đơn hằng ngày:
+                    <div id="dd" class="wrapper-dropdown-2">
+                        <span>@Model.Count món </span>
+
+                    </div>
+                </p>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+
+                        <td style="color:cornflowerblue">Tên Món</td>
+                        <td style="color:cornflowerblue">Ảnh món</td>
+                        <td style="color:cornflowerblue">Calo</td>
+                        <td style="color:cornflowerblue">Fat</td>
+                        <td style="color:cornflowerblue">Proterin</td>
+                        <td style="color:cornflowerblue">Carb</td>
+                        <td style="color:cornflowerblue">Số lượng</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+
+
+
+                        <tr>
+
+                            <td style="color:red">@item.Product.Name</td>
+                            <td style="color:red">Ảnh</td>
+                            @*<td><img src="@Url.Content(item.Product.ImagePath)" width="300" /></td>*@
+                            <td style="color:red">@item.Product.Calo</td>
+                            <td>@item.Product.Fat</td>
+                            <td>@item.Product.Protein</td>
+                            <td>@item.Product.Carb</td>
+                            <td>@item.Quanlity</td>
+
+
+                            <td><a href="@Url.Action("Delete", "ThucDon")?id=@item.Product.Id ">Xóa</a></td>
+
+
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+
+            <button id="btnContinue" class="alert alert-danger">Tiếp tục chọn món</button>
+
+            <button id="btnDeleteAll" class="alert alert-danger">Xoá thực đơn</button>
+
+        }
+        else
+        {
+            <span>Chưa có món ăn nào trong thực đơn</span>
+            <button id="btnContinue" class="alert alert-danger">Tiếp tục chọn món</button>
+        }
+
+    </div>
+</div>
+

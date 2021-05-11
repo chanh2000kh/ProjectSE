@@ -18,6 +18,7 @@ namespace WebDinhDuong.Models
         public ThucDon()
         {
             this.KeHoaches = new HashSet<KeHoach>();
+            this.KeHoaches1 = new HashSet<KeHoach>();
         }
     
         public string Id { get; set; }
@@ -29,7 +30,11 @@ namespace WebDinhDuong.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KeHoach> KeHoaches { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KeHoach> KeHoaches1 { get; set; }
         public virtual MonAn MonAn { get; set; }
+        public virtual MonAn MonAn1 { get; set; }
         public virtual NguoiDung NguoiDung { get; set; }
+        public virtual NguoiDung NguoiDung1 { get; set; }
     }
 }
