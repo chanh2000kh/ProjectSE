@@ -4,42 +4,61 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebDinhDuong.Models;
+using WebDinhDuong.Services;
+
 namespace WebDinhDuong.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
-        QuanLyDinhDuongEntities db = new QuanLyDinhDuongEntities();
-       
+        private SqlLogin dbLogin = new SqlLogin();
+        private SqlUserInfo dbUser = new SqlUserInfo();
+        [HttpGet]
         public ActionResult Login()
         {
-            DisplayUsername.passusername = null;
             return View();
         }
         [HttpPost]
-        public ActionResult Login(NguoiDung log_kh, Admin a)
-        {
-
-            var user_kh = db.NguoiDungs.Where(x => x.Mail == log_kh.Mail && x.Password == log_kh.Password ).Count();
-            var admin = db.Admins.Where(x => x.Mail == log_kh.Mail && x.Password == log_kh.Password ).Count();
-
-            string username = log_kh.Mail;
-            string pass = log_kh.Password;
-            string adminname = a.Mail;
-            DisplayUsername.Getusername(username,pass);
-
-            if (user_kh > 0)
-                return View("~/Views/Home/Index.cshtml");
-
-
-            else if (admin > 0) return View();
-            else
+      
+        public ActionResult Login(FormCollection model)
+        {        
+            string password = model["Password"];
+            string email = model["Mail"];
+          
+            var acc = dbLogin.GetAcc(password, email);
+            if (dbLogin.checkMailExist(email))
             {
-                ViewBag.error = "Login failed";
-                return RedirectToAction("Login_failed");
+                if (acc != null)
+                {
+                    NguoiDung user = dbUser.GetUserFromIdLogin(acc.Id);
+                    Session["ID"] = user.Id;
+                    Session["Email"] = email; ;
+                    Session["Password"] = password;
+                    if (acc.Role == 0)
+                        return Content("/Admin/Index");
+                    if (acc.Role == 1)
+                        return Content("/Home/Index");
+                }
+                else
+                {
+                    int temp = 0;
+                    return Content(temp.ToString());
+                }    
             }
 
-
+            int temp2 = 1;
+            return Content(temp2.ToString());
         }
+        
+
+
+        //Logout
+        public ActionResult Logout()
+        {
+            Session.Clear();//remove session
+            return RedirectToAction("Login");
+        }
+
     }
+
+
 }

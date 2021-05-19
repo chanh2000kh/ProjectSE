@@ -5,24 +5,27 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebDinhDuong.Models;
+using WebDinhDuong.Services;
+
 namespace WebDinhDuong.Controllers
 {
     public class MonAnController : Controller
     {
-        QuanLyDinhDuongEntities db = new QuanLyDinhDuongEntities();
+      
+        SqlMonAn dbMonAn = new SqlMonAn();
         // GET: MonAn
         public ActionResult MonAn(string Search)
         {
      
             if (Search != null)
             {
-                ViewBag.listMon = db.MonAns.SqlQuery("Select * from MonAn where Name  like '%" + Search + "%'").ToList();
+                ViewBag.listMon = dbMonAn.getMonAnByName(Search);
 
                 return View();
             }
             else
             {
-                ViewBag.listMon = db.MonAns.ToList();
+                ViewBag.listMon = dbMonAn.GetAll();
                 return View();
             }
         }
@@ -32,12 +35,12 @@ namespace WebDinhDuong.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MonAn dSSP = db.MonAns.Find(id);
+            MonAn dSSP = dbMonAn.GetMonAn(id);
             if (dSSP == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.RelatedProducts = new MonAn().ListRelatedProduct(id);
+            ViewBag.RelatedProducts =dbMonAn.ListMonAn(id);
 
             return View(dSSP);
           

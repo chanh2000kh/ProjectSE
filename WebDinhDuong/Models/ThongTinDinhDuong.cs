@@ -17,6 +17,6 @@ namespace WebDinhDuong.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string ThongTin { get; set; }
-        public string ImagePath { get; set; }
+        public byte[] HinhAnh { get; set; }
     }
 }

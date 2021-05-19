@@ -4,12 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebDinhDuong.Models;
+using WebDinhDuong.Services;
+
 namespace WebDinhDuong.Controllers
 {
     public class ThucDonController : Controller
     {
         // GET: Food
-        QuanLyDinhDuongEntities db = new QuanLyDinhDuongEntities();
+       
+        SqlMonAn dbMonAn = new SqlMonAn();
         public const string FoodSession = "FoodSession";
         // GET: Food
         public ActionResult Index()
@@ -28,7 +31,7 @@ namespace WebDinhDuong.Controllers
         public ActionResult AddItem(string id, int quantity = 1)
         {
 
-            var product = new MonAn().ViewDetail(id);
+            var product = dbMonAn.GetMonAn(id);
 
             var food = Session[FoodSession];
             if (food != null)

@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLyDinhDuongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="IdLogin" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Buoi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DanhGiaNhanXet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdUser" Type="nvarchar" MaxLength="100" />
+    <Property Name="DanhGia" Type="int" />
+    <Property Name="NhanXet" Type="ntext" />
+  </EntityType>
+  <EntityType Name="KeHoach">
+    <Key>
+      <PropertyRef Name="IdThucDon" />
+      <PropertyRef Name="IdBuoi" />
+      <PropertyRef Name="IdThu" />
+    </Key>
+    <Property Name="IdThucDon" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdBuoi" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdThu" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="GhiChu" Type="ntext" />
+    <Property Name="NgayLapKeHoach" Type="date" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="Role" Type="int" />
+  </EntityType>
+  <EntityType Name="MonAn">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Calo" Type="float" />
+    <Property Name="Carb" Type="float" />
+    <Property Name="Fat" Type="float" />
+    <Property Name="Protein" Type="float" />
+    <Property Name="ThongTin" Type="ntext" />
+    <Property Name="HinhAnh" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="NguoiDung">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="ChieuCao" Type="int" />
+    <Property Name="CanNang" Type="int" />
+    <Property Name="TanSuatHoatDong" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MucTieu" Type="nvarchar" MaxLength="100" />
+    <Property Name="CanNangMongMuon" Type="int" />
+    <Property Name="Thang" Type="int" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="100" />
+    <Property Name="IdLogin" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="ThongTinDinhDuong">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="ThongTin" Type="ntext" />
+    <Property Name="HinhAnh" Type="image" />
+  </EntityType>
+  <EntityType Name="Thu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ThucDon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdMonAn" Type="nvarchar" MaxLength="100" />
+    <Property Name="IdNguoiDung" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="GhiChu" Type="ntext" />
+  </EntityType>
+  <Association Name="FK__KeHoach__IdBuoi__44FF419A">
+    <End Role="Buoi" Type="Self.Buoi" Multiplicity="1" />
+    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buoi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KeHoach">
+        <PropertyRef Name="IdBuoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KeHoach__IdThu__45F365D3">
+    <End Role="Thu" Type="Self.Thu" Multiplicity="1" />
+    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Thu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KeHoach">
+        <PropertyRef Name="IdThu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KeHoach__IdThucD__440B1D61">
+    <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="1" />
+    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThucDon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KeHoach">
+        <PropertyRef Name="IdThucDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThucDon__IdMonAn__403A8C7D">
+    <End Role="MonAn" Type="Self.MonAn" Multiplicity="0..1" />
+    <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonAn">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ThucDon">
+        <PropertyRef Name="IdMonAn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThucDon__IdNguoi__412EB0B6">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
+    <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ThucDon">
+        <PropertyRef Name="IdNguoiDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admin_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="IdLogin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DanhGiaNhanXet_NguoiDung1">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
+    <End Role="DanhGiaNhanXet" Type="Self.DanhGiaNhanXet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DanhGiaNhanXet">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NguoiDung_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NguoiDung">
+        <PropertyRef Name="IdLogin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="QuanLyDinhDuongModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Buoi" EntityType="Self.Buoi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DanhGiaNhanXet" EntityType="Self.DanhGiaNhanXet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KeHoach" EntityType="Self.KeHoach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MonAn" EntityType="Self.MonAn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThongTinDinhDuong" EntityType="Self.ThongTinDinhDuong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Thu" EntityType="Self.Thu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThucDon" EntityType="Self.ThucDon" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__KeHoach__IdBuoi__44FF419A" Association="Self.FK__KeHoach__IdBuoi__44FF419A">
+      <End Role="Buoi" EntitySet="Buoi" />
+      <End Role="KeHoach" EntitySet="KeHoach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KeHoach__IdThu__45F365D3" Association="Self.FK__KeHoach__IdThu__45F365D3">
+      <End Role="Thu" EntitySet="Thu" />
+      <End Role="KeHoach" EntitySet="KeHoach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KeHoach__IdThucD__440B1D61" Association="Self.FK__KeHoach__IdThucD__440B1D61">
+      <End Role="ThucDon" EntitySet="ThucDon" />
+      <End Role="KeHoach" EntitySet="KeHoach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThucDon__IdMonAn__403A8C7D" Association="Self.FK__ThucDon__IdMonAn__403A8C7D">
+      <End Role="MonAn" EntitySet="MonAn" />
+      <End Role="ThucDon" EntitySet="ThucDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThucDon__IdNguoi__412EB0B6" Association="Self.FK__ThucDon__IdNguoi__412EB0B6">
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
+      <End Role="ThucDon" EntitySet="ThucDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admin_Login" Association="Self.FK_Admin_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DanhGiaNhanXet_NguoiDung1" Association="Self.FK_DanhGiaNhanXet_NguoiDung1">
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
+      <End Role="DanhGiaNhanXet" EntitySet="DanhGiaNhanXet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NguoiDung_Login" Association="Self.FK_NguoiDung_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

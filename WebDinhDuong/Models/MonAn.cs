@@ -11,15 +11,13 @@ namespace WebDinhDuong.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-
+    
     public partial class MonAn
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MonAn()
         {
             this.ThucDons = new HashSet<ThucDon>();
-            this.ThucDons1 = new HashSet<ThucDon>();
         }
     
         public string Id { get; set; }
@@ -29,24 +27,9 @@ namespace WebDinhDuong.Models
         public Nullable<double> Fat { get; set; }
         public Nullable<double> Protein { get; set; }
         public string ThongTin { get; set; }
-        public string ImagePath { get; set; }
+        public string HinhAnh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThucDon> ThucDons { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ThucDon> ThucDons1 { get; set; }
-        public List<MonAn> ListRelatedProduct(string id)
-        {
-           QuanLyDinhDuongEntities db = new QuanLyDinhDuongEntities();
-            var product = db.MonAns.Find(id);
-            return db.MonAns.Where(x => x.Id != id ).ToList();
-        }
-        public MonAn ViewDetail(string Id)
-        {
-            QuanLyDinhDuongEntities db = new QuanLyDinhDuongEntities();
-            return db.MonAns.Find(Id);
-
-        }
-
     }
 }
