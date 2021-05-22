@@ -10,7 +10,9 @@ namespace WebDinhDuong.Controllers
 {
     public class LoginController : Controller
     {
-        private SqlLogin db = new SqlLogin();
+        private SqlLogin dbLogin = new SqlLogin();
+        private SqlUserInfo dbUser = new SqlUserInfo();
+        [HttpGet]
         public ActionResult Login()
         {
             return View();
@@ -22,17 +24,30 @@ namespace WebDinhDuong.Controllers
             string password = model["Password"];
             string email = model["Mail"];
           
-            var acc = db.GetAcc(password, email);
-            if (db.checkMailExist(email))
+            var acc = dbLogin.GetAcc(password, email);
+            if (dbLogin.checkMailExist(email))
             {
                 if (acc != null)
                 {
-                    Session["Email"] = email; ;
-                    Session["ID"] = acc.Id;
+                    
                     if (acc.Role == 0)
-                        return Content("/Admin/Index");
+                    {
+                        Admin admin = dbUser.GetAdmin(acc.Id);
+                        Session["ID"] = admin.Id;
+                        Session["Email"] = email; ;
+                        Session["Password"] = password;
+                        return Content("/ManageFood/Index");
+                    }
+                       
                     if (acc.Role == 1)
+                    {
+                        NguoiDung user = dbUser.GetUserFromIdLogin(acc.Id);
+                        Session["ID"] = user.Id;
+                        Session["Email"] = email; ;
+                        Session["Password"] = password;
                         return Content("/Home/Index");
+                    }
+                       
                 }
                 else
                 {

@@ -14,21 +14,19 @@ namespace WebDinhDuong.Models
     
     public partial class ThucDon
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ThucDon()
-        {
-            this.KeHoaches = new HashSet<KeHoach>();
-        }
-    
         public string Id { get; set; }
         public string IdMonAn { get; set; }
-        public string IdNguoiDung { get; set; }
-        public string Name { get; set; }
         public Nullable<int> SoLuong { get; set; }
+        public Nullable<System.DateTime> Ngay { get; set; }
+        public string IdNguoiDung { get; set; }
         public string GhiChu { get; set; }
+        public Nullable<double> Calo { get; set; }
+        public Nullable<double> Carb { get; set; }
+        public Nullable<double> Protein { get; set; }
+        public Nullable<double> Fat { get; set; }
+        public string Name { get; set; }
+        public string HinhAnh { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KeHoach> KeHoaches { get; set; }
         public virtual MonAn MonAn { get; set; }
         public virtual NguoiDung NguoiDung { get; set; }
     }

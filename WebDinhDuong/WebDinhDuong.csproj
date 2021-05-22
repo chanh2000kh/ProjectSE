@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebDinhDuong</RootNamespace>
     <AssemblyName>WebDinhDuong</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -25,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>4.0</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,15 +53,16 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -68,11 +70,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -114,6 +113,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -124,16 +127,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BMI_CaloController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MonAnController.cs" />
+    <Compile Include="Controllers\ManageFoodController.cs" />
+    <Compile Include="Controllers\QuanLyKeHoachController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\UserInformationController.cs" />
-    <Compile Include="Enum\GioiTinh.cs" />
-    <Compile Include="Enum\MucTieu.cs" />
-    <Compile Include="Enum\TanSuatHoatDong.cs" />
+    <Compile Include="Controllers\ThucDonController.cs" />
+    <Compile Include="DisplayUsername.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,10 +202,17 @@
     <Compile Include="Models\ThucDon.cs">
       <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelView\FoodView.cs" />
+    <Compile Include="ModelView\ListFoodView.cs" />
+    <Compile Include="ModelView\LoadNDKeHoach.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SqlBuoi.cs" />
+    <Compile Include="Services\SqlKeHoach.cs" />
     <Compile Include="Services\SqlLogin.cs" />
+    <Compile Include="Services\SqlMonAn.cs" />
+    <Compile Include="Services\SqlThu.cs" />
+    <Compile Include="Services\SqlThucDon.cs" />
     <Compile Include="Services\SqlUserInfo.cs" />
-    <Compile Include="ModelView\UserView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Admin\css\bootstrap.css" />
@@ -254,6 +272,53 @@
     <Content Include="Assets\Admin\js\nivo-lightbox.min.js" />
     <Content Include="Assets\Admin\js\scripts.js" />
     <Content Include="Assets\Admin\js\skycons.js" />
+    <Content Include="Assets\DetailsFood\css\easy-responsive-tabs.css" />
+    <Content Include="Assets\DetailsFood\css\global.css" />
+    <Content Include="Assets\DetailsFood\css\style.css" />
+    <Content Include="Assets\DetailsFood\images\arrow-next.png" />
+    <Content Include="Assets\DetailsFood\images\arrow-prev.png" />
+    <Content Include="Assets\DetailsFood\images\arrow.png" />
+    <Content Include="Assets\DetailsFood\images\arrow1.png" />
+    <Content Include="Assets\DetailsFood\images\btn.png" />
+    <Content Include="Assets\DetailsFood\images\Copy of productslide-1.jpg" />
+    <Content Include="Assets\DetailsFood\images\Copy of productslide-2.jpg" />
+    <Content Include="Assets\DetailsFood\images\fb.png" />
+    <Content Include="Assets\DetailsFood\images\logo.png" />
+    <Content Include="Assets\DetailsFood\images\marker2.png" />
+    <Content Include="Assets\DetailsFood\images\pic1.jpg" />
+    <Content Include="Assets\DetailsFood\images\pic1.png" />
+    <Content Include="Assets\DetailsFood\images\pic2.png" />
+    <Content Include="Assets\DetailsFood\images\pic3.png" />
+    <Content Include="Assets\DetailsFood\images\pic4.png" />
+    <Content Include="Assets\DetailsFood\images\pic5.png" />
+    <Content Include="Assets\DetailsFood\images\pic6.png" />
+    <Content Include="Assets\DetailsFood\images\pic7.png" />
+    <Content Include="Assets\DetailsFood\images\pic8.png" />
+    <Content Include="Assets\DetailsFood\images\pic9.png" />
+    <Content Include="Assets\DetailsFood\images\price-rating.png" />
+    <Content Include="Assets\DetailsFood\images\productslide-1.jpg" />
+    <Content Include="Assets\DetailsFood\images\productslide-2.jpg" />
+    <Content Include="Assets\DetailsFood\images\productslide-3.jpg" />
+    <Content Include="Assets\DetailsFood\images\quality-rating.png" />
+    <Content Include="Assets\DetailsFood\images\rss.png" />
+    <Content Include="Assets\DetailsFood\images\ser-pic1.jpg" />
+    <Content Include="Assets\DetailsFood\images\ser-pic2.jpg" />
+    <Content Include="Assets\DetailsFood\images\ser-pic3.jpg" />
+    <Content Include="Assets\DetailsFood\images\ser-pic4.jpg" />
+    <Content Include="Assets\DetailsFood\images\ser-pic5.jpg" />
+    <Content Include="Assets\DetailsFood\images\thumbnailslide-1.jpg" />
+    <Content Include="Assets\DetailsFood\images\thumbnailslide-2.jpg" />
+    <Content Include="Assets\DetailsFood\images\thumbnailslide-3.jpg" />
+    <Content Include="Assets\DetailsFood\images\tick1.png" />
+    <Content Include="Assets\DetailsFood\images\twiter.png" />
+    <Content Include="Assets\DetailsFood\images\value-rating.png" />
+    <Content Include="Assets\DetailsFood\js\easing.js" />
+    <Content Include="Assets\DetailsFood\js\easyResponsiveTabs.js" />
+    <Content Include="Assets\DetailsFood\js\jquery-1.7.2.min.js" />
+    <Content Include="Assets\DetailsFood\js\jquery.min.js" />
+    <Content Include="Assets\DetailsFood\js\move-top.js" />
+    <Content Include="Assets\DetailsFood\js\script.js" />
+    <Content Include="Assets\DetailsFood\js\slides.min.jquery.js" />
     <Content Include="Assets\Food\css\bootstrap.min.css" />
     <Content Include="Assets\Food\css\font-awesome.min.css" />
     <Content Include="Assets\Food\css\fontello-codes.css" />
@@ -370,15 +435,35 @@
     <Content Include="Assets\User\js\attrvalidate.jquery.js" />
     <Content Include="Assets\User\js\jquery-2.1.3.min.js" />
     <Content Include="Assets\User\js\jquery-ui.js" />
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\QuanLyDinhDuong.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
+      <LastGenOutput>QuanLyDinhDuong.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\QuanLyDinhDuong.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
+      <LastGenOutput>QuanLyDinhDuong.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Admin\fonts\FontAwesome.otf" />
+    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Assets\Food\fonts\fontawesome-webfont.eot" />
     <Content Include="Assets\Food\fonts\fontawesome-webfont.ttf" />
     <Content Include="Assets\Food\fonts\fontawesome-webfont.woff" />
@@ -391,48 +476,9 @@
     <Content Include="Assets\Food\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Assets\Food\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\Food\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Assets\Admin\fonts\fontawesome-webfont.eot" />
-    <Content Include="Assets\Admin\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Assets\Admin\fonts\fontawesome-webfont.woff" />
-    <Content Include="Assets\Admin\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Assets\Admin\fonts\FontAwesome.otf" />
-    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Models\QuanLyDinhDuong.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
-      <LastGenOutput>QuanLyDinhDuong.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\QuanLyDinhDuong.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
-      <LastGenOutput>QuanLyDinhDuong.cs</LastGenOutput>
-    </Content>
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\index.js.flow" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Assets\DetailsFood\fonts\Amble-Light-webfont.ttf" />
+    <Content Include="Assets\DetailsFood\images\logo1.psd" />
+    <Content Include="Assets\DetailsFood\images\Thumbs.db" />
     <EntityDeploy Include="Models\QuanLyDinhDuong.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>QuanLyDinhDuong.Designer.cs</LastGenOutput>
@@ -440,88 +486,17 @@
     <Content Include="Models\QuanLyDinhDuong.edmx.diagram">
       <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
-    <Content Include="Scripts\jquery-3.6.0.js" />
-    <Content Include="Scripts\jquery-3.6.0.min.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\popper-utils.js" />
-    <Content Include="Scripts\popper-utils.min.js" />
-    <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\src\index.js" />
-    <Content Include="Scripts\src\methods\defaults.js" />
-    <Content Include="Scripts\src\methods\destroy.js" />
-    <Content Include="Scripts\src\methods\disableEventListeners.js" />
-    <Content Include="Scripts\src\methods\enableEventListeners.js" />
-    <Content Include="Scripts\src\methods\placements.js" />
-    <Content Include="Scripts\src\methods\update.js" />
-    <Content Include="Scripts\src\modifiers\applyStyle.js" />
-    <Content Include="Scripts\src\modifiers\arrow.js" />
-    <Content Include="Scripts\src\modifiers\computeStyle.js" />
-    <Content Include="Scripts\src\modifiers\flip.js" />
-    <Content Include="Scripts\src\modifiers\hide.js" />
-    <Content Include="Scripts\src\modifiers\index.js" />
-    <Content Include="Scripts\src\modifiers\inner.js" />
-    <Content Include="Scripts\src\modifiers\keepTogether.js" />
-    <Content Include="Scripts\src\modifiers\offset.js" />
-    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
-    <Content Include="Scripts\src\modifiers\shift.js" />
-    <Content Include="Scripts\src\utils\clockwise.js" />
-    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
-    <Content Include="Scripts\src\utils\debounce.js" />
-    <Content Include="Scripts\src\utils\find.js" />
-    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
-    <Content Include="Scripts\src\utils\findIndex.js" />
-    <Content Include="Scripts\src\utils\getBordersSize.js" />
-    <Content Include="Scripts\src\utils\getBoundaries.js" />
-    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
-    <Content Include="Scripts\src\utils\getClientRect.js" />
-    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
-    <Content Include="Scripts\src\utils\getOffsetParent.js" />
-    <Content Include="Scripts\src\utils\getOffsetRect.js" />
-    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
-    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
-    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
-    <Content Include="Scripts\src\utils\getOuterSizes.js" />
-    <Content Include="Scripts\src\utils\getParentNode.js" />
-    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
-    <Content Include="Scripts\src\utils\getReferenceNode.js" />
-    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
-    <Content Include="Scripts\src\utils\getRoot.js" />
-    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
-    <Content Include="Scripts\src\utils\getScroll.js" />
-    <Content Include="Scripts\src\utils\getScrollParent.js" />
-    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
-    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
-    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
-    <Content Include="Scripts\src\utils\getWindow.js" />
-    <Content Include="Scripts\src\utils\getWindowSizes.js" />
-    <Content Include="Scripts\src\utils\includeScroll.js" />
-    <Content Include="Scripts\src\utils\index.js" />
-    <Content Include="Scripts\src\utils\isBrowser.js" />
-    <Content Include="Scripts\src\utils\isFixed.js" />
-    <Content Include="Scripts\src\utils\isFunction.js" />
-    <Content Include="Scripts\src\utils\isIE.js" />
-    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
-    <Content Include="Scripts\src\utils\isModifierRequired.js" />
-    <Content Include="Scripts\src\utils\isNumeric.js" />
-    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
-    <Content Include="Scripts\src\utils\removeEventListeners.js" />
-    <Content Include="Scripts\src\utils\runModifiers.js" />
-    <Content Include="Scripts\src\utils\setAttributes.js" />
-    <Content Include="Scripts\src\utils\setStyles.js" />
-    <Content Include="Scripts\src\utils\setupEventListeners.js" />
-    <Content Include="Scripts\umd\popper-utils.js" />
-    <Content Include="Scripts\umd\popper-utils.min.js" />
-    <Content Include="Scripts\umd\popper.js" />
-    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -533,50 +508,56 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\MonAn\MonAn.cshtml" />
+    <Content Include="Views\MonAn\Detail.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\MenuMon.cshtml" />
-    <Content Include="Views\Home\TimKiem.cshtml" />
+    <Content Include="Views\BMI_Calo\Index.cshtml" />
+    <Content Include="Views\ThucDon\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_User.cshtml" />
     <Content Include="Views\UserInformation\Edit.cshtml" />
-    <Content Include="Views\Shared\_Layout_Admin.cshtml" />
+    <Content Include="Views\UserInformation\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
-    <Content Include="Scripts\umd\popper.min.js.map" />
-    <Content Include="Scripts\umd\popper.js.map" />
-    <Content Include="Scripts\umd\popper.js.flow" />
-    <Content Include="Scripts\umd\popper-utils.min.js.map" />
-    <Content Include="Scripts\umd\popper-utils.js.map" />
-    <Content Include="Scripts\README.md" />
-    <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Scripts\popper.js.map" />
-    <Content Include="Scripts\popper-utils.min.js.map" />
-    <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_Layout_Login_Register.cshtml" />
-    <Content Include="Views\Shared\_Layout_User.cshtml" />
-    <Content Include="Views\UserInformation\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_Admin.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Buoi.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\LoadKeHoach.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\ThemMoi.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu.cshtml" />
+    <Content Include="Views\ManageFood\Index.cshtml" />
+    <Content Include="Views\ManageFood\Create.cshtml" />
+    <Content Include="Views\ManageFood\Edit.cshtml" />
+    <Content Include="Views\ManageFood\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
@@ -604,9 +585,11 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets'))" />
   </Target>
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Import Project="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

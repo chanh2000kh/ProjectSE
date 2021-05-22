@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-2 col-xs-12">
-                    <div class="logo"><a href="index.html"><img src="~/Assets/Food/images/logo.png" alt=""></a></div>
+                    <div class="logo"><a href="index.html"><img src="images/logo.png" alt=""></a></div>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-5 hidden-xs">
                     <div class="support-bar">
@@ -66,61 +66,67 @@
                     <div class="navigation">
                         <div id="navigation">
                             <ul>
-                                <li class="active"><a href="index">Home</a></li>
+                                <
+                                <li class="active"><a href="/Home/index">Home</a></li>
+
+                                @*<li class="has-sub">
+            <a href="blog-default.html">Blog</a>
+            <ul>
+                <li><a href="blog-default.html">Blog Default</a></li>
+                <li><a href="blog-single.html">Blog Single</a></li>
+            </ul>
+        </li>*@
+
+                                <li class="active">@Html.ActionLink("Món Ăn", "MonAn", "MonAn") </li>
+                                <li class="active"> @Html.ActionLink("BMI", "Index", "BMI_Calo")</li>
+                                <li class="active"> @Html.ActionLink("Thực đơn", "Index", "ThucDon")</li>
+                                @*<li class="active"> @Html.ActionLink("Log out", "Login", "Login")</li>*@
+
+                                <li class="active  " style="color:red">  Welcome @Session["Email"].ToString() </li>
 
                                 <li class="has-sub">
-                                    <a href="blog-default.html">Blog</a>
-                                    <ul>
-                                        <li><a href="blog-default.html">Blog Default</a></li>
-                                        <li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-
-                                </li>
-
-                                <li class="has-sub">
-                                    <a href="" class="dropdown-toggle"data-toggle="dropdown" >
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="fa fa-user" aria-hidden="true"></i>
-                                       
+
                                     </a>
                                     <ul>
                                         <li><a href="/Login/Login">Login</a></li>
                                         <li><a href="/Register/Register">Resgister</a></li>
-                                        <li><a href="">Logout</a></li>
-                                        <li><a href="/UserInformation/Index">Information</a></li>
+                                        <li><a href="/Login/Logout">Logout</a></li>
+                                        <li><a href="/UserInformation/Edit">Information</a></li>
                                     </ul>
 
-                                @*<li class="active"> @Html.ActionLink("Đăng nhập", "Login", "Login")</li>
-                                <li class="active">@Html.ActionLink("Đăng kí", "Register", "Register") </li>*@
+                                    @*<li class="active"> @Html.ActionLink("Đăng nhập", "Login", "Login")</li>
+            <li class="active">@Html.ActionLink("Đăng kí", "Register", "Register") </li>*@
 
 
 
-                                </li>                              
+                                </li>
+
                             </ul>
-
-                        </div>
-
-                        <div class="w3l_header_right">
-                           
                         </div>
                     </div>
-
-                   
                     <!-- /.navigations-->
                 </div>
             </div>
         </div>
     </div>
     @RenderBody()
+
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="~/Assets/Food/js/jquery.min.js" type="text/javascript"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="~/Assets/Food/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="~/Assets/Food/js/menumaker.js" type="text/javascript"></script>
-    <script type="text/javascript" src="~/Assets/Food/js/jquery.sticky.js"></script>
-    <script type="text/javascript" src="~/Assets/Food/js/sticky-header.js"></script>
-    <script type="text/javascript" src="~/Assets/Food/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Food/js/multiple-carousel.js"></script>
-    <script type="text/javascript" src="~/Assets/Food/js/jquery-ui.js"></script>
+    <script src="~/Assets/js/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Assets/js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="~/Assets/js/sticky-header.js"></script>
+    <script type="text/javascript" src="~/Assets/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/multiple-carousel.js"></script>
+    @*<script type="text/javascript" src=~/Assets/"js/jquery-ui.js"></script>*@
     <script type="text/javascript" src="~/Assets/Food/js/date.js"></script>
+    <script type="text/javascript" src="~/Assets/Food/js/jquery-ui.js"></script>
+    @RenderSection("jsFooter", required: false)
 </body>
 </html>

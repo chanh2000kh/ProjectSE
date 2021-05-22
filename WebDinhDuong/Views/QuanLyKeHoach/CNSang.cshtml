@@ -1,0 +1,6 @@
+﻿@using WebDinhDuong.Models;
+@model IEnumerable<LoadNDKeHoach>
+@foreach (var groupItem in Model)
+{
+    <div>@groupItem.TenMon    Số lương: @groupItem.SoLuong</div>
+}

@@ -31,11 +31,14 @@
     <EntitySetMapping Name="KeHoaches">
       <EntityTypeMapping TypeName="QuanLyDinhDuongModel.KeHoach">
         <MappingFragment StoreEntitySet="KeHoach">
-          <ScalarProperty Name="IdThucDon" ColumnName="IdThucDon" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdMonAn" ColumnName="IdMonAn" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="IdNguoiDung" ColumnName="IdNguoiDung" />
           <ScalarProperty Name="IdBuoi" ColumnName="IdBuoi" />
           <ScalarProperty Name="IdThu" ColumnName="IdThu" />
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="NgayLapKeHoach" ColumnName="NgayLapKeHoach" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -113,10 +116,16 @@
         <MappingFragment StoreEntitySet="ThucDon">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdMonAn" ColumnName="IdMonAn" />
-          <ScalarProperty Name="IdNguoiDung" ColumnName="IdNguoiDung" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+          <ScalarProperty Name="IdNguoiDung" ColumnName="IdNguoiDung" />
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="Calo" ColumnName="Calo" />
+          <ScalarProperty Name="Carb" ColumnName="Carb" />
+          <ScalarProperty Name="Protein" ColumnName="Protein" />
+          <ScalarProperty Name="Fat" ColumnName="Fat" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,0 +1,255 @@
+﻿@model WebDinhDuong.Models.MonAn
+
+@{
+    ViewBag.Title = "Details";
+    int sl=0;
+}
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>The Free Smart-Sale Website Template | Details :: w3layouts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/Assets/DetailsFood/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href='//fonts.googleapis.com/css?family=Cabin+Condensed' rel='stylesheet' type='text/css'>
+    <!--image slider-->
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <!-- <script src="js/jquery-slider.js" type="text/javascript"></script> -->
+    <script src="~/Assets/DetailsFood/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <link href="~/Assets/DetailsFood/css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/global.css">
+    <script src="~/Assets/DetailsFood/js/slides.min.jquery.js"></script>
+    <script>
+        $(function () {
+            $('#products').slides({
+                preload: true,
+                preloadImage: 'img/loading.gif',
+                effect: 'slide, fade',
+                crossfade: true,
+                slideSpeed: 350,
+                fadeSpeed: 500,
+                generateNextPrev: true,
+                generatePagination: false
+            });
+        });
+    </script>
+</head>
+<body>       
+        <div class="main">
+            <div class="details">
+                <div class="product-details">
+                    <div class="images_3_of_2">
+                        <div id="container">
+                            <div id="products_example">
+                                <div id="products">
+                                    
+                                    <ul class="pagination">
+                                        <li><a href="#"><img src=@Url.Content(Model.HinhAnh) alt=" " /></a></li>
+                                      
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desc span_3_of_2">
+                        <h2>@Model.Name </h2>
+                        
+                        <div class="price">
+                            <p>Calo: <span>@Model.Calo kcal</span></p>
+                        </div>
+                        <div class="frm-add" id="addfrm">
+                            <div class="available">
+                                <p>Thông tin dinh dưỡng :</p>
+                                <ul>
+                                    <li>
+                                        <div>Carb: @Model.Carb g</div>
+                                    </li>
+                                    <li>
+                                        <div>Protein: @Model.Protein g</div>
+                                    </li>
+                                    <li>
+                                        <div>Fat: @Model.Fat g</div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            Số lượng:
+                                            <select id="quality" name="quality">
+                                                <option value=1>1</option>
+                                                <option value=2>2</option>
+                                                <option value=3>3</option>
+                                                <option value=4>4</option>
+                                                <option value=5>5</option>
+                                            </select>
+                                            Đơn vị 100gr
+                                        </div>
+
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="share-desc">
+
+                                <button value="Add to Cart" />
+                                <div class="clear"></div>
+                            </div>
+                            <input type="submit" value="Save" id="btnSubmit" data-id=@Model.Id class="btn btn-default" />
+                        </div>
+                        <div class="wish-list">
+                            <ul>
+                                <li class="wish"><a href="#">Add to Wishlist</a></li>
+                                <li class="compare"><a href="#">Add to Compare</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="product_desc">
+                    <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                        <ul class="resp-tabs-list">
+                            <li class="resp-tab-item resp-tab-active" aria-controls="tab_item-0" role="tab">Product Details</li>
+                            <li class="resp-tab-item" aria-controls="tab_item-1" role="tab">product Tags</li>
+                            <li class="resp-tab-item" aria-controls="tab_item-2" role="tab">Product Reviews</li>
+                            <div class="clear"></div>
+                        </ul>
+                        <div class="resp-tabs-container">
+                            <h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>Product Details</h2><div class="product-desc resp-tab-content resp-tab-content-active" style="display:block" aria-labelledby="tab_item-0">
+                                <p>Lorem Ipsum is simply dummy text of the <span>printing and typesetting industry</span>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, <span>when an unknown printer took a galley of type and scrambled</span> it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<span> It has survived not only five centuries</span>, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                            </div>
+
+                            <h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"><span class="resp-arrow"></span>product Tags</h2><div class="product-tags resp-tab-content" aria-labelledby="tab_item-1">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                <h4>Add Your Tags:</h4>
+                                <div class="input-box">
+                                    <input type="text" value="">
+                                </div>
+                                <div class="button"><span><a href="#">Add Tags</a></span></div>
+                            </div>
+
+                            <h2 class="resp-accordion" role="tab" aria-controls="tab_item-2"><span class="resp-arrow"></span>Product Reviews</h2><div class="review resp-tab-content" aria-labelledby="tab_item-2">
+                                <h4>Lorem ipsum Review by <a href="#">Finibus Bonorum</a></h4>
+                                <ul>
+                                    <li>Price :<a href="#"><img src="~/Assets/DetailsFood/images/price-rating.png" alt=""></a></li>
+                                    <li>Value :<a href="#"><img src="~/Assets/DetailsFood/images/value-rating.png" alt=""></a></li>
+                                    <li>Quality :<a href="#"><img src="~/Assets/DetailsFood/images/quality-rating.png" alt=""></a></li>
+                                </ul>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                <div class="your-review">
+                                    <h3>How Do You Rate This Product?</h3>
+                                    <p>Write Your Own Review?</p>
+                                    <form>
+                                        <div>
+                                            <span><label>Nickname<span class="red">*</span></label></span>
+                                            <span><input type="text" value=""></span>
+                                        </div>
+                                        <div>
+                                            <span><label>Summary of Your Review<span class="red">*</span></label></span>
+                                            <span><input type="text" value=""></span>
+                                        </div>
+                                        <div>
+                                            <span><label>Review<span class="red">*</span></label></span>
+                                            <span><textarea> </textarea></span>
+                                        </div>
+                                        <div>
+                                            <span><input type="submit" value="SUBMIT REVIEW"></span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#horizontalTab').easyResponsiveTabs({
+                            type: 'default', //Types: default, vertical, accordion
+                            width: 'auto', //auto or any width like 600px
+                            fit: true   // 100% fit in a container
+                        });
+                    });
+                </script>
+                <div class="content_bottom">
+                    <div class="text-h1 top1 btm">
+                        <h2>Lorem ipsum quis nostrud exercitation</h2>
+                    </div>
+                    <div class="div2">
+                        <div id="mcts1">
+                            <div class="w3l-img">
+                                <img src="~/Assets/DetailsFood/images/pic2.png" alt="" />
+                            </div>
+                            <div class="w3l-img">
+                                <img src="~/Assets/DetailsFood/images/pic3.png" alt="" />
+                            </div>
+                            <div class="w3l-img">
+                                <img src="~/Assets/DetailsFood/images/pic1.png" alt="" />
+                            </div>
+                            <div class="w3l-img">
+                                <img src="~/Assets/DetailsFood/images/pic2.png" alt="" />
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+           
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="footer-bg">
+        <div class="wrap">
+            <div class="footer">
+                <div class="f_nav">
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Announcements</a></li>
+                        <li><a href="#">Security Center</a></li>
+                        <li><a href="#">Resolution Center</a></li>
+                        <li><a href="#">Buyer Tools</a></li>
+                        <li><a href="#">Policies</a></li>
+                        <li><a href="#">Stores</a></li>
+                        <li><a href="#">Site Map</a></li>
+                    </ul>
+                </div>
+                <div class="footer1">
+                    <p>&copy; 2013 SmartSale. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $('#addfrm').submit(function (e) {
+        var newVal = $("#quality").val();
+        var itemId = $(this).attr("data-id");
+       
+        $.ajax({
+        //async: true,
+        type: 'POST',
+            //  contentType: false,
+            //  processData: false,
+            data: { "id": itemId, "amount": newVal },
+            url: '@Url.Content("/ThucDon/Add")',
+            success: function (data) {
+                alert("dfgg");
+            },
+            error: function (data) {
+                alert("There is some problem");
+
+            }
+        });
+
+    });
+
+</script>

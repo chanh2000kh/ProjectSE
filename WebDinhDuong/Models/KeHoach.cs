@@ -14,14 +14,18 @@ namespace WebDinhDuong.Models
     
     public partial class KeHoach
     {
-        public string IdThucDon { get; set; }
+        public string Id { get; set; }
+        public string IdMonAn { get; set; }
+        public Nullable<int> SoLuong { get; set; }
+        public string IdNguoiDung { get; set; }
         public string IdBuoi { get; set; }
         public string IdThu { get; set; }
-        public string GhiChu { get; set; }
         public Nullable<System.DateTime> NgayLapKeHoach { get; set; }
+        public string GhiChu { get; set; }
     
         public virtual Buoi Buoi { get; set; }
+        public virtual MonAn MonAn { get; set; }
+        public virtual NguoiDung NguoiDung { get; set; }
         public virtual Thu Thu { get; set; }
-        public virtual ThucDon ThucDon { get; set; }
     }
 }

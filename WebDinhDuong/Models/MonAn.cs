@@ -17,6 +17,7 @@ namespace WebDinhDuong.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MonAn()
         {
+            this.KeHoaches = new HashSet<KeHoach>();
             this.ThucDons = new HashSet<ThucDon>();
         }
     
@@ -27,8 +28,10 @@ namespace WebDinhDuong.Models
         public Nullable<double> Fat { get; set; }
         public Nullable<double> Protein { get; set; }
         public string ThongTin { get; set; }
-        public byte[] HinhAnh { get; set; }
+        public string HinhAnh { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KeHoach> KeHoaches { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThucDon> ThucDons { get; set; }
     }

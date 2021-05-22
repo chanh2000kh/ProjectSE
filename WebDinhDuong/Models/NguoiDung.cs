@@ -18,6 +18,7 @@ namespace WebDinhDuong.Models
         public NguoiDung()
         {
             this.DanhGiaNhanXets = new HashSet<DanhGiaNhanXet>();
+            this.KeHoaches = new HashSet<KeHoach>();
             this.ThucDons = new HashSet<ThucDon>();
         }
     
@@ -34,6 +35,8 @@ namespace WebDinhDuong.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhGiaNhanXet> DanhGiaNhanXets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KeHoach> KeHoaches { get; set; }
         public virtual Login Login { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThucDon> ThucDons { get; set; }
