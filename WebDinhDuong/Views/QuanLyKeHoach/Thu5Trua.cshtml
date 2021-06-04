@@ -2,4 +2,8 @@
 @model IEnumerable<LoadNDKeHoach>
 @foreach (var groupItem in Model)
 {
-<div>@groupItem.TenMon    Số lương: @groupItem.SoLuong</div>}
+<div>
+    @groupItem.TenMon    Số lương: @groupItem.SoLuong
+    <a href="@Url.Action("Sua", "QuanLyKeHoach", new { idmon = groupItem.IdMon, idthu = "5", idbuoi = "2" , date=groupItem.Ngay, ghichu=groupItem.GhiChu})">Sửa</a>
+    <a href="@Url.Action("Xoa", "QuanLyKeHoach", new { idmon = groupItem.IdMon, idthu = "5", idbuoi = "2" })"> Xóa</a>
+</div>}

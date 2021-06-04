@@ -145,6 +145,14 @@
     <Compile Include="Controllers\UserInformationController.cs" />
     <Compile Include="Controllers\ThucDonController.cs" />
     <Compile Include="DisplayUsername.cs" />
+    <Compile Include="Factory\BinhThuong.cs" />
+    <Compile Include="Factory\NguoiBinhThuong.cs" />
+    <Compile Include="Factory\NguoiThieuCan.cs" />
+    <Compile Include="Factory\NguoiThuaCan.cs" />
+    <Compile Include="Factory\Nguoi.cs" />
+    <Compile Include="Factory\ThieuCan.cs" />
+    <Compile Include="Factory\ThuaCan.cs" />
+    <Compile Include="Factory\TinhTrang.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -160,6 +168,7 @@
     <Compile Include="Models\KeHoach.cs">
       <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoadNDKeHoach.cs" />
     <Compile Include="Models\Login.cs">
       <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
     </Compile>
@@ -528,6 +537,28 @@
     <Content Include="Views\ManageFood\Create.cshtml" />
     <Content Include="Views\ManageFood\Edit.cshtml" />
     <Content Include="Views\ManageFood\Details.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\CNChieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\CNSang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\CNTrua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Sua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu2Chieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu2Sang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu2Trua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu3Chieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu3Sang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu3Trua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu4Chieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu4Sang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu4Trua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu5Chieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu5Sang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu5Trua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu6Chieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu6Sang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu6Trua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu7Chieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu7Sang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu7Trua.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
