@@ -8,6 +8,6 @@ namespace WebDinhDuong.Factory
     abstract class TinhTrang
     {
         public abstract void setTinhTrang(string tinhtrang);
-        public abstract string ChiSoBMI();
+        public abstract int ChiSoBMI();
     }
 }

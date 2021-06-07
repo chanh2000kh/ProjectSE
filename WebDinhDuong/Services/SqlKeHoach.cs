@@ -9,35 +9,41 @@ namespace WebDinhDuong.Services
 {
     public class SqlKeHoach
     {
-        private QuanLyDinhDuongEntities db = new QuanLyDinhDuongEntities();
-        public SqlKeHoach(QuanLyDinhDuongEntities db)
-        {
-            this.db = db;
-        }
-        public SqlKeHoach() { }
+             
         public void Add(KeHoach Kehoach)
         {
-            db.KeHoaches.Add(Kehoach);
-            db.SaveChanges();
-
+            using (var db = new QuanLyDinhDuongEntities())
+            {
+                db.KeHoaches.Add(Kehoach);
+                db.SaveChanges();
+            }
         }
         public int getCount()
         {
-            int size = db.KeHoaches.Count();
-            return size;
+            using (var db = new QuanLyDinhDuongEntities())
+            {
+                int size = db.KeHoaches.Count();
+                return size;
+            }
         }
         public void Delete(String idmon, String idnguoidung, String idthu, String idbuoi)
         {
-            var kehoach = db.KeHoaches.Find(idmon,idnguoidung,idthu,idbuoi);
-            db.KeHoaches.Remove(kehoach);
-            db.SaveChanges();
+            using (var db = new QuanLyDinhDuongEntities())
+            {
+                var kehoach = db.KeHoaches.Find(idmon, idnguoidung, idthu, idbuoi);
+                db.KeHoaches.Remove(kehoach);
+                db.SaveChanges();
+            }
         }
 
         public void Update(KeHoach kehoach)
         {
-            var entry = db.Entry(kehoach);   //provides information, ability to perform actions on the entity
-            entry.State = EntityState.Modified;
-            db.SaveChanges();
+            using (var db = new QuanLyDinhDuongEntities())
+            {
+                var entry = db.Entry(kehoach);   //provides information, ability to perform actions on the entity
+                entry.State = EntityState.Modified;
+                db.SaveChanges();
+            }
 
         }
         

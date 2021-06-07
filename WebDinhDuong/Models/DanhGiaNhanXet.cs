@@ -18,6 +18,7 @@ namespace WebDinhDuong.Models
         public string IdUser { get; set; }
         public Nullable<int> DanhGia { get; set; }
         public string NhanXet { get; set; }
+        public Nullable<System.DateTime> Ngay { get; set; }
     
         public virtual NguoiDung NguoiDung { get; set; }
     }

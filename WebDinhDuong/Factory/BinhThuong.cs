@@ -8,13 +8,14 @@ namespace WebDinhDuong.Factory
     class BinhThuong : TinhTrang
     {
         private string tinhtrang;
+        private int bmi;
         public override void setTinhTrang(string tinhtrang)
         {
             this.tinhtrang = tinhtrang;
         }
-        public override string ChiSoBMI()
+        public override int ChiSoBMI()
         {
-            return tinhtrang;
+            return bmi;
         }
         public BinhThuong(string tinhtrang)
         {

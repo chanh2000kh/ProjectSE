@@ -28,6 +28,7 @@
           <Property Name="IdUser" Type="nvarchar" MaxLength="100" />
           <Property Name="DanhGia" Type="int" />
           <Property Name="NhanXet" Type="ntext" />
+          <Property Name="Ngay" Type="date" />
         </EntityType>
         <EntityType Name="KeHoach">
           <Key>
@@ -340,6 +341,7 @@
           <Property Name="IdUser" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DanhGia" Type="Int32" />
           <Property Name="NhanXet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ngay" Type="DateTime" Precision="0" />
           <NavigationProperty Name="NguoiDung" Relationship="Self.FK_DanhGiaNhanXet_NguoiDung1" FromRole="DanhGiaNhanXet" ToRole="NguoiDung" />
         </EntityType>
         <EntityType Name="KeHoach">
@@ -678,6 +680,7 @@
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
                 <ScalarProperty Name="NhanXet" ColumnName="NhanXet" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

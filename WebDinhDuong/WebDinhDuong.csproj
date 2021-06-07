@@ -135,7 +135,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Builder\AReviewBuilder.cs" />
+    <Compile Include="Builder\ReviewBuilder.cs" />
     <Compile Include="Controllers\BMI_CaloController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MonAnController.cs" />
@@ -144,12 +147,12 @@
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\UserInformationController.cs" />
     <Compile Include="Controllers\ThucDonController.cs" />
-    <Compile Include="DisplayUsername.cs" />
     <Compile Include="Factory\BinhThuong.cs" />
     <Compile Include="Factory\NguoiBinhThuong.cs" />
     <Compile Include="Factory\NguoiThieuCan.cs" />
     <Compile Include="Factory\NguoiThuaCan.cs" />
-    <Compile Include="Factory\Nguoi.cs" />
+    <Compile Include="Factory\IPeopleStatus.cs" />
+    <Compile Include="Factory\PeopleFactory.cs" />
     <Compile Include="Factory\ThieuCan.cs" />
     <Compile Include="Factory\ThuaCan.cs" />
     <Compile Include="Factory\TinhTrang.cs" />
@@ -211,14 +214,19 @@
     <Compile Include="Models\ThucDon.cs">
       <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelView\BMIView.cs" />
     <Compile Include="ModelView\FoodView.cs" />
     <Compile Include="ModelView\ListFoodView.cs" />
     <Compile Include="ModelView\LoadNDKeHoach.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxy\AbstractCore.cs" />
+    <Compile Include="Proxy\Core.cs" />
+    <Compile Include="Proxy\CoreProxy.cs" />
     <Compile Include="Services\SqlBuoi.cs" />
     <Compile Include="Services\SqlKeHoach.cs" />
     <Compile Include="Services\SqlLogin.cs" />
     <Compile Include="Services\SqlMonAn.cs" />
+    <Compile Include="Services\SqlReview.cs" />
     <Compile Include="Services\SqlThu.cs" />
     <Compile Include="Services\SqlThucDon.cs" />
     <Compile Include="Services\SqlUserInfo.cs" />
@@ -559,6 +567,8 @@
     <Content Include="Views\QuanLyKeHoach\Thu7Chieu.cshtml" />
     <Content Include="Views\QuanLyKeHoach\Thu7Sang.cshtml" />
     <Content Include="Views\QuanLyKeHoach\Thu7Trua.cshtml" />
+    <Content Include="Views\Review\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_DetailsFood.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

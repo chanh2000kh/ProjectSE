@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using WebDinhDuong.Models;
+using WebDinhDuong.Proxy;
 using WebDinhDuong.Services;
 
 namespace WebDinhDuong.Controllers
@@ -20,7 +23,7 @@ namespace WebDinhDuong.Controllers
         [HttpPost]
       
         public ActionResult Login(FormCollection model)
-        {        
+        {           
             string password = model["Password"];
             string email = model["Mail"];
           
@@ -29,25 +32,26 @@ namespace WebDinhDuong.Controllers
             {
                 if (acc != null)
                 {
-                    
+                    CoreProxy core = new CoreProxy((int) acc.Role);
                     if (acc.Role == 0)
-                    {
+                    {                                              
                         Admin admin = dbUser.GetAdmin(acc.Id);
                         Session["ID"] = admin.Id;
                         Session["Email"] = email; ;
                         Session["Password"] = password;
-                        return Content("/ManageFood/Index");
+                        return Content(core.getLink());
                     }
-                       
+
                     if (acc.Role == 1)
                     {
+                     //   CoreProxy core = new CoreProxy(acc.Role);
                         NguoiDung user = dbUser.GetUserFromIdLogin(acc.Id);
                         Session["ID"] = user.Id;
                         Session["Email"] = email; ;
                         Session["Password"] = password;
-                        return Content("/Home/Index");
+                        return Content(core.getLink());
                     }
-                       
+
                 }
                 else
                 {

@@ -1,8 +1,9 @@
-﻿@model WebDinhDuong.Models.NguoiDung
-@*@{
-    //var relatedProducts = (List<WebDinhDuong.Models.NguoiDung>)ViewBag.RelatedProducts;
-    var user = (List<WebDinhDuong.Models.NguoiDung>)ViewBag.listuser;
-}*@
+﻿@model WebDinhDuong.ModelView.BMIView
+@{ Layout = "~/Views/Shared/_Layout.cshtml";
+    double BMR = 0;
+    double x = Convert.ToDouble(Model.Nguoidung.CanNang);
+    double y = Convert.ToDouble(Model.Nguoidung.ChieuCao);
+}
 
 <body>
     <!-- top-bar -->
@@ -44,80 +45,71 @@
                 </div>
             </div>
             <div class="bmi">
-                @{
-                    Double x = Convert.ToDouble(Model.CanNang);
-                    Double y = Convert.ToDouble(Model.ChieuCao);
-                    Double t = x / ((y / 100) * (y / 100));
-                    t = Math.Round(t, 3);
-                  Double BMR = 0;
-                }
-                <p>Chiều cao hiện tại của bạn: @Model.ChieuCao </p><br />
-                <p> Cân nặng hiện tại : @Model.CanNang </p><br />
-                <span style="color:red"> BMI : @t</span><br />
+                @*@{
+                        
+                        Double t = x / ((y / 100) * (y / 100));
+                        t = Math.Round(t, 3);
+                      Double BMR = 0;
+                    }*@
+                <p>Chiều cao hiện tại của bạn: @Model.Nguoidung.ChieuCao </p><br />
+                <p> Cân nặng hiện tại : @Model.Nguoidung.CanNang </p><br />
+                <span style="color:red"> BMI : @Model.BMI</span><br />
+                <span style="color:red"> Tình trạng : @Model.Tinhtrang</span><br />
                 <br />
                 <p>Nhập độ tuổi của bạn</p> <br />
                 <input type="text" id="tuoi" value=""> <br />
                 <br />
 
-                @if (Model.TanSuatHoatDong == "Ít hoặc không")
+                @if (Model.Nguoidung.TanSuatHoatDong == "Ít hoặc không")
                 {
                     BMR = 1.2;
                 }
-                @if (Model.TanSuatHoatDong == "Nhẹ")
+                @if (Model.Nguoidung.TanSuatHoatDong == "Nhẹ")
                 {
                     BMR = 1.375;
                 }
-                @if (Model.TanSuatHoatDong == "Vừa phải")
+                @if (Model.Nguoidung.TanSuatHoatDong == "Vừa phải")
                 {
                     BMR = 1.55;
                 }
-                @if (Model.TanSuatHoatDong == "Nhiều")
+                @if (Model.Nguoidung.TanSuatHoatDong == "Nhiều")
                 {
                     BMR = 1.725;
                 }
-                @if (Model.TanSuatHoatDong == "Nặng")
+                @if (Model.Nguoidung.TanSuatHoatDong == "Nặng")
                 {
                     BMR = 1.9;
                 }
-                @if (Model.GioiTinh == "Nam")
+                @if (Model.Nguoidung.GioiTinh == "Nam")
                 {
-                   <br /> <button onclick="myFunction()">Lượng calo cần thiết</button> <br />
-                    <input type="text" id="calo" value="">
-                    <br />
+                    <br> <button onclick="myFunction()">Lượng calo cần thiết</button> <br />
+                        <input type="text" id="calo" value="">
+
+                     <script>
+                        function myFunction() {
+
+                            var tuoi = parseFloat(document.getElementById("tuoi").value) ;
+
+                            document.getElementById("calo").value = ((13.397 * @x) + (4.799 * @y) - (5.677 * tuoi) + 88.362)) *@BMR;
+
+                        }
+                     </script>
+                }
+
+                @if (Model.Nguoidung.GioiTinh == "Nữ")
+                {
+                    <br><button onclick="myFunction()">Lượng calo cần thiết</button> <br />
+                    <input type="text" id="calo" value=""><br />
 
                     <script>
                     function myFunction() {
 
                         var tuoi = parseFloat(document.getElementById("tuoi").value) ;
 
-                        document.getElementById("calo").value = ((13.397 * @x) + (4.799 * @y) - (5.677 * tuoi) + 88.362)) *@BMR;
-
-
+                        document.getElementById("calo").value =(((9.247 * @x) + (3.098 * @y) - (4.330 * tuoi)+447.593))*@BMR;
                     }
                     </script>
                 }
-                @if(Model.GioiTinh == "Nữ"){
-                <button onclick="myFunction()">Lượng calo cần thiết</button> <br />
-                <input type="text" id="calo" value=""><br />
-
-                <script>
-                    function myFunction() {
-
-                        var tuoi = parseFloat(document.getElementById("tuoi").value) ;
-
-                        document.getElementById("calo").value =(((9.247 * @x) + (3.098 * @y) - (4.330 * tuoi)+447.593))*@BMR;
-
-
-                    }
-                </script>
-                }
-
-
-
-
-
-
-
 
             </div>
             <div class="bmidanhgia">

@@ -255,3 +255,4 @@ D:\CN_PhanMem\ProjectSE-PhuongLinh\WebDinhDuong\obj\Debug\WebDinhDuong.csproj.Co
 D:\CN_PhanMem\ProjectSE-PhuongLinh\WebDinhDuong\obj\Debug\WebDinhDuong.csproj.CopyComplete
 D:\CN_PhanMem\ProjectSE-PhuongLinh\WebDinhDuong\obj\Debug\WebDinhDuong.dll
 D:\CN_PhanMem\ProjectSE-PhuongLinh\WebDinhDuong\obj\Debug\WebDinhDuong.pdb
+E:\CNPM\WebDinhDuong_ProjectSE\ProjectSE\WebDinhDuong\obj\Debug\WebDinhDuong.csprojAssemblyReference.cache

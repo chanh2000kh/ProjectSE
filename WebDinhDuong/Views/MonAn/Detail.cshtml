@@ -1,12 +1,11 @@
 ﻿@model WebDinhDuong.Models.MonAn
-@{
-    var relatedProducts = (List<WebDinhDuong.Models.MonAn>)ViewBag.RelatedProducts;
-}
+@*@{ var relatedProducts = (List<WebDinhDuong.Models.MonAn>)ViewBag.RelatedProducts; }*@
+@{ Layout = "~/Views/Shared/_Layout_DetailsFood.cshtml"; }
 <div>
 
     <hr />
 
-  
+
 
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
@@ -19,7 +18,7 @@
                         <h4 class="text-right">Profile Settings</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels"> @Html.DisplayNameFor(model => model.Name)</label><input type="text" class="form-control"  value=" @Html.DisplayFor(model => model.Name)"></div>
+                        <div class="col-md-6"><label class="labels"> @Html.DisplayNameFor(model => model.Name)</label><input type="text" class="form-control" value=" @Html.DisplayFor(model => model.Name)"></div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12"><label class="labels"> @Html.DisplayNameFor(model => model.Calo)</label><input type="text" class="form-control" value=" @Html.DisplayFor(model => model.Calo)"></div>
@@ -32,12 +31,12 @@
                         </div>
 
                     </div>
+                </div>
+
             </div>
-           
         </div>
     </div>
-</div>
 
-    </div>
+</div>
 
 

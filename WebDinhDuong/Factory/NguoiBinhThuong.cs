@@ -5,11 +5,14 @@ using System.Web;
 
 namespace WebDinhDuong.Factory
 {
-    class NguoiBinhThuong : Nguoi
+   public class NguoiBinhThuong : IPeopleStatus
     {
-        public override void setTinhTrang(TinhTrang tinhtrang)
+
+        public string getTinhTrang()
         {
-            myTinhTrang = new ThuaCan("Thiếu cân");
+            string tinhtrang= "Bình thường";
+            return tinhtrang;
         }
+     
     }
 }
