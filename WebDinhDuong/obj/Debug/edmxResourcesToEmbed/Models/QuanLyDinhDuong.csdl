@@ -25,6 +25,7 @@
     <Property Name="IdUser" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="DanhGia" Type="Int32" />
     <Property Name="NhanXet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ngay" Type="DateTime" Precision="0" />
     <NavigationProperty Name="NguoiDung" Relationship="Self.FK_DanhGiaNhanXet_NguoiDung1" FromRole="DanhGiaNhanXet" ToRole="NguoiDung" />
   </EntityType>
   <EntityType Name="KeHoach">

@@ -6,37 +6,37 @@ using WebDinhDuong.Models;
 
 namespace WebDinhDuong.Builder
 {
-    class ReviewBuilder : AReviewBuilder
+    class ReviewBuilder : IReviewBuilder
     {
-        private string Id; 
-        private string IdUser;
-        private int Rating;
-        private DateTime Ngay;
-        private string Comment;
-     
+      
+        DanhGiaNhanXet review = new DanhGiaNhanXet();
 
-        public override void AddDanhGia(int rating)
+        public void AddDanhGia(int rating)
         {
-            this.Rating = rating;
+            review.DanhGia = rating;
         }
 
-        public override void AddDate(DateTime ngay)
+        public void AddDate(DateTime ngay)
         {
-            this.Ngay = ngay;
+            review.Ngay = ngay;
         }
 
-        public override void AddId(string id)
+        public void AddId(string id)
         {
-            this.Id = id;
+            review.Id = id;
         }
 
-        public override void AddIdUser(string iduser)
+        public void AddIdUser(string iduser)
         {
-            this.IdUser = iduser;
+            review.IdUser = iduser;
         }
-        public override void AddNhanXet(string comment)
+        public void AddNhanXet(string comment)
         {
-            this.Comment = comment;
+            review.NhanXet = comment;
+        }
+        public DanhGiaNhanXet GetReview()
+        {
+            return review;
         }
     }
 }

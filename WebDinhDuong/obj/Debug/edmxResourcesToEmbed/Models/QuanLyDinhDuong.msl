@@ -25,6 +25,7 @@
           <ScalarProperty Name="IdUser" ColumnName="IdUser" />
           <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
           <ScalarProperty Name="NhanXet" ColumnName="NhanXet" />
+          <ScalarProperty Name="Ngay" ColumnName="Ngay" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

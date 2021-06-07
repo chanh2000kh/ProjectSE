@@ -23,6 +23,7 @@
     <Property Name="IdUser" Type="nvarchar" MaxLength="100" />
     <Property Name="DanhGia" Type="int" />
     <Property Name="NhanXet" Type="ntext" />
+    <Property Name="Ngay" Type="date" />
   </EntityType>
   <EntityType Name="KeHoach">
     <Key>

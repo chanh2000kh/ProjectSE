@@ -23,5 +23,13 @@ namespace WebDinhDuong.Services
                 return db.DanhGiaNhanXets.Where(s => s.IdUser.Equals(iduser)).FirstOrDefault();
             }
         }
+        public int getCount()
+        {
+            using (var db = new QuanLyDinhDuongEntities())
+            {
+                int size = db.DanhGiaNhanXets.Count();
+                return size;
+            }
+        }
     }
 }

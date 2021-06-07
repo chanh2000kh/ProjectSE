@@ -135,7 +135,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Builder\AReviewBuilder.cs" />
+    <Compile Include="Builder\IReviewBuilder.cs" />
     <Compile Include="Builder\ReviewBuilder.cs" />
     <Compile Include="Controllers\BMI_CaloController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
