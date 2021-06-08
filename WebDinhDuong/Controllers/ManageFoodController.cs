@@ -70,8 +70,7 @@ namespace WebDinhDuong.Controllers
                 food.Fat = mon.Fat;
                 food.Protein = mon.Protein;
                 food.ThongTin = mon.ThongTin;
-                food.KeHoaches = null;
-                food.ThucDons = null;
+          
 
 
                 if (Image.ContentLength > 0)
@@ -108,21 +107,16 @@ namespace WebDinhDuong.Controllers
         public ActionResult Edit(string id)
         {
 
-            //var item = dbProduct.Get(id);
-            //ViewBag.BranchName = new SelectList(bhx.Branchs, "Id", "Name", item.BranchId);
-            //ViewBag.ClassifyName = new SelectList(bhx.Classifys, "Id", "Name", item.ClassifyId);
-            //ViewBag.ProviderName = new SelectList(bhx.Providers, "Id", "Name", item.ProviderId);
-            //ItemProduct p = new ItemProduct();
-
-            //p.Id = dbProduct.GetIdMax().ToString();
-            //p.Name = item.Name;
-            //p.Amount = item.Amount;
-            //p.Details = item.Details;
-            //p.Discount = item.Discount;
-
-            //p.Price = item.Price;
-            //p.Date = item.Date;
-            return View();
+            var mon=dbMonAn.GetMonAn(id);
+            FoodView food = new FoodView();
+            food.Id = mon.Id;
+            food.Name = mon.Name;
+            food.Calo = mon.Calo;
+            food.Carb = mon.Carb;
+            food.Fat = mon.Fat;
+            food.Protein = mon.Protein;
+            food.ThongTin = mon.ThongTin;
+            return View(food);
         }
 
         [HttpPost]
@@ -159,7 +153,7 @@ namespace WebDinhDuong.Controllers
             if (ModelState.IsValid)
             {
                 MonAn food = new MonAn();
-                food.Id = (dbMonAn.getCount() + 1).ToString();
+                food.Id = mon.Id;
                 food.Name = mon.Name;
                 food.Calo = mon.Calo;
                 food.Carb = mon.Carb;

@@ -27,11 +27,11 @@ namespace WebDinhDuong.Services
                 return size;
             }
         }
-        public void Delete(string id)
+        public void Delete(string id, string iduser, DateTime date)
         {
             using (var db = new QuanLyDinhDuongEntities())
             {
-                var thucdon = db.ThucDons.Find(id);
+                var thucdon = db.ThucDons.Where(s => s.Id.Equals(id)&&s.IdNguoiDung.Equals(iduser) && s.Ngay == date).FirstOrDefault();
                 db.ThucDons.Remove(thucdon);
                 db.SaveChanges();
             }
@@ -40,7 +40,7 @@ namespace WebDinhDuong.Services
         {
             using (var db = new QuanLyDinhDuongEntities())
             {
-                var thucdon = db.ThucDons.Where(s => s.IdNguoiDung.Equals(iduser) && s.Ngay == date.Date).ToList();
+                var thucdon = db.ThucDons.Where(s => s.IdNguoiDung.Equals(iduser) && s.Ngay == date).ToList();
                 foreach(var item in thucdon)
                 {
                     db.ThucDons.Remove(item);
@@ -62,23 +62,40 @@ namespace WebDinhDuong.Services
         {
             using (var db = new QuanLyDinhDuongEntities())
             {
-                return db.ThucDons.Where(s => s.IdNguoiDung.Equals(iduser)&&s.Ngay==date.Date).ToList();
+                return db.ThucDons.Where(s => s.IdNguoiDung.Equals(iduser)&&s.Ngay==date).ToList();
             }
         }
         public ThucDon getThucDonFromMonAn(string iduser, DateTime date, string idfood)
         {
             using (var db = new QuanLyDinhDuongEntities())
             {
-                return db.ThucDons.Where(s => s.IdNguoiDung.Equals(iduser) && s.Ngay == date.Date&&s.IdMonAn.Equals(idfood)).FirstOrDefault();
+                return db.ThucDons.Where(s => s.IdNguoiDung.Equals(iduser) && s.Ngay == date&&s.IdMonAn.Equals(idfood)).FirstOrDefault();
             }
         }
         public IEnumerable<ThucDon> GetThucDonNguoiDungHienTai(string iduser, DateTime date)
         {
             using (var db = new QuanLyDinhDuongEntities())
             {
-                return db.ThucDons.Where(s => s.IdNguoiDung.Equals(iduser) && s.Ngay == date.Date).ToList();
+                return db.ThucDons.Where(s => s.IdNguoiDung.Equals(iduser) && s.Ngay == date).ToList();
             }
         }
+        public double GetTotalCalo(string iduser, DateTime date)
+        {
+            using (var db = new QuanLyDinhDuongEntities())
+            {
+                double ?total = (from td in db.ThucDons
+                                 where td.IdNguoiDung == iduser && td.Ngay==date
+                                 select (double?)td.Calo).Sum();
 
+                return total??0;
+            }
+        }
+        public ThucDon getThucDon(string id)
+        {
+            using (var db = new QuanLyDinhDuongEntities())
+            {
+                return db.ThucDons.Where(s => s.Id.Equals(id)).FirstOrDefault();
+            }
+        }
     }
 }

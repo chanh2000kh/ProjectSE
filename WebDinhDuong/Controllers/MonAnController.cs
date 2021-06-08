@@ -30,21 +30,21 @@ namespace WebDinhDuong.Controllers
         //{
        
         //}
-        public ActionResult Detail(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            MonAn dSSP = dbMonAn.GetMonAn(id);
-            if (dSSP == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.RelatedProducts =dbMonAn.ListMonAn(id);
+        //public ActionResult Detail(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    MonAn dSSP = dbMonAn.GetMonAn(id);
+        //    if (dSSP == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.RelatedProducts =dbMonAn.ListMonAn(id);
 
-            return View(dSSP);
+        //    return View(dSSP);
           
-        }
+        //}
     }
 }
