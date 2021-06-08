@@ -497,6 +497,8 @@
     <Content Include="Assets\Home\images\ent5.jpg" />
     <Content Include="Assets\Home\images\ent6.jpg" />
     <Content Include="Assets\Home\images\ent7.jpg" />
+    <Content Include="Assets\Home\images\i1.jpg" />
+    <Content Include="Assets\Home\images\i2.jpg" />
     <Content Include="Assets\Home\images\icon1.png" />
     <Content Include="Assets\Home\images\icon2.png" />
     <Content Include="Assets\Home\images\icons.png" />
@@ -504,6 +506,8 @@
     <Content Include="Assets\Home\images\img10.jpg" />
     <Content Include="Assets\Home\images\img11.jpg" />
     <Content Include="Assets\Home\images\img12.jpg" />
+    <Content Include="Assets\Home\images\nutritio2.png" />
+    <Content Include="Assets\Home\images\nutrition.jpg" />
     <Content Include="Assets\Home\images\s1.jpg" />
     <Content Include="Assets\Home\images\s2.jpg" />
     <Content Include="Assets\Home\images\s3.jpg" />
