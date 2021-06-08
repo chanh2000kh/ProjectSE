@@ -38,7 +38,7 @@ namespace WebDinhDuong.Controllers
                         Admin admin = dbUser.GetAdmin(acc.Id);
                         Session["ID"] = admin.Id;
                         Session["Email"] = email; ;
-                        Session["Password"] = password;
+                        Session["Password"] = password;                   
                         return Content(core.getLink());
                     }
 

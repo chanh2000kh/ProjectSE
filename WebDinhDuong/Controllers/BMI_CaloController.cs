@@ -14,7 +14,7 @@ namespace WebDinhDuong.Controllers
     {
         // GET: BMI_Calo
         SqlUserInfo db = new SqlUserInfo();      
-        public ActionResult Index()
+        public ActionResult Bmi()
         {
             //string mail = DisplayUsername.passusername;
             //ViewBag.listuser = db.NguoiDungs.Where(x => x.Mail == mail).ToList();

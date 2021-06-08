@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Sua";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //  Layout = "~/Views/Shared/_Layout_Home.cshtml";
 }
 
 <div class="book-form">
@@ -15,12 +15,12 @@
         <form action="" method="post">
 
             @*<p for="height">Ghi chú:</p>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <div class="form-group">
-                    <label class="control-label sr-only" for="GhiChu"> Ghi Chú</label>
-                    <input name="GhiChu" id="GhiChu" type="text" placeholder=@Model.GhiChu class="form-control" required>
-                </div>
-            </div>*@
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label sr-only" for="GhiChu"> Ghi Chú</label>
+                        <input name="GhiChu" id="GhiChu" type="text" placeholder=@Model.GhiChu class="form-control" required>
+                    </div>
+                </div>*@
             <p for="height">Số lượng:</p>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="form-group">
@@ -29,24 +29,29 @@
                 </div>
             </div>
             @*<p for="height">Ngày:</p>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <div class="form-group">
-                    <label class="sr-only" for="datepicker">Ngày lên kế hoạch</label>
-                    <div class="input-group">
-                        <input id="datepicker" name="datepicker" type="text" placeholder=@Model.NgayLapKeHoach class="form-control" required="">
-                        <span class="input-group-addon" id="basic-addon2"><i class="fa fa-calendar"></i></span>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="sr-only" for="datepicker">Ngày lên kế hoạch</label>
+                        <div class="input-group">
+                            <input id="datepicker" name="datepicker" type="text" placeholder=@Model.NgayLapKeHoach class="form-control" required="">
+                            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-calendar"></i></span>
+                        </div>
                     </div>
-                </div>
-            </div>*@
+                </div>*@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <button type="submit" name="singlebutton" class="btn btn-primary"><a href="#">Sửa</a></button>
             </div>
         </form>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button><a href="/QuanLyKeHoach/LoadKeHoach">Back</a></button>
-        </div>
+        </div>*@
     </div>
 </div>
 
-
+@using (Html.BeginForm("LoadKeHoach", "QuanLykeHoach", FormMethod.Post, new { }))
+{
+    <div>
+        <span><input type="submit" value="BACK TO PLAN? CLICK HERE"></span>
+    </div>
+}
 

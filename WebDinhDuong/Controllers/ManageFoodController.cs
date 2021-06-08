@@ -161,32 +161,35 @@ namespace WebDinhDuong.Controllers
                 food.Protein = mon.Protein;
                 food.ThongTin = mon.ThongTin;
 
-                if (Image.ContentLength > 0)
+                if (Image != null)
                 {
-                    //Lay ten hinh anh
-                    string image1 = food.Id + Path.GetExtension(mon.HinhAnh.FileName);  //GetExstension
-                    //item.Image1.SaveAs(filename: ("E:/LTWeb/BachHoaXanh_Update/BachHoaXanh/BachHoaXanh.Web/Images/" + image1));                 
-                    var path = Path.Combine(Server.MapPath("~/Images"), image1);
-                    //Neu thu muc chua hinh anh do roi thi xuat ra thong bao
-                    if (System.IO.File.Exists(path))
+                    if (Image.ContentLength > 0)
                     {
-                        ViewBag.upload = " Image has existed!";
+                        //Lay ten hinh anh
+                        string image1 = food.Id + Path.GetExtension(mon.HinhAnh.FileName);  //GetExstension
+                                                                                            //item.Image1.SaveAs(filename: ("E:/LTWeb/BachHoaXanh_Update/BachHoaXanh/BachHoaXanh.Web/Images/" + image1));                 
+                        var path = Path.Combine(Server.MapPath("~/Images"), image1);
+                        //Neu thu muc chua hinh anh do roi thi xuat ra thong bao
+                        if (System.IO.File.Exists(path))
+                        {
+                            ViewBag.upload = " Image has existed!";
+                        }
+                        else
+                        {
+                            mon.HinhAnh.SaveAs(path);
+                        }
+                        string temp = "~/Images/" + image1;
+                        food.HinhAnh = temp;
                     }
                     else
                     {
-                        mon.HinhAnh.SaveAs(path);
+                        food.HinhAnh = null;
                     }
-                    string temp = "~/Images/" + image1;
-                    food.HinhAnh = temp;
-                }
-                else
-                {
-                    food.HinhAnh = null;
                 }
 
 
-                dbMonAn.Add(food);
-                return RedirectToAction("Detail", "MonAn", new { id = food.Id });
+                dbMonAn.Update(food);
+                return RedirectToAction("Details", "ManageFood", new { id = food.Id });
             }
             return View(mon);
         }

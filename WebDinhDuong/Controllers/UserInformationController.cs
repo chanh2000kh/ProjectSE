@@ -20,7 +20,7 @@ namespace WebDinhDuong.Controllers
         [HttpGet]
         public ActionResult Edit()
         {
-            NguoiDung user = dbUser.GetUserFromIdLogin(Session["ID"].ToString());
+            NguoiDung user = dbUser.GetUser(Session["ID"].ToString());
             return View(user);
         }
         [HttpPost]

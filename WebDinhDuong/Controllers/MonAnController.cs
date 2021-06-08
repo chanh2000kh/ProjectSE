@@ -14,7 +14,7 @@ namespace WebDinhDuong.Controllers
       
         SqlMonAn dbMonAn = new SqlMonAn();
         // GET: MonAn
-        public ActionResult MonAn(string search)
+        public ActionResult Index(string search)
         {
             if (search == null)
             {
@@ -26,25 +26,10 @@ namespace WebDinhDuong.Controllers
             return View(model2);
 
         }
-        //public ActionResult TimKiem(string Search)
-        //{
-       
-        //}
-        //public ActionResult Detail(string id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    MonAn dSSP = dbMonAn.GetMonAn(id);
-        //    if (dSSP == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    ViewBag.RelatedProducts =dbMonAn.ListMonAn(id);
-
-        //    return View(dSSP);
-          
-        //}
+        public ActionResult Details(string id)
+        {
+            var model = dbMonAn.GetMonAn(id);
+            return View(model);
+        }
     }
 }

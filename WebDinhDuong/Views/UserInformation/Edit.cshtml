@@ -16,7 +16,7 @@
                     <legend>Details :</legend>
 
                     <p for="name" class="w3_field1">Name</p>
-                    <input id="name" name="Name" type="text" value=@Model.Name required data-error-msg="Enter your name" />
+                    <input id="name" name="Name" type="text" value=@Model.Name required />
 
                     <p for="email">Email address</p>
                     <input id="email" name="email" type="email" value=@Session["Email"] required data-error-msg="Enter your valid email address" />
@@ -28,28 +28,22 @@
                     <select id="gennder" name="gender" value="Female" required>
                         @if (Model.GioiTinh.Equals("Female"))
                         {
-                            <option value="Female" selected>Female</option>
-                         }
+            <option value="Female" selected>Female</option> }
                         else
                         {
-                            <option value="Female">Female</option>
-                        }
+            <option value="Female">Female</option>}
                         @if (Model.MucTieu.Equals("Male"))
                         {
-                            <option value="Male" selected>Male</option>
-                         }
+            <option value="Male" selected>Male</option> }
                         else
                         {
-                            <option value="Male">Male</option>
-                        }
+            <option value="Male">Male</option>}
                         @if (Model.MucTieu.Equals("Other"))
                         {
-                                <option value="Other" selected>Other</option>
-                         }
+            <option value="Other" selected>Other</option> }
                         else
                         {
-                                <option value="Other">Other</option>
-                        }
+            <option value="Other">Other</option>}
                     </select>
 
                     <p for="height">Height</p>
@@ -60,67 +54,58 @@
 
 
                     <p for="frequency" class="w3_field1">Frequency Activity</p>
-                    <select id="frequency" name="frequency"  value="High" required>
+                    <select id="frequency" name="frequency" value="High" required>
                         @if (Model.TanSuatHoatDong.Equals("High"))
                         {
-                            <option value="High" selected>High</option> 
-                         }
-                        else
-                        {
-                                <option value="High">High</option>
-                        }
+            <option value="High" selected>High</option>
+ }
+        else
+        {
+        <option value="High">High</option>}
                         @if (Model.TanSuatHoatDong.Equals("Medium"))
                         {
-                                <option value="Medium" selected>Medium</option> 
-                         }
-                        else
-                        {
-                                <option value="Medium">Medium</option>
-                        }
+            <option value="Medium" selected>Medium</option>
+ }
+        else
+        {
+        <option value="Medium">Medium</option>}
                         @if (Model.TanSuatHoatDong.Equals("Slow"))
                         {
-                                <option value="Slow" selected>Slow</option> 
-                         }
-                        else
-                        {
-                                <option value="Slow">Slow</option>
-                        }
+            <option value="Slow" selected>Slow</option>
+ }
+        else
+        {
+        <option value="Slow">Slow</option>}
                     </select>
 
                     <p for="goal" class="w3_field1">Goal</p>
-                    <select id="goal" name="goal"  value="Losing_weight" required>
+                    <select id="goal" name="goal" value="Losing_weight" required>
                         @if (Model.MucTieu.Equals("Losing_weight"))
                         {
-                            <option value="Losing_weight" selected>Losing_weight</option>
-                         }
+            <option value="Losing_weight" selected>Losing_weight</option> }
                         else
                         {
-                            <option value="Losing_weight">Losing_weight</option>
-                         }
+            <option value="Losing_weight">Losing_weight</option>}
                         @if (Model.MucTieu.Equals("Gaining_weight"))
                         {
-                            <option value="Gaining_weight" selected>Gaining_weight</option>
-                         }
+            <option value="Gaining_weight" selected>Gaining_weight</option> }
                         else
                         {
-                                <option value="Gaining_weight">Gaining_weight</option>
-                        }
+            <option value="Gaining_weight">Gaining_weight</option>}
                         @if (Model.MucTieu.Equals("Put_on__weight"))
                         {
-                                <option value="Put_on__weight" selected>Put_on__weight</option>
-                         }
+            <option value="Put_on__weight" selected>Put_on__weight</option> }
                         else
                         {
-                            <option value="Put_on__weight">Put_on__weight</option>
-                        }
+            <option value="Put_on__weight">Put_on__weight</option>}
                     </select>
 
                     <p for="goalweight">Goal's Weight</p>
-                    <input id="goalweight" name="goalweight" type="number"  min="1" max="150" value=@Model.CanNangMongMuon required data-error-msg="Enter your goal's weight" />
+                    <input id="goalweight" name="goalweight" type="number" min="1" max="150" value=@Model.CanNangMongMuon required data-error-msg="Enter your goal's weight" />
 
 
                     <p for="time">Time</p>
-                    <input id="time"  name="time" type="number"  min="1" value=@Model.Thang required data-error-msg="Enter your time" />
+                    <input id="time" name="time" type="number" min="1" value=@Model.Thang required data-error-msg="Enter your time" />
 
                 </fieldset>
 
@@ -130,10 +115,16 @@
                     <input id="hiddenInput" name="hiddenInput" type="text" required data-error-msg="You wanted an extra question" />
                 </div>
 
-                <input type="submit" value="Save" />
+                <input type="submit" value="SAVE" />
 
 
             </form>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { }))
+            {
+                <div>
+                    <span><input type="submit" value="BACK TO HOME"></span>
+                </div>            
+             }
         </div>
             </div>
         </div>

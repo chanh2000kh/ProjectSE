@@ -237,16 +237,16 @@ padding-top:7px;
   }
 }
 .cover-slider__slide:nth-child(1) {
-  background-image: url("../images/i1.jpg");
+  background-image: url("../images/i2.jpg");
 }
 .cover-slider__slide:nth-child(2) {
-  background-image: url("../images/banner2.jpg");
+  background-image: url("../images/i1.jpg");
 }
 .cover-slider__slide:nth-child(3) {
-  background-image: url("../images/banner3.jpg");
+  background-image: url("../images/i3.jpg");
 }
 .cover-slider__slide:nth-child(4) {
-  background-image: url("../images/banner4.jpg");
+  background-image: url("../images/i4.jpg");
 }
 .cover-slider__slide:nth-child(5) {
   background-image: url("../images/banner5.jpg");
@@ -722,19 +722,19 @@ min-height:300px;
 
 /*----------------  About us ------------*/
 .a-banner, .c-banner{
-background: url("../images/banner1.jpg") 0px 0px no-repeat;
+background: url("../images/i1.jpg") 0px 0px no-repeat;
 background-size:cover;
 }
 .s-banner{
-background: url("../images/banner2.jpg") 0px 0px no-repeat;
+background: url("../images/i2.jpg") 0px 0px no-repeat;
 background-size:cover;
 }
 .d-banner{
-background: url("../images/banner3.jpg") 0px 0px no-repeat;
+background: url("../images/i3.jpg") 0px 0px no-repeat;
 background-size:cover;
 }
 .e-banner{
-background: url("../images/banner4.jpg") 0px 0px no-repeat;
+background: url("../images/i4.jpg") 0px 0px no-repeat;
 background-size:cover;
 }
 

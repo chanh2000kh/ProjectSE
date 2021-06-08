@@ -5,7 +5,7 @@
     double y = Convert.ToDouble(Model.Nguoidung.ChieuCao);
 }
 
-<body>
+
     <!-- top-bar -->
     <div>  Chỉ số BMI: là chỉ số đo cân nặng của một người, công thức được áp dụng cho cả nam và nữ, công thức này chỉ áp dụng cho người trưởng thành (trên 18 tuổi), không áp dụng cho: phụ nữ mang thai, vận động viên ( vì vđv nhiều cơ bắp, ít mỡ), người già&nbsp;và&nbsp;chỉ số này có sự thay đổi giữa các quốc gia</div>
     <p>
@@ -46,7 +46,7 @@
             </div>
             <div class="bmi">
                 @*@{
-                        
+
                         Double t = x / ((y / 100) * (y / 100));
                         t = Math.Round(t, 3);
                       Double BMR = 0;
@@ -82,10 +82,10 @@
                 }
                 @if (Model.Nguoidung.GioiTinh == "Nam")
                 {
-                    <br> <button onclick="myFunction()">Lượng calo cần thiết</button> <br />
-                        <input type="text" id="calo" value="">
+    <br> <button onclick="myFunction()">Lượng calo cần thiết</button> <br />
+                    <input type="text" id="calo" value="">
 
-                     <script>
+                                    <script>
                         function myFunction() {
 
                             var tuoi = parseFloat(document.getElementById("tuoi").value) ;
@@ -93,23 +93,21 @@
                             document.getElementById("calo").value = ((13.397 * @x) + (4.799 * @y) - (5.677 * tuoi) + 88.362)) *@BMR;
 
                         }
-                     </script>
-                }
+                                    </script>}
 
                 @if (Model.Nguoidung.GioiTinh == "Nữ")
                 {
-                    <br><button onclick="myFunction()">Lượng calo cần thiết</button> <br />
+    <br><button onclick="myFunction()">Lượng calo cần thiết</button> <br />
                     <input type="text" id="calo" value=""><br />
 
-                    <script>
+                                    <script>
                     function myFunction() {
 
                         var tuoi = parseFloat(document.getElementById("tuoi").value) ;
 
                         document.getElementById("calo").value =(((9.247 * @x) + (3.098 * @y) - (4.330 * tuoi)+447.593))*@BMR;
                     }
-                    </script>
-                }
+                                    </script>}
 
             </div>
             <div class="bmidanhgia">
@@ -132,14 +130,7 @@
 
             </div>
         </main>
-
-
-
-
-
-
     </div>
-
 
 
 
@@ -157,4 +148,3 @@
     <script type="text/javascript" src="/Assets/Food/js/jquery-ui.js"></script>
 
 
-</body>

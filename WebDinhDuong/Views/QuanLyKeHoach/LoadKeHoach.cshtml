@@ -1,7 +1,6 @@
 ﻿
-@{
-    ViewBag.Title = "LoadKeHoach";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+@{ ViewBag.Title = "LoadKeHoach";
+                Layout = "~/Views/Shared/_Layout.cshtml"; 
 }
 <div class="book-form">
     <table border="1" width="1700">
@@ -55,3 +54,9 @@
         </tr>
     </table>
 </div>
+@using (Html.BeginForm("Index", "MonAn", FormMethod.Post, new { }))
+{
+<div>
+    <span><input type="submit" value="ADD TO PLAN? CLICK HERE"></span>
+</div>
+}
