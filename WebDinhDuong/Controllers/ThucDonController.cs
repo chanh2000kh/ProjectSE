@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebDinhDuong.Adapter;
 using WebDinhDuong.Models;
 using WebDinhDuong.ModelView;
 using WebDinhDuong.Services;
@@ -20,22 +21,31 @@ namespace WebDinhDuong.Controllers
         // GET: Food
         public ActionResult Index()
         {
-            var thucdon = dbThucDon.GetThucDonNguoiDungHienTai(Session["ID"].ToString(), DateTime.Now.Date);
-            List<ThucDonView> model = new List<ThucDonView>();
-            foreach (var item in thucdon)
+            var listthucdon = dbThucDon.GetThucDonNguoiDungHienTai(Session["ID"].ToString(), DateTime.Now.Date);
+            List<ThucDon> model = new List<ThucDon>();
+            //foreach (var item in thucdon)
+            //{
+            //    var mon = dbMonAn.GetMonAn(item.IdMonAn);
+
+            //    ThucDonView itemview = new ThucDonView();
+            //    itemview.Id = item.Id;
+            //    itemview.HinhAnh = item.HinhAnh;
+            //    itemview.Calo = (double)mon.Calo;
+            //    itemview.IdMonAn = item.IdMonAn;
+            //    itemview.SoLuong = (int)item.SoLuong;
+            //    itemview.Name = item.Name;
+            //    model.Add(itemview);
+
+            //}
+            foreach(ThucDon item in listthucdon )
             {
-                var mon = dbMonAn.GetMonAn(item.IdMonAn);
+                ThucDonAdaptee adaptee = new ThucDonAdaptee();
+                IThucDon ithucdon = new ThucDonAdapter(adaptee);
+                ithucdon.send(item);
+                model.Add(adaptee.getThucDonHopLe());
 
-                ThucDonView itemview = new ThucDonView();
-                itemview.Id = item.Id;
-                itemview.HinhAnh = item.HinhAnh;
-                itemview.Calo = (double)mon.Calo;
-                itemview.IdMonAn = item.IdMonAn;
-                itemview.SoLuong = (int)item.SoLuong;
-                itemview.Name = item.Name;
-                model.Add(itemview);
+            }    
 
-            }
             if (model.Count() != 0)
             {
                 ViewBag.TotalCalo = dbThucDon.GetTotalCalo(Session["ID"].ToString(), DateTime.Now.Date);

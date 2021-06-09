@@ -152,8 +152,7 @@ namespace WebDinhDuong.Controllers
 
             if (ModelState.IsValid)
             {
-                MonAn food = new MonAn();
-                food.Id = mon.Id;
+                MonAn food = dbMonAn.GetMonAn(mon.Id);              
                 food.Name = mon.Name;
                 food.Calo = mon.Calo;
                 food.Carb = mon.Carb;
@@ -166,18 +165,15 @@ namespace WebDinhDuong.Controllers
                     if (Image.ContentLength > 0)
                     {
                         //Lay ten hinh anh
-                        string image1 = food.Id + Path.GetExtension(mon.HinhAnh.FileName);  //GetExstension
+                        string image1 = food.Id + Path.GetExtension(Image.FileName);  //GetExstension
                                                                                             //item.Image1.SaveAs(filename: ("E:/LTWeb/BachHoaXanh_Update/BachHoaXanh/BachHoaXanh.Web/Images/" + image1));                 
                         var path = Path.Combine(Server.MapPath("~/Images"), image1);
                         //Neu thu muc chua hinh anh do roi thi xuat ra thong bao
                         if (System.IO.File.Exists(path))
                         {
-                            ViewBag.upload = " Image has existed!";
+                            System.IO.File.Delete(path);                          
                         }
-                        else
-                        {
-                            mon.HinhAnh.SaveAs(path);
-                        }
+                        Image.SaveAs(path);
                         string temp = "~/Images/" + image1;
                         food.HinhAnh = temp;
                     }
@@ -186,7 +182,8 @@ namespace WebDinhDuong.Controllers
                         food.HinhAnh = null;
                     }
                 }
-
+               
+                    
 
                 dbMonAn.Update(food);
                 return RedirectToAction("Details", "ManageFood", new { id = food.Id });

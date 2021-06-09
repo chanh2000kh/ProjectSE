@@ -42,7 +42,7 @@ namespace WebDinhDuong.Services
                 return db.MonAns.Where(s => s.Id.Equals(id)).FirstOrDefault();
             }
         }
-        public List<MonAn> GetAll()
+        public IEnumerable<MonAn> GetAll()
         {
             using (var db = new QuanLyDinhDuongEntities())
             {

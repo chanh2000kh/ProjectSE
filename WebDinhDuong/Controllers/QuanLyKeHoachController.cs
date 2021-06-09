@@ -80,8 +80,6 @@ namespace WebDinhDuong.Controllers
         public ActionResult LoadKeHoach(FormCollection model)
         {
 
-
-
             return View();
 
         }

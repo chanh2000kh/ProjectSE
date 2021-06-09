@@ -132,6 +132,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\IThucDon.cs" />
+    <Compile Include="Adapter\ThucDonAdaptee.cs" />
+    <Compile Include="Adapter\ThucDonAdapter.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
