@@ -224,7 +224,7 @@
     <Compile Include="ModelView\ResultOfThucDon.cs" />
     <Compile Include="ModelView\ThucDonView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proxy\AbstractCore.cs" />
+    <Compile Include="Proxy\ICore.cs" />
     <Compile Include="Proxy\Core.cs" />
     <Compile Include="Proxy\CoreProxy.cs" />
     <Compile Include="Services\SqlBuoi.cs" />

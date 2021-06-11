@@ -32,7 +32,7 @@ namespace WebDinhDuong.Controllers
             {
                 if (acc != null)
                 {
-                    CoreProxy core = new CoreProxy((int) acc.Role);
+                    ICore core = new CoreProxy((int) acc.Role);
                     if (acc.Role == 0)
                     {                                              
                         Admin admin = dbUser.GetAdmin(acc.Id);

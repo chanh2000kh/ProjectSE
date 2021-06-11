@@ -30,7 +30,7 @@ namespace WebDinhDuong.Controllers
             reviewBuilder.AddDanhGia(rating);
 
             db.Add(reviewBuilder.GetReview());
-            return RedirectToAction("Indexx");
+            return RedirectToAction("Index");
         }
     }
 }

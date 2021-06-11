@@ -36,6 +36,7 @@ namespace WebDinhDuong.Controllers
             }
             else
             {
+                string idkh = (dbkehoach.getCount() + 1).ToString();
                 string ghichu = model["GhiChu"];
                 string soluong = model["SoLuong"];
                 string date = model["datepicker"];
@@ -43,6 +44,7 @@ namespace WebDinhDuong.Controllers
                 string thu = model["select2"];
                 //Add a ke hoach in table Login
                 KeHoach kehoach = new KeHoach();
+                kehoach.Id = idkh;
                 kehoach.IdMonAn = (string)Session["IDMon"];
                 kehoach.IdNguoiDung = (string)Session["ID"];
                 kehoach.IdThu = thu;
