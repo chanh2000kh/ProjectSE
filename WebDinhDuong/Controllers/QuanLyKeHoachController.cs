@@ -13,6 +13,7 @@ namespace WebDinhDuong.Controllers
 
         QuanLyDinhDuongEntities db = new QuanLyDinhDuongEntities();
         private SqlKeHoach dbkehoach = new SqlKeHoach();
+        private SqlMonAn dbMonAn = new SqlMonAn();
         // GET: QuanLyKeHoach
         public ActionResult ThemMoi(string id, FormCollection model)
         {
@@ -22,7 +23,7 @@ namespace WebDinhDuong.Controllers
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
             //nếu không truy xuất csdl lấy ra sản phẩm tướng ứng
-            MonAn monAn = db.MonAns.SingleOrDefault(n => n.Id == id);
+            MonAn monAn = dbMonAn.GetMonAn(id);
             if (monAn == null)
             {
                 //Thôn báo nếu không có sản phẩm đó
@@ -35,24 +36,33 @@ namespace WebDinhDuong.Controllers
                 Session["IDMon"] = id;
             }
             else
-            {
-                string idkh = (dbkehoach.getCount() + 1).ToString();
+            {                   
+                string idkh = (dbkehoach.GetIdMax()).ToString();
                 string ghichu = model["GhiChu"];
                 string soluong = model["SoLuong"];
                 string date = model["datepicker"];
                 string buoi = model["select"];
                 string thu = model["select2"];
-                //Add a ke hoach in table Login
-                KeHoach kehoach = new KeHoach();
-                kehoach.Id = idkh;
-                kehoach.IdMonAn = (string)Session["IDMon"];
-                kehoach.IdNguoiDung = (string)Session["ID"];
-                kehoach.IdThu = thu;
-                kehoach.IdBuoi = buoi;
-                kehoach.NgayLapKeHoach = Convert.ToDateTime(date);
-                kehoach.GhiChu = ghichu;
-                kehoach.SoLuong = int.Parse(soluong.ToString());
-                dbkehoach.Add(kehoach);
+                var kh = dbkehoach.GetKeHoachTheoMonAn(id,thu,buoi, Session["ID"].ToString());
+                if (kh != null)
+                {
+                    kh.SoLuong += int.Parse(soluong.ToString());
+                    dbkehoach.Update(kh);
+                }
+                else
+                {
+                    //Add a ke hoach in table Login
+                    KeHoach kehoach = new KeHoach();
+                    kehoach.Id = dbkehoach.GetIdMax().ToString();
+                    kehoach.IdMonAn = (string)Session["IDMon"];
+                    kehoach.IdNguoiDung = (string)Session["ID"];
+                    kehoach.IdThu = thu;
+                    kehoach.IdBuoi = buoi;
+                    kehoach.NgayLapKeHoach = Convert.ToDateTime(date);
+                    kehoach.GhiChu = ghichu;
+                    kehoach.SoLuong = int.Parse(soluong.ToString());
+                    dbkehoach.Add(kehoach);
+                }
 
             }
             //Session["IDMon"] = id;
@@ -89,15 +99,19 @@ namespace WebDinhDuong.Controllers
         public ActionResult Buoi()
         {
             //Truy vấn lấy list Món
-            var lstMon = db.Buois;
-            return PartialView(lstMon);
+            
+                var lstMon = db.Buois;
+                return PartialView(lstMon);
+            
         }
 
         public ActionResult Thu()
         {
             //Truy vấn lấy list Món
-            var lstMon = db.Thus;
-            return PartialView(lstMon);
+            
+                var lstMon = db.Thus;
+                return PartialView(lstMon);
+            
         }
         public ActionResult CNSang()
         {
@@ -208,49 +222,107 @@ namespace WebDinhDuong.Controllers
         public IQueryable<LoadNDKeHoach> TimKiemND(string thu, string buoi)
         {
             string id = (string)Session["ID"];
-            var ls = from a in db.KeHoaches
-                     join b in db.MonAns
-                     on a.IdMonAn equals b.Id
-                     where a.IdThu == thu
-                     && a.IdBuoi == buoi
-                     && a.IdNguoiDung == id
-                     select new LoadNDKeHoach
-                     {
-                         IdMon = a.IdMonAn,
-                         TenMon = b.Name,
-                         GhiChu = a.GhiChu,
-                         Ngay = (DateTime)a.NgayLapKeHoach,
-                         SoLuong = (int)a.SoLuong
-                     };
-            return ls;
+            
+                var ls = from a in db.KeHoaches
+                         join b in db.MonAns
+                         on a.IdMonAn equals b.Id
+                         where a.IdThu == thu
+                         && a.IdBuoi == buoi
+                         && a.IdNguoiDung == id
+                         select new LoadNDKeHoach
+                         {
+                             Id = a.Id,
+                             IdMon = a.IdMonAn,
+                             TenMon = b.Name,
+                             GhiChu = a.GhiChu,
+                             Ngay = (DateTime)a.NgayLapKeHoach,
+                             SoLuong = (int)a.SoLuong
+                         };
+                return ls;
+            
         }
 
-        public ActionResult Xoa(string idmon, string idthu, string idbuoi)
+        public ActionResult Xoa(string id)
         {
-            string id = (string)Session["ID"];
-            dbkehoach.Delete(idmon, id, idthu, idbuoi);
+           // string id = (string)Session["ID"];
+            dbkehoach.Delete(id);
             return Redirect("/QuanLyKeHoach/LoadKeHoach");
         }
-        public ActionResult Sua(string idmon, string idthu, string idbuoi, string date, string ghichu, FormCollection model)
+        public ActionResult Sua(/*string idmon, string idthu, string idbuoi, DateTime date, string ghichu,*/string id, FormCollection model)
         {
+            //var ls = from a in db.KeHoaches
+            //         join b in db.MonAns
+            //         on a.IdMonAn equals b.Id
+            //         where a.IdThu == idthu
+            //         && a.IdBuoi == idbuoi
+            //         && a.IdNguoiDung == Session["ID"].ToString()
+            //         select new LoadNDKeHoach
+            //         {
+            //             IdMon = a.IdMonAn,
+            //             TenMon = b.Name,
+            //             GhiChu = a.GhiChu,
+            //             Ngay = (DateTime)a.NgayLapKeHoach,
+            //             SoLuong = (int)a.SoLuong
+            // 
+            var kh = dbkehoach.GetKeHoach(id);
+            var mon = dbMonAn.GetMonAn(kh.IdMonAn);
+            //LoadNDKeHoach ls = new LoadNDKeHoach();
+            //ls.Id = kh.Id;
+            //ls.IdMon = kh.IdMonAn;
+            //ls.Ngay = (DateTime)kh.NgayLapKeHoach;
+            //ls.SoLuong =(int) kh.SoLuong;
+            //ls.GhiChu = kh.GhiChu;
+            //ls.TenMon = mon.Name;
+
             if (model["SoLuong"] == null)
             {
-                var ls = db.KeHoaches.Find(idmon, "1", idthu, idbuoi);
+                
+               
                 //ViewBag.soluong = ls.SoLuong;
-                return View(ls);
+                return View(kh);
             }
-            string id = (string)Session["ID"];
+           // string id = (string)Session["ID"];
             string soluong = model["SoLuong"];
-            KeHoach kehoach = new KeHoach();
-            kehoach.IdMonAn = idmon;
-            kehoach.IdNguoiDung = id;
-            kehoach.IdThu = idthu;
-            kehoach.IdBuoi = idbuoi;
-            kehoach.NgayLapKeHoach = Convert.ToDateTime(date);
-            kehoach.GhiChu = ghichu;
-            kehoach.SoLuong = int.Parse(soluong.ToString());
-            dbkehoach.Update(kehoach);
+
+            //KeHoach kehoach = new KeHoach();
+            //kehoach.IdMonAn = idmon;
+            //kehoach.IdNguoiDung = id;
+            //kehoach.IdThu = idthu;
+            //kehoach.IdBuoi = idbuoi;
+            //kehoach.NgayLapKeHoach = Convert.ToDateTime(date);
+            //kehoach.GhiChu = ghichu;
+            kh.SoLuong = int.Parse(soluong.ToString());
+            dbkehoach.Update(kh);
             return Redirect("/QuanLyKeHoach/LoadKeHoach");
         }
+        //private DateTime TimNgayDauTuan()
+        //{
+        //    DateTime date = DateTime.Now.Date;
+        //    if(DateTime.Now.DayOfWeek==DayOfWeek.Monday)
+        //    {
+        //        return date;
+        //    }
+        //    if (DateTime.Now.DayOfWeek == DayOfWeek.Tuesday)
+        //    {
+        //        return date.AddDays(-1);
+        //    }
+        //    if (DateTime.Now.DayOfWeek == DayOfWeek.Wednesday)
+        //    {
+        //        return date.AddDays(-2);
+        //    }
+        //    if (DateTime.Now.DayOfWeek == DayOfWeek.Thursday)
+        //    {
+        //        return date.AddDays(-3);
+        //    }
+        //    if (DateTime.Now.DayOfWeek == DayOfWeek.Friday)
+        //    {
+        //        return date.AddDays(-4);
+        //    }
+        //    if (DateTime.Now.DayOfWeek == DayOfWeek.Saturday)
+        //    {
+        //        return date.AddDays(-5);
+        //    }
+        //    return date.AddDays(-6);
+        //}
     }
 }

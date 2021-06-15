@@ -75,5 +75,19 @@ namespace WebDinhDuong.Services
                return db.MonAns.SqlQuery("Select * from MonAn where Name like N'%" + name + "%'").ToList();
             }
         }
+        public int GetIdMax()
+        {
+            using (var db = new QuanLyDinhDuongEntities())
+            {
+                var list = db.MonAns.Select(r => r.Id).ToList();
+                if (list.Count() == 0)
+                {
+                    return 1;
+                }
+                //Doi BillId kieu string sang int
+                List<int> intlist = list.Select(s => int.Parse(s)).ToList();
+                return intlist.Max() + 1;
+            }
+        }
     }
 }

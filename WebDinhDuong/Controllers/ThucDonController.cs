@@ -67,7 +67,7 @@ namespace WebDinhDuong.Controllers
             if (thucdon == null)
             {
                 ThucDon td = new ThucDon();
-                td.Id = (dbThucDon.getCount() + 1).ToString();
+                td.Id = (dbThucDon.GetIdMax()).ToString();
                 td.Carb = mon.Carb * quality;
                 td.Calo = mon.Calo * quality;
                 td.Protein = mon.Protein * quality;
@@ -143,13 +143,10 @@ namespace WebDinhDuong.Controllers
             };
             return Json(results);
         }
-        public JsonResult DeleteAll()
+        public ActionResult DeleteAll()
         {
             dbThucDon.DeleteAllThucDonTrongNgay(Session["ID"].ToString(), DateTime.Now.Date);
-            return Json(new
-            {
-                status = true
-            });
+            return RedirectToAction("Index");
         }
         public ActionResult Delete(string id)
         {

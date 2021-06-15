@@ -20,7 +20,7 @@ namespace WebDinhDuong.Controllers
         public ActionResult AddReview(int rating, string articleComment)
         {
             DateTime date = DateTime.Now.Date;
-           string id= (db.getCount() + 1).ToString();
+           string id= (db.GetIdMax()).ToString();
 
             ReviewBuilder reviewBuilder = new ReviewBuilder();
             reviewBuilder.AddId(id);

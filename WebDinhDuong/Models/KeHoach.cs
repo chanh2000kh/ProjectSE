@@ -16,11 +16,11 @@ namespace WebDinhDuong.Models
     {
         public string Id { get; set; }
         public string IdMonAn { get; set; }
-        public Nullable<int> SoLuong { get; set; }
         public string IdNguoiDung { get; set; }
         public string IdBuoi { get; set; }
         public string IdThu { get; set; }
         public Nullable<System.DateTime> NgayLapKeHoach { get; set; }
+        public Nullable<int> SoLuong { get; set; }
         public string GhiChu { get; set; }
     
         public virtual Buoi Buoi { get; set; }

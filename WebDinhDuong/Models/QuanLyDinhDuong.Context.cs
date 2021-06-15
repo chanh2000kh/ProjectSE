@@ -141,7 +141,5 @@ namespace WebDinhDuong.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
-
-        public System.Data.Entity.DbSet<WebDinhDuong.ModelView.FoodView> FoodViews { get; set; }
     }
 }

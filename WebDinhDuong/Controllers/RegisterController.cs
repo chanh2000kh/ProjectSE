@@ -33,8 +33,8 @@ namespace WebDinhDuong.Controllers
             {
                 if (password.Equals(confirmpass))
                 {
-                    string iduser = (dbUser.getCount() + 1).ToString();
-                    string idlogin = (dbLogin.getCount() + 1).ToString();
+                    string iduser = (dbUser.GetIdMax()).ToString();
+                    string idlogin = (dbLogin.GetIdMax()).ToString();
 
                     //Add a account in table Login                   
                     Login acc = new Login();

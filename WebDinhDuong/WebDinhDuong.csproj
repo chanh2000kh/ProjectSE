@@ -683,6 +683,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\3.jpg" />
+    <Content Include="Images\4.jpg" />
     <Content Include="Models\QuanLyDinhDuong.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
@@ -704,13 +708,6 @@
     <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.woff2" />
-    <EntityDeploy Include="Models\QuanLyDinhDuong.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QuanLyDinhDuong.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\QuanLyDinhDuong.edmx.diagram">
-      <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
-    </Content>
     <Content Include="Assets\ThucDon\fonts\fontawesome-webfont.eot" />
     <Content Include="Assets\ThucDon\fonts\fontawesome-webfont.ttf" />
     <Content Include="Assets\ThucDon\fonts\fontawesome-webfont.woff" />
@@ -744,6 +741,13 @@
     <Content Include="Assets\Food\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Assets\Food\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\Food\fonts\glyphicons-halflings-regular.woff" />
+    <EntityDeploy Include="Models\QuanLyDinhDuong.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuanLyDinhDuong.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QuanLyDinhDuong.edmx.diagram">
+      <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -768,7 +772,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\MonAn\Details.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\BMI_Calo\Index.cshtml" />
     <Content Include="Views\ThucDon\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_User.cshtml" />
     <Content Include="Views\UserInformation\Edit.cshtml" />
@@ -816,7 +819,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

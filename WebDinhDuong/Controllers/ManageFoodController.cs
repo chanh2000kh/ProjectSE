@@ -194,7 +194,17 @@ namespace WebDinhDuong.Controllers
       
         public ActionResult Delete(string id)
         {
-            dbMonAn.Delete(id);
+            try
+            {
+                dbMonAn.Delete(id);
+            }
+            catch
+            {
+                
+                    
+                    return HttpNotFound();
+                
+            }
             return RedirectToAction("Index");
         }
 

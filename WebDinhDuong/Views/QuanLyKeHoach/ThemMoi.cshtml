@@ -33,23 +33,61 @@
                             </div>
                             <div class="clear"> </div>
                         </div>
-                        <div class="controls">
-                            <label class="control-label">Buổi</label>
-                            <select name="select" class="form-control">
-                                @Html.Action("Buoi", "QuanLyKeHoach")
+                        @*<div class="w3_agileits_card_number_grid_right">
+            <div class="controls">
+                <label class="control-label">Buổi</label>
+                <select name="select" class="form-control">
+                    @Html.Action("Buoi", "QuanLyKeHoach")
 
 
-                            </select>
+                </select>
+            </div>
+        </div>*@
+                        @*<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label class="control-label sr-only" for="Buoi"> Buổi</label>
+                <select name="select" class="form-control">
+                    @Html.Action("Buoi", "QuanLyKeHoach")
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label class="control-label sr-only" for="Thu"> Thứ</label>
+                <select name="select" class="form-control">
+                    @Html.Action("Thu", "QuanLyKeHoach")
+                </select>
+            </div>
+        </div>*@
+                        @*<div class="w3_agileits_card_number_grid_right">
+            <div class="controls">
+                <label class="control-label">Thứ</label>
+                <select name="select2" class="form-control">
+                    @Html.Action("Thu", "QuanLyKeHoach")
+                </select>
+            </div>
+        </div>*@
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mb20">
+                            <div class="form-group">
+                                <label class="control-label sr-only required">Buổi</label>
+                                <select name="select" class="form-control" value="">
+                                    @Html.Action("Buoi", "QuanLyKeHoach")
+
+
+                                </select>
+                            </div>
                         </div>
-                        <div class="controls">
-                            <label class="control-label">Thứ</label>
-                            <select name="select2" class="form-control">
-                                @Html.Action("Thu", "QuanLyKeHoach")
-                            </select>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label sr-only required">Thứ</label>
+                                <select name="select2" class="form-control">
+                                    @Html.Action("Thu", "QuanLyKeHoach")
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <button class="submit check_out" name="singlebutton">Thêm</button>
-                </div>
+                        <button class="submit check_out" name="singlebutton">Thêm</button>
+                    </div>
             </section>
         </form>
        

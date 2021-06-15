@@ -34,11 +34,11 @@
         <MappingFragment StoreEntitySet="KeHoach">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdMonAn" ColumnName="IdMonAn" />
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="IdNguoiDung" ColumnName="IdNguoiDung" />
           <ScalarProperty Name="IdBuoi" ColumnName="IdBuoi" />
           <ScalarProperty Name="IdThu" ColumnName="IdThu" />
           <ScalarProperty Name="NgayLapKeHoach" ColumnName="NgayLapKeHoach" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
         </MappingFragment>
       </EntityTypeMapping>

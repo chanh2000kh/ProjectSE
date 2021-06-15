@@ -26,11 +26,11 @@
                                                 <div class="snipcart-thumb">
                                                     <a href=@Url.Action("Details", "MonAn", new { id = item.Id })><img src=@Url.Content(item.HinhAnh) alt=" " class="img-responsive" /></a>
                                                     <p>@item.Name</p>
-                                                    <h4>@item.Calo Kcal  </h4>
+                                                    <h4>@item.Calo cal  </h4>
                                                 </div>
                                                 <div class="snipcart-details">
                                                     <div class="btn top-right right"><a href="@Url.Action("Add", "ThucDon", new { idmonan = item.Id, quality = 1 })">Add to Your menu</a></div>
-                                                    <div class="btn top-left left"><a href="@Url.Action("ThemMoi", "QuanLyKeHoach", new { id = item.Id, amount = 1 })">Add to Your plan</a></div>
+                                                    <div class="btn top-left left"><a href="@Url.Action("ThemMoi", "QuanLyKeHoach", new { id = item.Id})">Add to Your plan</a></div>
 
                                                 </div>
                                             </div>
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                         </div>
-
+                      
                     }
                 }
                 else

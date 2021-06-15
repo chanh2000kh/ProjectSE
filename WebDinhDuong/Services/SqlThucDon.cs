@@ -97,5 +97,19 @@ namespace WebDinhDuong.Services
                 return db.ThucDons.Where(s => s.Id.Equals(id)).FirstOrDefault();
             }
         }
+        public int GetIdMax()
+        {
+            using (var db = new QuanLyDinhDuongEntities())
+            {
+                var list = db.ThucDons.Select(r => r.Id).ToList();
+                if (list.Count() == 0)
+                {
+                    return 1;
+                }
+                //Doi BillId kieu string sang int
+                List<int> intlist = list.Select(s => int.Parse(s)).ToList();
+                return intlist.Max() + 1;
+            }
+        }
     }
 }

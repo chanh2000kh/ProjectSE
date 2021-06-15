@@ -16,16 +16,18 @@
             </p>
         </div>
         <div class="snipcart-item block">
-            <div class="snipcart-thumb agileinfo_single_right_snipcart">
-                <h4>$21.00 </h4>
-            </div>
+            
             <div class="w3agile_description">
                 @using (Html.BeginForm("Add", "ThucDon", FormMethod.Post, new { }))
                 {
         <div class="frm-add" id="addfrm">
             <div class="available">
+                <div class="snipcart-thumb agileinfo_single_right_snipcart">
+                    <h4>@Model.Calo cal</h4>
+                </div>
                 <p>Thông tin dinh dưỡng :</p>
                 <ul>
+
                     <li>
                         <p>Carb: @Model.Carb g</p>
                     </li>

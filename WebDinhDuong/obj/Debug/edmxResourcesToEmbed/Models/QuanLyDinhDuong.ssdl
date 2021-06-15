@@ -31,12 +31,12 @@
     </Key>
     <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="IdMonAn" Type="nvarchar" MaxLength="100" />
-    <Property Name="SoLuong" Type="int" />
     <Property Name="IdNguoiDung" Type="nvarchar" MaxLength="100" />
     <Property Name="IdBuoi" Type="nvarchar" MaxLength="100" />
     <Property Name="IdThu" Type="nvarchar" MaxLength="100" />
     <Property Name="NgayLapKeHoach" Type="date" />
-    <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="GhiChu" Type="ntext" />
   </EntityType>
   <EntityType Name="Login">
     <Key>
@@ -118,6 +118,54 @@
     <Property Name="Name" Type="nvarchar" MaxLength="100" />
     <Property Name="HinhAnh" Type="nvarchar(max)" />
   </EntityType>
+  <Association Name="FK__KeHoach__IdBuoi__503BEA1C">
+    <End Role="Buoi" Type="Self.Buoi" Multiplicity="0..1" />
+    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buoi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KeHoach">
+        <PropertyRef Name="IdBuoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KeHoach__IdMonAn__5224328E">
+    <End Role="MonAn" Type="Self.MonAn" Multiplicity="0..1" />
+    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonAn">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KeHoach">
+        <PropertyRef Name="IdMonAn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KeHoach__IdNguoi__531856C7">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
+    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KeHoach">
+        <PropertyRef Name="IdNguoiDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KeHoach__IdThu__51300E55">
+    <End Role="Thu" Type="Self.Thu" Multiplicity="0..1" />
+    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Thu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KeHoach">
+        <PropertyRef Name="IdThu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Admin_Login">
     <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
     <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
@@ -139,54 +187,6 @@
       </Principal>
       <Dependent Role="DanhGiaNhanXet">
         <PropertyRef Name="IdUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_KeHoach_Buoi">
-    <End Role="Buoi" Type="Self.Buoi" Multiplicity="0..1" />
-    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Buoi">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="KeHoach">
-        <PropertyRef Name="IdBuoi" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_KeHoach_MonAn">
-    <End Role="MonAn" Type="Self.MonAn" Multiplicity="0..1" />
-    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MonAn">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="KeHoach">
-        <PropertyRef Name="IdMonAn" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_KeHoach_NguoiDung">
-    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
-    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NguoiDung">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="KeHoach">
-        <PropertyRef Name="IdNguoiDung" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_KeHoach_Thu">
-    <End Role="Thu" Type="Self.Thu" Multiplicity="0..1" />
-    <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Thu">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="KeHoach">
-        <PropertyRef Name="IdThu" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -269,6 +269,22 @@
     <EntitySet Name="ThongTinDinhDuong" EntityType="Self.ThongTinDinhDuong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Thu" EntityType="Self.Thu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThucDon" EntityType="Self.ThucDon" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__KeHoach__IdBuoi__503BEA1C" Association="Self.FK__KeHoach__IdBuoi__503BEA1C">
+      <End Role="Buoi" EntitySet="Buoi" />
+      <End Role="KeHoach" EntitySet="KeHoach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KeHoach__IdMonAn__5224328E" Association="Self.FK__KeHoach__IdMonAn__5224328E">
+      <End Role="MonAn" EntitySet="MonAn" />
+      <End Role="KeHoach" EntitySet="KeHoach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KeHoach__IdNguoi__531856C7" Association="Self.FK__KeHoach__IdNguoi__531856C7">
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
+      <End Role="KeHoach" EntitySet="KeHoach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KeHoach__IdThu__51300E55" Association="Self.FK__KeHoach__IdThu__51300E55">
+      <End Role="Thu" EntitySet="Thu" />
+      <End Role="KeHoach" EntitySet="KeHoach" />
+    </AssociationSet>
     <AssociationSet Name="FK_Admin_Login" Association="Self.FK_Admin_Login">
       <End Role="Login" EntitySet="Login" />
       <End Role="Admin" EntitySet="Admin" />
@@ -276,22 +292,6 @@
     <AssociationSet Name="FK_DanhGiaNhanXet_NguoiDung1" Association="Self.FK_DanhGiaNhanXet_NguoiDung1">
       <End Role="NguoiDung" EntitySet="NguoiDung" />
       <End Role="DanhGiaNhanXet" EntitySet="DanhGiaNhanXet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_KeHoach_Buoi" Association="Self.FK_KeHoach_Buoi">
-      <End Role="Buoi" EntitySet="Buoi" />
-      <End Role="KeHoach" EntitySet="KeHoach" />
-    </AssociationSet>
-    <AssociationSet Name="FK_KeHoach_MonAn" Association="Self.FK_KeHoach_MonAn">
-      <End Role="MonAn" EntitySet="MonAn" />
-      <End Role="KeHoach" EntitySet="KeHoach" />
-    </AssociationSet>
-    <AssociationSet Name="FK_KeHoach_NguoiDung" Association="Self.FK_KeHoach_NguoiDung">
-      <End Role="NguoiDung" EntitySet="NguoiDung" />
-      <End Role="KeHoach" EntitySet="KeHoach" />
-    </AssociationSet>
-    <AssociationSet Name="FK_KeHoach_Thu" Association="Self.FK_KeHoach_Thu">
-      <End Role="Thu" EntitySet="Thu" />
-      <End Role="KeHoach" EntitySet="KeHoach" />
     </AssociationSet>
     <AssociationSet Name="FK_NguoiDung_Login" Association="Self.FK_NguoiDung_Login">
       <End Role="Login" EntitySet="Login" />

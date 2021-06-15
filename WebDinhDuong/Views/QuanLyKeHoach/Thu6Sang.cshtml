@@ -4,6 +4,6 @@
 {
 <div>
     @groupItem.TenMon    Số lương: @groupItem.SoLuong
-    <a href="@Url.Action("Sua", "QuanLyKeHoach", new { idmon = groupItem.IdMon, idthu = "6", idbuoi = "1" , date=groupItem.Ngay, ghichu=groupItem.GhiChu})">Sửa</a>
-    <a href="@Url.Action("Xoa", "QuanLyKeHoach", new { idmon = groupItem.IdMon, idthu = "6", idbuoi = "1" })"> Xóa</a>
+    <a href="@Url.Action("Sua", "QuanLyKeHoach", new { id = groupItem.Id})">Sửa</a>
+    <a href="@Url.Action("Xoa", "QuanLyKeHoach", new { id = groupItem.Id})"> Xóa</a>
 </div>}

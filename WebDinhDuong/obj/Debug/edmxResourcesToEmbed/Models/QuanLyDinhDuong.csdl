@@ -15,7 +15,7 @@
     </Key>
     <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="KeHoaches" Relationship="Self.FK_KeHoach_Buoi" FromRole="Buoi" ToRole="KeHoach" />
+    <NavigationProperty Name="KeHoaches" Relationship="Self.FK__KeHoach__IdBuoi__503BEA1C" FromRole="Buoi" ToRole="KeHoach" />
   </EntityType>
   <EntityType Name="DanhGiaNhanXet">
     <Key>
@@ -34,16 +34,16 @@
     </Key>
     <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="IdMonAn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="SoLuong" Type="Int32" />
     <Property Name="IdNguoiDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IdBuoi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IdThu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="NgayLapKeHoach" Type="DateTime" Precision="0" />
-    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Buoi" Relationship="Self.FK_KeHoach_Buoi" FromRole="KeHoach" ToRole="Buoi" />
-    <NavigationProperty Name="MonAn" Relationship="Self.FK_KeHoach_MonAn" FromRole="KeHoach" ToRole="MonAn" />
-    <NavigationProperty Name="NguoiDung" Relationship="Self.FK_KeHoach_NguoiDung" FromRole="KeHoach" ToRole="NguoiDung" />
-    <NavigationProperty Name="Thu" Relationship="Self.FK_KeHoach_Thu" FromRole="KeHoach" ToRole="Thu" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Buoi" Relationship="Self.FK__KeHoach__IdBuoi__503BEA1C" FromRole="KeHoach" ToRole="Buoi" />
+    <NavigationProperty Name="MonAn" Relationship="Self.FK__KeHoach__IdMonAn__5224328E" FromRole="KeHoach" ToRole="MonAn" />
+    <NavigationProperty Name="NguoiDung" Relationship="Self.FK__KeHoach__IdNguoi__531856C7" FromRole="KeHoach" ToRole="NguoiDung" />
+    <NavigationProperty Name="Thu" Relationship="Self.FK__KeHoach__IdThu__51300E55" FromRole="KeHoach" ToRole="Thu" />
   </EntityType>
   <EntityType Name="Login">
     <Key>
@@ -68,7 +68,7 @@
     <Property Name="Protein" Type="Double" />
     <Property Name="ThongTin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="KeHoaches" Relationship="Self.FK_KeHoach_MonAn" FromRole="MonAn" ToRole="KeHoach" />
+    <NavigationProperty Name="KeHoaches" Relationship="Self.FK__KeHoach__IdMonAn__5224328E" FromRole="MonAn" ToRole="KeHoach" />
     <NavigationProperty Name="ThucDons" Relationship="Self.FK_ThucDon_MonAn" FromRole="MonAn" ToRole="ThucDon" />
   </EntityType>
   <EntityType Name="NguoiDung">
@@ -86,7 +86,7 @@
     <Property Name="GioiTinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IdLogin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="DanhGiaNhanXets" Relationship="Self.FK_DanhGiaNhanXet_NguoiDung1" FromRole="NguoiDung" ToRole="DanhGiaNhanXet" />
-    <NavigationProperty Name="KeHoaches" Relationship="Self.FK_KeHoach_NguoiDung" FromRole="NguoiDung" ToRole="KeHoach" />
+    <NavigationProperty Name="KeHoaches" Relationship="Self.FK__KeHoach__IdNguoi__531856C7" FromRole="NguoiDung" ToRole="KeHoach" />
     <NavigationProperty Name="Login" Relationship="Self.FK_NguoiDung_Login" FromRole="NguoiDung" ToRole="Login" />
     <NavigationProperty Name="ThucDons" Relationship="Self.FK_ThucDon_NguoiDung" FromRole="NguoiDung" ToRole="ThucDon" />
   </EntityType>
@@ -115,7 +115,7 @@
     </Key>
     <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="KeHoaches" Relationship="Self.FK_KeHoach_Thu" FromRole="Thu" ToRole="KeHoach" />
+    <NavigationProperty Name="KeHoaches" Relationship="Self.FK__KeHoach__IdThu__51300E55" FromRole="Thu" ToRole="KeHoach" />
   </EntityType>
   <EntityType Name="ThucDon">
     <Key>
@@ -148,7 +148,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_KeHoach_Buoi">
+  <Association Name="FK__KeHoach__IdBuoi__503BEA1C">
     <End Role="Buoi" Type="Self.Buoi" Multiplicity="0..1" />
     <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
     <ReferentialConstraint>
@@ -172,7 +172,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_KeHoach_MonAn">
+  <Association Name="FK__KeHoach__IdMonAn__5224328E">
     <End Role="MonAn" Type="Self.MonAn" Multiplicity="0..1" />
     <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
     <ReferentialConstraint>
@@ -184,7 +184,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_KeHoach_NguoiDung">
+  <Association Name="FK__KeHoach__IdNguoi__531856C7">
     <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
     <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
     <ReferentialConstraint>
@@ -196,7 +196,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_KeHoach_Thu">
+  <Association Name="FK__KeHoach__IdThu__51300E55">
     <End Role="Thu" Type="Self.Thu" Multiplicity="0..1" />
     <End Role="KeHoach" Type="Self.KeHoach" Multiplicity="*" />
     <ReferentialConstraint>
@@ -260,7 +260,7 @@
       <End Role="Login" EntitySet="Logins" />
       <End Role="Admin" EntitySet="Admins" />
     </AssociationSet>
-    <AssociationSet Name="FK_KeHoach_Buoi" Association="Self.FK_KeHoach_Buoi">
+    <AssociationSet Name="FK__KeHoach__IdBuoi__503BEA1C" Association="Self.FK__KeHoach__IdBuoi__503BEA1C">
       <End Role="Buoi" EntitySet="Buois" />
       <End Role="KeHoach" EntitySet="KeHoaches" />
     </AssociationSet>
@@ -268,15 +268,15 @@
       <End Role="NguoiDung" EntitySet="NguoiDungs" />
       <End Role="DanhGiaNhanXet" EntitySet="DanhGiaNhanXets" />
     </AssociationSet>
-    <AssociationSet Name="FK_KeHoach_MonAn" Association="Self.FK_KeHoach_MonAn">
+    <AssociationSet Name="FK__KeHoach__IdMonAn__5224328E" Association="Self.FK__KeHoach__IdMonAn__5224328E">
       <End Role="MonAn" EntitySet="MonAns" />
       <End Role="KeHoach" EntitySet="KeHoaches" />
     </AssociationSet>
-    <AssociationSet Name="FK_KeHoach_NguoiDung" Association="Self.FK_KeHoach_NguoiDung">
+    <AssociationSet Name="FK__KeHoach__IdNguoi__531856C7" Association="Self.FK__KeHoach__IdNguoi__531856C7">
       <End Role="NguoiDung" EntitySet="NguoiDungs" />
       <End Role="KeHoach" EntitySet="KeHoaches" />
     </AssociationSet>
-    <AssociationSet Name="FK_KeHoach_Thu" Association="Self.FK_KeHoach_Thu">
+    <AssociationSet Name="FK__KeHoach__IdThu__51300E55" Association="Self.FK__KeHoach__IdThu__51300E55">
       <End Role="Thu" EntitySet="Thus" />
       <End Role="KeHoach" EntitySet="KeHoaches" />
     </AssociationSet>
