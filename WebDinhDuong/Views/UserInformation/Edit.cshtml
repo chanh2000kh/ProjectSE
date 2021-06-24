@@ -1,0 +1,206 @@
+﻿@model WebDinhDuong.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+<div class="main">
+    <h1>PERSONAL</h1>
+    <div class="agileinfo_main">
+        <div id="err_edit"></div>
+        <div class="frm-edit">
+            <form id="testform" action="#" method="post" novalidate>
+
+                <fieldset style="border: 1px solid #999">
+                    <legend>Details :</legend>
+
+                    <p for="name" class="w3_field1">Name</p>
+                    <input id="name" name="Name" type="text" value=@Model.Name required />
+
+                    <p for="email">Email address</p>
+                    <input id="email" name="email" type="email" value=@Session["Email"] required data-error-msg="Enter your valid email address" />
+
+                    <p for="password">Password</p>
+                    <input id="password" name="password" type="password" value=@Session["Password"] required data-error-msg="Enter your password" />
+
+                    <p for="gender" class="w3_field1">Gender</p>
+                    <select id="gennder" name="gender" value="Female" required>
+                        @if (Model.GioiTinh.Equals("Female"))
+                        {
+            <option value="Female" selected>Female</option> }
+                        else
+                        {
+            <option value="Female">Female</option>}
+                        @if (Model.MucTieu.Equals("Male"))
+                        {
+            <option value="Male" selected>Male</option> }
+                        else
+                        {
+            <option value="Male">Male</option>}
+                        @if (Model.MucTieu.Equals("Other"))
+                        {
+            <option value="Other" selected>Other</option> }
+                        else
+                        {
+            <option value="Other">Other</option>}
+                    </select>
+
+                    <p for="height">Height</p>
+                    <input id="height" name="height" type="number" min="50" max="250" value=@Model.ChieuCao required data-error-msg="Enter your height" />
+
+                    <p for="weight">Weight</p>
+                    <input id="weight" name="weight" type="number" min="1" max="150" value=@Model.CanNang required data-error-msg="We need to know content weight" />
+
+
+                    <p for="frequency" class="w3_field1">Frequency Activity</p>
+                    <select id="frequency" name="frequency" value="High" required>
+                        @if (Model.TanSuatHoatDong.Equals("High"))
+                        {
+            <option value="High" selected>High</option>
+ }
+        else
+        {
+        <option value="High">High</option>}
+                        @if (Model.TanSuatHoatDong.Equals("Medium"))
+                        {
+            <option value="Medium" selected>Medium</option>
+ }
+        else
+        {
+        <option value="Medium">Medium</option>}
+                        @if (Model.TanSuatHoatDong.Equals("Slow"))
+                        {
+            <option value="Slow" selected>Slow</option>
+ }
+        else
+        {
+        <option value="Slow">Slow</option>}
+                    </select>
+
+                    <p for="goal" class="w3_field1">Goal</p>
+                    <select id="goal" name="goal" value="Losing_weight" required>
+                        @if (Model.MucTieu.Equals("Losing_weight"))
+                        {
+            <option value="Losing_weight" selected>Losing_weight</option> }
+                        else
+                        {
+            <option value="Losing_weight">Losing_weight</option>}
+                        @if (Model.MucTieu.Equals("Gaining_weight"))
+                        {
+            <option value="Gaining_weight" selected>Gaining_weight</option> }
+                        else
+                        {
+            <option value="Gaining_weight">Gaining_weight</option>}
+                        @if (Model.MucTieu.Equals("Put_on__weight"))
+                        {
+            <option value="Put_on__weight" selected>Put_on__weight</option> }
+                        else
+                        {
+            <option value="Put_on__weight">Put_on__weight</option>}
+                    </select>
+
+                    <p for="goalweight">Goal's Weight</p>
+                    <input id="goalweight" name="goalweight" type="number" min="1" max="150" value=@Model.CanNangMongMuon required data-error-msg="Enter your goal's weight" />
+
+
+                    <p for="time">Time</p>
+                    <input id="time" name="time" type="number" min="1" value=@Model.Thang required data-error-msg="Enter your time" />
+
+                </fieldset>
+
+
+                <div id="collapsedSection" aria-hidden="true">
+                    <p for="hiddenInput">This field may or may not be visible</p>
+                    <input id="hiddenInput" name="hiddenInput" type="text" required data-error-msg="You wanted an extra question" />
+                </div>
+
+                <input type="submit" value="SAVE" />
+
+
+            </form>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { }))
+            {
+                <div>
+                    <span><input type="submit" value="BACK TO HOME"></span>
+                </div>            
+             }
+        </div>
+            </div>
+        </div>
+        <!-- Calendar -->
+        <link rel="stylesheet" href="~/Assets/User/css/jquery-ui.css" />
+        <script src="~/Assets/User/js/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                $("#datepicker").datepicker();
+            });
+        </script>
+        <!-- //Calendar -->
+        <script src="~/Assets/User/js/attrvalidate.jquery.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#testform').attrvalidate();
+                $('#resetBtn').click(function () { $('#testform').attrvalidate('reset'); });
+                $('#expandBtn').click(function () {
+                    var collapsible = $('#' + $(this).attr('aria-controls'));
+                    $(collapsible).attr('aria-hidden', ($(collapsible).attr('aria-hidden') === 'false'));
+                    $(this).attr('aria-expanded', ($(this).attr('aria-expanded') === 'false'));
+                });
+            });
+        </script>
+        <div class="agileits_copyright">
+            <p>© 2016 Product Delivery Form Widget. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+        </div>
+
+<script>
+    $(document).ready(function () {
+        $('#testform').submit(function (e) {
+            $('#testform').attrvalidate({
+                submitHandler: function () {
+                    var form_data = {
+                        Name: $("#name").val(),
+                        Mail: $("#email").val(),
+                        Password: $("#password").val(),
+                        Gender: $("#gender").val(),
+                        Height: $("#height").val(),
+                        Weight: $("#weight").val(),
+                        Frequency: $("#frequency").val(),
+                        Goal: $("#goal").val(),
+                        Goalweight: $("#goalweight").val(),
+                        Time: $("#time").val()
+
+                    };
+                    //$.ajax({
+                    //    url: '/UserInformation/Edit',
+                    //    type: 'POST',
+                    //    async: true,
+                    //    data: form_data,
+                    //    success: function (msg_login) {
+                    //        ////alert(msg);
+                    //        if (msg_login == '0') {
+                    //            alert('Can not update. There is somethign problem!');
+                    //        }
+
+                    //        else {                       
+                    //            alert('Update successfully!');
+                    //            //$('#err_login1').html('<div class="alert alert-success"><strong>Đăng kí thành công</strong><span> Hệ thống tự chuyển sau vài giây ...</span></div>');
+                    //            setTimeout(
+                    //                //chuyển đến địa chỉ msg_login của controler gửi qua
+                    //                function () {
+                    //                    window.location.href = '' + msg_login + '';
+                    //                }, 2000);
+                    //        }
+                    //    }
+                    //});
+                     return false;
+                }
+        });
+    })
+    //Load wating bar
+    $(document).ajaxStart(function () {
+        $("#waiting").show();
+    }).ajaxStop(function () {
+        $("#waiting").hide();
+    });
+</script>

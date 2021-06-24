@@ -1,0 +1,886 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B5076D14-342F-46A6-9217-7F68A97C95F0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebDinhDuong</RootNamespace>
+    <AssemblyName>WebDinhDuong</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44301</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adapter\IThucDon.cs" />
+    <Compile Include="Adapter\ThucDonAdaptee.cs" />
+    <Compile Include="Adapter\ThucDonAdapter.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Builder\IReviewBuilder.cs" />
+    <Compile Include="Builder\ReviewBuilder.cs" />
+    <Compile Include="Controllers\BMI_CaloController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MonAnController.cs" />
+    <Compile Include="Controllers\ManageFoodController.cs" />
+    <Compile Include="Controllers\QuanLyKeHoachController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\UserInformationController.cs" />
+    <Compile Include="Controllers\ThucDonController.cs" />
+    <Compile Include="Factory\BinhThuong.cs" />
+    <Compile Include="Factory\NguoiBinhThuong.cs" />
+    <Compile Include="Factory\NguoiThieuCan.cs" />
+    <Compile Include="Factory\NguoiThuaCan.cs" />
+    <Compile Include="Factory\IPeopleStatus.cs" />
+    <Compile Include="Factory\PeopleFactory.cs" />
+    <Compile Include="Factory\ThieuCan.cs" />
+    <Compile Include="Factory\ThuaCan.cs" />
+    <Compile Include="Factory\TinhTrang.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Buoi.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DanhGiaNhanXet.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KeHoach.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoadNDKeHoach.cs" />
+    <Compile Include="Models\Login.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MonAn.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NguoiDung.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyDinhDuong.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyDinhDuong.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyDinhDuong.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyDinhDuong.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinDinhDuong.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Thu.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThucDon.cs">
+      <DependentUpon>QuanLyDinhDuong.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelView\BMIView.cs" />
+    <Compile Include="ModelView\FoodView.cs" />
+    <Compile Include="ModelView\ListFoodView.cs" />
+    <Compile Include="ModelView\LoadNDKeHoach.cs" />
+    <Compile Include="ModelView\ResultOfThucDon.cs" />
+    <Compile Include="ModelView\ThucDonView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxy\ICore.cs" />
+    <Compile Include="Proxy\Core.cs" />
+    <Compile Include="Proxy\CoreProxy.cs" />
+    <Compile Include="Services\SqlBuoi.cs" />
+    <Compile Include="Services\SqlKeHoach.cs" />
+    <Compile Include="Services\SqlLogin.cs" />
+    <Compile Include="Services\SqlMonAn.cs" />
+    <Compile Include="Services\SqlReview.cs" />
+    <Compile Include="Services\SqlThu.cs" />
+    <Compile Include="Services\SqlThucDon.cs" />
+    <Compile Include="Services\SqlUserInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Admin\css\bootstrap.css" />
+    <Content Include="Assets\Admin\css\demo-page.css" />
+    <Content Include="Assets\Admin\css\examples.css" />
+    <Content Include="Assets\Admin\css\font-awesome.css" />
+    <Content Include="Assets\Admin\css\geochart.css" />
+    <Content Include="Assets\Admin\css\hover.css" />
+    <Content Include="Assets\Admin\css\magnific-popup.css" />
+    <Content Include="Assets\Admin\css\style.css" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\Admin\images\1.jpg" />
+    <Content Include="Assets\Admin\images\404.png" />
+    <Content Include="Assets\Admin\images\b3.png" />
+    <Content Include="Assets\Admin\images\climate.jpg" />
+    <Content Include="Assets\Admin\images\close.png" />
+    <Content Include="Assets\Admin\images\ftr-icons.png" />
+    <Content Include="Assets\Admin\images\icon.png" />
+    <Content Include="Assets\Admin\images\login.jpg" />
+    <Content Include="Assets\Admin\images\mess.png" />
+    <Content Include="Assets\Admin\images\next.png" />
+    <Content Include="Assets\Admin\images\p1.png" />
+    <Content Include="Assets\Admin\images\p2.png" />
+    <Content Include="Assets\Admin\images\p3.png" />
+    <Content Include="Assets\Admin\images\p4.png" />
+    <Content Include="Assets\Admin\images\p5.png" />
+    <Content Include="Assets\Admin\images\p6.png" />
+    <Content Include="Assets\Admin\images\p7.png" />
+    <Content Include="Assets\Admin\images\p8.png" />
+    <Content Include="Assets\Admin\images\prev.png" />
+    <Content Include="Assets\Admin\images\pro1.jpg" />
+    <Content Include="Assets\Admin\images\pro10.jpg" />
+    <Content Include="Assets\Admin\images\pro12.jpg" />
+    <Content Include="Assets\Admin\images\pro2.jpg" />
+    <Content Include="Assets\Admin\images\pro3.jpg" />
+    <Content Include="Assets\Admin\images\pro4.jpg" />
+    <Content Include="Assets\Admin\images\pro5.jpg" />
+    <Content Include="Assets\Admin\images\pro6.jpg" />
+    <Content Include="Assets\Admin\images\pro7.jpg" />
+    <Content Include="Assets\Admin\images\pro8.jpg" />
+    <Content Include="Assets\Admin\images\pro9.jpg" />
+    <Content Include="Assets\Admin\images\reg.png" />
+    <Content Include="Assets\Admin\images\search.png" />
+    <Content Include="Assets\Admin\images\shoppy.jpg" />
+    <Content Include="Assets\Admin\images\tick.png" />
+    <Content Include="Assets\Admin\images\visit.png" />
+    <Content Include="Assets\Admin\js\bars.js" />
+    <Content Include="Assets\Admin\js\bootstrap.js" />
+    <Content Include="Assets\Admin\js\Chart.min.js" />
+    <Content Include="Assets\Admin\js\chartinator.js" />
+    <Content Include="Assets\Admin\js\gmaps.js" />
+    <Content Include="Assets\Admin\js\jquery-2.1.1.min.js" />
+    <Content Include="Assets\Admin\js\jquery.magnific-popup.js" />
+    <Content Include="Assets\Admin\js\jquery.nicescroll.js" />
+    <Content Include="Assets\Admin\js\modernizr.min.js" />
+    <Content Include="Assets\Admin\js\nivo-lightbox.min.js" />
+    <Content Include="Assets\Admin\js\scripts.js" />
+    <Content Include="Assets\Admin\js\skycons.js" />
+    <Content Include="Assets\DetailsFood\css\about.css" />
+    <Content Include="Assets\DetailsFood\css\bootstrap.css" />
+    <Content Include="Assets\DetailsFood\css\checkout.css" />
+    <Content Include="Assets\DetailsFood\css\contact.css" />
+    <Content Include="Assets\DetailsFood\css\creditly.css" />
+    <Content Include="Assets\DetailsFood\css\easy-responsive-tabs.css" />
+    <Content Include="Assets\DetailsFood\css\flexslider.css" />
+    <Content Include="Assets\DetailsFood\css\font-awesome.css" />
+    <Content Include="Assets\DetailsFood\css\jquery-ui1.css" />
+    <Content Include="Assets\DetailsFood\css\shop.css" />
+    <Content Include="Assets\DetailsFood\css\style.css" />
+    <Content Include="Assets\DetailsFood\css\style7.css" />
+    <Content Include="Assets\DetailsFood\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\DetailsFood\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\DetailsFood\images\3.jpeg" />
+    <Content Include="Assets\DetailsFood\images\ab.jpg" />
+    <Content Include="Assets\DetailsFood\images\b1.jpg" />
+    <Content Include="Assets\DetailsFood\images\b2.jpg" />
+    <Content Include="Assets\DetailsFood\images\b3.jpg" />
+    <Content Include="Assets\DetailsFood\images\b4.jpg" />
+    <Content Include="Assets\DetailsFood\images\banner1.jpg" />
+    <Content Include="Assets\DetailsFood\images\banner2.jpg" />
+    <Content Include="Assets\DetailsFood\images\banner3.jpg" />
+    <Content Include="Assets\DetailsFood\images\banner4.jpg" />
+    <Content Include="Assets\DetailsFood\images\close.png" />
+    <Content Include="Assets\DetailsFood\images\close_1.JPG" />
+    <Content Include="Assets\DetailsFood\images\d1.jpg" />
+    <Content Include="Assets\DetailsFood\images\d2.jpg" />
+    <Content Include="Assets\DetailsFood\images\d3.jpg" />
+    <Content Include="Assets\DetailsFood\images\g1.jpg" />
+    <Content Include="Assets\DetailsFood\images\g2.jpg" />
+    <Content Include="Assets\DetailsFood\images\g3.jpg" />
+    <Content Include="Assets\DetailsFood\images\g4.jpg" />
+    <Content Include="Assets\DetailsFood\images\g5.jpg" />
+    <Content Include="Assets\DetailsFood\images\g6.jpg" />
+    <Content Include="Assets\DetailsFood\images\left.png" />
+    <Content Include="Assets\DetailsFood\images\left_black.png" />
+    <Content Include="Assets\DetailsFood\images\move-top.png" />
+    <Content Include="Assets\DetailsFood\images\overlay.png" />
+    <Content Include="Assets\DetailsFood\images\paypal.png" />
+    <Content Include="Assets\DetailsFood\images\right.png" />
+    <Content Include="Assets\DetailsFood\images\right_black.png" />
+    <Content Include="Assets\DetailsFood\images\s1.jpg" />
+    <Content Include="Assets\DetailsFood\images\s2.jpg" />
+    <Content Include="Assets\DetailsFood\images\s3.jpg" />
+    <Content Include="Assets\DetailsFood\images\s4.jpg" />
+    <Content Include="Assets\DetailsFood\images\s5.jpg" />
+    <Content Include="Assets\DetailsFood\images\s6.jpg" />
+    <Content Include="Assets\DetailsFood\images\s7.jpg" />
+    <Content Include="Assets\DetailsFood\images\s8.jpg" />
+    <Content Include="Assets\DetailsFood\images\s9.jpg" />
+    <Content Include="Assets\DetailsFood\images\search.png" />
+    <Content Include="Assets\DetailsFood\images\t1.jpg" />
+    <Content Include="Assets\DetailsFood\images\t2.jpg" />
+    <Content Include="Assets\DetailsFood\images\t3.jpg" />
+    <Content Include="Assets\DetailsFood\images\t4.jpg" />
+    <Content Include="Assets\DetailsFood\js\bootstrap-3.1.1.min.js" />
+    <Content Include="Assets\DetailsFood\js\classie.js" />
+    <Content Include="Assets\DetailsFood\js\creditly.js" />
+    <Content Include="Assets\DetailsFood\js\demo1.js" />
+    <Content Include="Assets\DetailsFood\js\easing.js" />
+    <Content Include="Assets\DetailsFood\js\easy-responsive-tabs.js" />
+    <Content Include="Assets\DetailsFood\js\imagezoom.js" />
+    <Content Include="Assets\DetailsFood\js\jquery-2.1.4.min.js" />
+    <Content Include="Assets\DetailsFood\js\jquery-ui.js" />
+    <Content Include="Assets\DetailsFood\js\jquery.flexslider.js" />
+    <Content Include="Assets\DetailsFood\js\minicart.js" />
+    <Content Include="Assets\DetailsFood\js\modernizr-2.6.2.min.js" />
+    <Content Include="Assets\DetailsFood\js\move-top.js" />
+    <Content Include="Assets\DetailsFood\js\responsiveslides.min.js" />
+    <Content Include="Assets\DetailsFood\js\search.js" />
+    <Content Include="Assets\Food\css\bootstrap.min.css" />
+    <Content Include="Assets\Food\css\font-awesome.min.css" />
+    <Content Include="Assets\Food\css\fontello-codes.css" />
+    <Content Include="Assets\Food\css\fontello-embedded.css" />
+    <Content Include="Assets\Food\css\fontello-ie7-codes.css" />
+    <Content Include="Assets\Food\css\fontello-ie7.css" />
+    <Content Include="Assets\Food\css\fontello.css" />
+    <Content Include="Assets\Food\css\jquery-ui.css" />
+    <Content Include="Assets\Food\css\magnific-popup.css" />
+    <Content Include="Assets\Food\css\owl.carousel.css" />
+    <Content Include="Assets\Food\css\owl.theme.default.css" />
+    <Content Include="Assets\Food\css\style.css" />
+    <Content Include="Assets\Food\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Food\fonts\fontello.svg" />
+    <Content Include="Assets\Food\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\Food\images\about_img.jpg" />
+    <Content Include="Assets\Food\images\author_img_1.jpg" />
+    <Content Include="Assets\Food\images\author_img_2.jpg" />
+    <Content Include="Assets\Food\images\author_img_3.jpg" />
+    <Content Include="Assets\Food\images\author_img_4.jpg" />
+    <Content Include="Assets\Food\images\device_img.png" />
+    <Content Include="Assets\Food\images\dish_thumb_1.jpg" />
+    <Content Include="Assets\Food\images\dish_thumb_2.jpg" />
+    <Content Include="Assets\Food\images\dish_thumb_3.jpg" />
+    <Content Include="Assets\Food\images\dish_thumb_4.jpg" />
+    <Content Include="Assets\Food\images\error_img.png" />
+    <Content Include="Assets\Food\images\ft-logo.png" />
+    <Content Include="Assets\Food\images\left_img.jpg" />
+    <Content Include="Assets\Food\images\logo.png" />
+    <Content Include="Assets\Food\images\map_marker.png" />
+    <Content Include="Assets\Food\images\menu_dish_1.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_10.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_11.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_12.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_13.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_14.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_15.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_16.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_17.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_18.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_2.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_3.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_4.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_5.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_6.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_7.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_8.jpg" />
+    <Content Include="Assets\Food\images\menu_dish_9.jpg" />
+    <Content Include="Assets\Food\images\page_header.jpg" />
+    <Content Include="Assets\Food\images\post_img_1.jpg" />
+    <Content Include="Assets\Food\images\post_img_2.jpg" />
+    <Content Include="Assets\Food\images\post_img_3.jpg" />
+    <Content Include="Assets\Food\images\quote_icon.png" />
+    <Content Include="Assets\Food\images\related_post_1.jpg" />
+    <Content Include="Assets\Food\images\related_post_2.jpg" />
+    <Content Include="Assets\Food\images\right_img.jpg" />
+    <Content Include="Assets\Food\images\service_1.jpg" />
+    <Content Include="Assets\Food\images\service_2.jpg" />
+    <Content Include="Assets\Food\images\service_3.jpg" />
+    <Content Include="Assets\Food\images\service_4.jpg" />
+    <Content Include="Assets\Food\images\service_5.jpg" />
+    <Content Include="Assets\Food\images\service_6.jpg" />
+    <Content Include="Assets\Food\images\slider_1.jpg" />
+    <Content Include="Assets\Food\images\slider_2.jpg" />
+    <Content Include="Assets\Food\images\slider_3.jpg" />
+    <Content Include="Assets\Food\images\team_img_1.jpg" />
+    <Content Include="Assets\Food\images\team_img_2.jpg" />
+    <Content Include="Assets\Food\images\team_img_3.jpg" />
+    <Content Include="Assets\Food\images\team_img_4.jpg" />
+    <Content Include="Assets\Food\images\ui-icons_444444_256x240.png" />
+    <Content Include="Assets\Food\images\ui-icons_555555_256x240.png" />
+    <Content Include="Assets\Food\images\user_img_1.jpg" />
+    <Content Include="Assets\Food\images\user_img_2.jpg" />
+    <Content Include="Assets\Food\images\user_img_3.jpg" />
+    <Content Include="Assets\Food\images\welcome_img.jpg" />
+    <Content Include="Assets\Food\images\zoom_1.jpg" />
+    <Content Include="Assets\Food\images\zoom_2.jpg" />
+    <Content Include="Assets\Food\images\zoom_3.jpg" />
+    <Content Include="Assets\Food\images\zoom_4.jpg" />
+    <Content Include="Assets\Food\images\zoom_5.jpg" />
+    <Content Include="Assets\Food\images\zoom_6.jpg" />
+    <Content Include="Assets\Food\images\zoom_7.jpg" />
+    <Content Include="Assets\Food\images\zoom_8.jpg" />
+    <Content Include="Assets\Food\images\zoom_9.jpg" />
+    <Content Include="Assets\Food\images\zoom_small_1.jpg" />
+    <Content Include="Assets\Food\images\zoom_small_2.jpg" />
+    <Content Include="Assets\Food\images\zoom_small_3.jpg" />
+    <Content Include="Assets\Food\images\zoom_small_4.jpg" />
+    <Content Include="Assets\Food\images\zoom_small_5.jpg" />
+    <Content Include="Assets\Food\images\zoom_small_6.jpg" />
+    <Content Include="Assets\Food\images\zoom_small_7.jpg" />
+    <Content Include="Assets\Food\images\zoom_small_8.jpg" />
+    <Content Include="Assets\Food\images\zoom_small_9.jpg" />
+    <Content Include="Assets\Food\js\bootstrap.js" />
+    <Content Include="Assets\Food\js\bootstrap.min.js" />
+    <Content Include="Assets\Food\js\date.js" />
+    <Content Include="Assets\Food\js\jquery-ui.js" />
+    <Content Include="Assets\Food\js\jquery.magnific-popup.js" />
+    <Content Include="Assets\Food\js\jquery.magnific-popup.min.js" />
+    <Content Include="Assets\Food\js\jquery.min.js" />
+    <Content Include="Assets\Food\js\jquery.sticky.js" />
+    <Content Include="Assets\Food\js\menumaker.js" />
+    <Content Include="Assets\Food\js\menumaker.min.js" />
+    <Content Include="Assets\Food\js\multiple-carousel.js" />
+    <Content Include="Assets\Food\js\npm.js" />
+    <Content Include="Assets\Food\js\owl.carousel.min.js" />
+    <Content Include="Assets\Food\js\popup-gallery.js" />
+    <Content Include="Assets\Food\js\sticky-header.js" />
+    <Content Include="Assets\Home\css\animate.css" />
+    <Content Include="Assets\Home\css\bootstrap.min.css" />
+    <Content Include="Assets\Home\css\flexslider.css" />
+    <Content Include="Assets\Home\css\flipclock.css" />
+    <Content Include="Assets\Home\css\font-awesome.css" />
+    <Content Include="Assets\Home\css\jquery.countdown.css" />
+    <Content Include="Assets\Home\css\style.css" />
+    <Content Include="Assets\Home\css\swipebox.css" />
+    <Content Include="Assets\Home\images\1.png" />
+    <Content Include="Assets\Home\images\41.jpg" />
+    <Content Include="Assets\Home\images\42.jpg" />
+    <Content Include="Assets\Home\images\43.jpg" />
+    <Content Include="Assets\Home\images\44.jpg" />
+    <Content Include="Assets\Home\images\45.jpg" />
+    <Content Include="Assets\Home\images\46.jpg" />
+    <Content Include="Assets\Home\images\47.jpg" />
+    <Content Include="Assets\Home\images\48.jpg" />
+    <Content Include="Assets\Home\images\49.jpg" />
+    <Content Include="Assets\Home\images\50.jpg" />
+    <Content Include="Assets\Home\images\add-img1.png" />
+    <Content Include="Assets\Home\images\add-img2.png" />
+    <Content Include="Assets\Home\images\add-img3.png" />
+    <Content Include="Assets\Home\images\add-img4.png" />
+    <Content Include="Assets\Home\images\add-img5.png" />
+    <Content Include="Assets\Home\images\add-img6.png" />
+    <Content Include="Assets\Home\images\banner1.jpg" />
+    <Content Include="Assets\Home\images\banner2.jpg" />
+    <Content Include="Assets\Home\images\banner3.jpg" />
+    <Content Include="Assets\Home\images\banner4.jpg" />
+    <Content Include="Assets\Home\images\banner5.jpg" />
+    <Content Include="Assets\Home\images\bmi.jpg" />
+    <Content Include="Assets\Home\images\carb.jpg" />
+    <Content Include="Assets\Home\images\d-grid2.jpg" />
+    <Content Include="Assets\Home\images\d-grid4.jpg" />
+    <Content Include="Assets\Home\images\d-icon1.png" />
+    <Content Include="Assets\Home\images\d-icon2.png" />
+    <Content Include="Assets\Home\images\d1.jpg" />
+    <Content Include="Assets\Home\images\d2.jpg" />
+    <Content Include="Assets\Home\images\d3.jpg" />
+    <Content Include="Assets\Home\images\d4.jpg" />
+    <Content Include="Assets\Home\images\d5.jpg" />
+    <Content Include="Assets\Home\images\d6.jpg" />
+    <Content Include="Assets\Home\images\d7.jpg" />
+    <Content Include="Assets\Home\images\e1.jpg" />
+    <Content Include="Assets\Home\images\e2.jpg" />
+    <Content Include="Assets\Home\images\e3.jpg" />
+    <Content Include="Assets\Home\images\eatclean.jpg" />
+    <Content Include="Assets\Home\images\ent1.jpg" />
+    <Content Include="Assets\Home\images\ent2.jpg" />
+    <Content Include="Assets\Home\images\ent3.jpg" />
+    <Content Include="Assets\Home\images\ent4.jpg" />
+    <Content Include="Assets\Home\images\ent5.jpg" />
+    <Content Include="Assets\Home\images\ent6.jpg" />
+    <Content Include="Assets\Home\images\ent7.jpg" />
+    <Content Include="Assets\Home\images\fat.jpg" />
+    <Content Include="Assets\Home\images\fiber.jpg" />
+    <Content Include="Assets\Home\images\i1.jpg" />
+    <Content Include="Assets\Home\images\i2.jpg" />
+    <Content Include="Assets\Home\images\i3.jpg" />
+    <Content Include="Assets\Home\images\i4.jpg" />
+    <Content Include="Assets\Home\images\i5.jpg" />
+    <Content Include="Assets\Home\images\i6.jpg" />
+    <Content Include="Assets\Home\images\icon1.png" />
+    <Content Include="Assets\Home\images\icon2.png" />
+    <Content Include="Assets\Home\images\icons.png" />
+    <Content Include="Assets\Home\images\icons.svg" />
+    <Content Include="Assets\Home\images\if.png" />
+    <Content Include="Assets\Home\images\img10.jpg" />
+    <Content Include="Assets\Home\images\img11.jpg" />
+    <Content Include="Assets\Home\images\img12.jpg" />
+    <Content Include="Assets\Home\images\keto.jpg" />
+    <Content Include="Assets\Home\images\lowcarb.jpg" />
+    <Content Include="Assets\Home\images\nutritio2.png" />
+    <Content Include="Assets\Home\images\nutrition.jpg" />
+    <Content Include="Assets\Home\images\protein.jpg" />
+    <Content Include="Assets\Home\images\s1.jpg" />
+    <Content Include="Assets\Home\images\s2.jpg" />
+    <Content Include="Assets\Home\images\s3.jpg" />
+    <Content Include="Assets\Home\images\s4.jpg" />
+    <Content Include="Assets\Home\images\t1.jpg" />
+    <Content Include="Assets\Home\images\t2.jpg" />
+    <Content Include="Assets\Home\images\t3.jpg" />
+    <Content Include="Assets\Home\images\t4.jpg" />
+    <Content Include="Assets\Home\images\user.png" />
+    <Content Include="Assets\Home\js\bootstrap.min.js" />
+    <Content Include="Assets\Home\js\flipclock.js" />
+    <Content Include="Assets\Home\js\index.js" />
+    <Content Include="Assets\Home\js\jquery.countdown.js" />
+    <Content Include="Assets\Home\js\jquery.flexslider.js" />
+    <Content Include="Assets\Home\js\jquery.magnific-popup.js" />
+    <Content Include="Assets\Home\js\jquery.min.js" />
+    <Content Include="Assets\Home\js\jquery.seat-charts.js" />
+    <Content Include="Assets\Home\js\jquery.swipebox.js" />
+    <Content Include="Assets\Home\js\modernizr.js" />
+    <Content Include="Assets\Home\js\responsiveslides.min.js" />
+    <Content Include="Assets\Home\js\script.js" />
+    <Content Include="Assets\Home\js\scripts.js" />
+    <Content Include="Assets\Home\js\wow.min.js" />
+    <Content Include="Assets\ThucDon\css\bootstrap.css" />
+    <Content Include="Assets\ThucDon\css\creditly.css" />
+    <Content Include="Assets\ThucDon\css\easy-responsive-tabs.css" />
+    <Content Include="Assets\ThucDon\css\flexslider.css" />
+    <Content Include="Assets\ThucDon\css\font-awesome.css" />
+    <Content Include="Assets\ThucDon\css\style.css" />
+    <Content Include="Assets\ThucDon\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\ThucDon\images\3.jpg" />
+    <Content Include="Assets\ThucDon\images\3.png" />
+    <Content Include="Assets\ThucDon\images\30.jpg" />
+    <Content Include="Assets\ThucDon\images\30.png" />
+    <Content Include="Assets\ThucDon\images\31.jpg" />
+    <Content Include="Assets\ThucDon\images\31.png" />
+    <Content Include="Assets\ThucDon\images\32.jpg" />
+    <Content Include="Assets\ThucDon\images\32.png" />
+    <Content Include="Assets\ThucDon\images\33.jpg" />
+    <Content Include="Assets\ThucDon\images\33.png" />
+    <Content Include="Assets\ThucDon\images\34.jpg" />
+    <Content Include="Assets\ThucDon\images\34.png" />
+    <Content Include="Assets\ThucDon\images\35.jpg" />
+    <Content Include="Assets\ThucDon\images\35.png" />
+    <Content Include="Assets\ThucDon\images\36.png" />
+    <Content Include="Assets\ThucDon\images\37.png" />
+    <Content Include="Assets\ThucDon\images\38.png" />
+    <Content Include="Assets\ThucDon\images\39.png" />
+    <Content Include="Assets\ThucDon\images\4.jpg" />
+    <Content Include="Assets\ThucDon\images\4.png" />
+    <Content Include="Assets\ThucDon\images\40.png" />
+    <Content Include="Assets\ThucDon\images\41.png" />
+    <Content Include="Assets\ThucDon\images\42.png" />
+    <Content Include="Assets\ThucDon\images\43.png" />
+    <Content Include="Assets\ThucDon\images\44.png" />
+    <Content Include="Assets\ThucDon\images\45.png" />
+    <Content Include="Assets\ThucDon\images\46.png" />
+    <Content Include="Assets\ThucDon\images\47.png" />
+    <Content Include="Assets\ThucDon\images\48.png" />
+    <Content Include="Assets\ThucDon\images\49.png" />
+    <Content Include="Assets\ThucDon\images\5.jpg" />
+    <Content Include="Assets\ThucDon\images\5.png" />
+    <Content Include="Assets\ThucDon\images\50.png" />
+    <Content Include="Assets\ThucDon\images\51.png" />
+    <Content Include="Assets\ThucDon\images\52.png" />
+    <Content Include="Assets\ThucDon\images\53.png" />
+    <Content Include="Assets\ThucDon\images\54.png" />
+    <Content Include="Assets\ThucDon\images\55.png" />
+    <Content Include="Assets\ThucDon\images\56.png" />
+    <Content Include="Assets\ThucDon\images\57.png" />
+    <Content Include="Assets\ThucDon\images\58.png" />
+    <Content Include="Assets\ThucDon\images\59.png" />
+    <Content Include="Assets\ThucDon\images\6.jpg" />
+    <Content Include="Assets\ThucDon\images\6.png" />
+    <Content Include="Assets\ThucDon\images\60.png" />
+    <Content Include="Assets\ThucDon\images\61.png" />
+    <Content Include="Assets\ThucDon\images\62.png" />
+    <Content Include="Assets\ThucDon\images\63.png" />
+    <Content Include="Assets\ThucDon\images\64.png" />
+    <Content Include="Assets\ThucDon\images\65.png" />
+    <Content Include="Assets\ThucDon\images\66.png" />
+    <Content Include="Assets\ThucDon\images\67.png" />
+    <Content Include="Assets\ThucDon\images\68.png" />
+    <Content Include="Assets\ThucDon\images\69.png" />
+    <Content Include="Assets\ThucDon\images\7.jpg" />
+    <Content Include="Assets\ThucDon\images\7.png" />
+    <Content Include="Assets\ThucDon\images\70.png" />
+    <Content Include="Assets\ThucDon\images\71.png" />
+    <Content Include="Assets\ThucDon\images\72.png" />
+    <Content Include="Assets\ThucDon\images\73.png" />
+    <Content Include="Assets\ThucDon\images\74.png" />
+    <Content Include="Assets\ThucDon\images\75.png" />
+    <Content Include="Assets\ThucDon\images\76.png" />
+    <Content Include="Assets\ThucDon\images\8.jpg" />
+    <Content Include="Assets\ThucDon\images\8.png" />
+    <Content Include="Assets\ThucDon\images\9.jpg" />
+    <Content Include="Assets\ThucDon\images\9.png" />
+    <Content Include="Assets\ThucDon\images\arrow.png" />
+    <Content Include="Assets\ThucDon\images\card.png" />
+    <Content Include="Assets\ThucDon\images\cart.png" />
+    <Content Include="Assets\ThucDon\images\close_1.png" />
+    <Content Include="Assets\ThucDon\images\img-sp.png" />
+    <Content Include="Assets\ThucDon\images\offer.png" />
+    <Content Include="Assets\ThucDon\images\paypal.png" />
+    <Content Include="Assets\ThucDon\images\star.png" />
+    <Content Include="Assets\ThucDon\images\star1.png" />
+    <Content Include="Assets\ThucDon\images\tag.png" />
+    <Content Include="Assets\ThucDon\js\bootstrap.min.js" />
+    <Content Include="Assets\ThucDon\js\counterup.min.js" />
+    <Content Include="Assets\ThucDon\js\creditly.js" />
+    <Content Include="Assets\ThucDon\js\easing.js" />
+    <Content Include="Assets\ThucDon\js\easyResponsiveTabs.js" />
+    <Content Include="Assets\ThucDon\js\jquery-1.11.1.min.js" />
+    <Content Include="Assets\ThucDon\js\jquery.flexslider.js" />
+    <Content Include="Assets\ThucDon\js\jquery.wmuSlider.js" />
+    <Content Include="Assets\ThucDon\js\minicart.js" />
+    <Content Include="Assets\ThucDon\js\move-top.js" />
+    <Content Include="Assets\ThucDon\js\okzoom.js" />
+    <Content Include="Assets\ThucDon\js\waypoints.min.js" />
+    <Content Include="Assets\User\css\jquery-ui.css" />
+    <Content Include="Assets\User\css\style.css" />
+    <Content Include="Assets\User\images\1.png" />
+    <Content Include="Assets\User\images\2.png" />
+    <Content Include="Assets\User\images\banner.jpg" />
+    <Content Include="Assets\User\js\attrvalidate.jquery.js" />
+    <Content Include="Assets\User\js\jquery-2.1.3.min.js" />
+    <Content Include="Assets\User\js\jquery-ui.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\3.jpg" />
+    <Content Include="Images\4.jpg" />
+    <Content Include="Models\QuanLyDinhDuong.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
+      <LastGenOutput>QuanLyDinhDuong.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\QuanLyDinhDuong.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
+      <LastGenOutput>QuanLyDinhDuong.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Admin\fonts\FontAwesome.otf" />
+    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\Admin\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Assets\ThucDon\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\ThucDon\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\ThucDon\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\ThucDon\fonts\FontAwesome.otf" />
+    <Content Include="Assets\ThucDon\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\ThucDon\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Assets\Home\fonts\Federo-Regular.ttf" />
+    <Content Include="Assets\Home\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Home\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Home\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Home\fonts\latha.ttf" />
+    <Content Include="Assets\DetailsFood\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\DetailsFood\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\DetailsFood\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\DetailsFood\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\DetailsFood\fonts\FontAwesome.otf" />
+    <Content Include="Assets\DetailsFood\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\DetailsFood\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\DetailsFood\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\DetailsFood\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Assets\DetailsFood\images\Thumbs.db" />
+    <Content Include="Assets\Food\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Food\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Food\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Food\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Food\fonts\FontAwesome.otf" />
+    <Content Include="Assets\Food\fonts\fontello.eot" />
+    <Content Include="Assets\Food\fonts\fontello.ttf" />
+    <Content Include="Assets\Food\fonts\fontello.woff" />
+    <Content Include="Assets\Food\fonts\fontello.woff2" />
+    <Content Include="Assets\Food\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\Food\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\Food\fonts\glyphicons-halflings-regular.woff" />
+    <EntityDeploy Include="Models\QuanLyDinhDuong.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuanLyDinhDuong.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QuanLyDinhDuong.edmx.diagram">
+      <DependentUpon>QuanLyDinhDuong.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\MonAn\Details.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ThucDon\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_User.cshtml" />
+    <Content Include="Views\UserInformation\Edit.cshtml" />
+    <Content Include="Views\UserInformation\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Register\Register.cshtml" />
+    <Content Include="Views\Shared\_Layout_Login_Register.cshtml" />
+    <Content Include="Views\Shared\_Layout_Admin.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Buoi.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\LoadKeHoach.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu.cshtml" />
+    <Content Include="Views\ManageFood\Index.cshtml" />
+    <Content Include="Views\ManageFood\Create.cshtml" />
+    <Content Include="Views\ManageFood\Edit.cshtml" />
+    <Content Include="Views\ManageFood\Details.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\CNChieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\CNSang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\CNTrua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Sua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu2Chieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu2Sang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu2Trua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu3Chieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu3Sang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu3Trua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu4Chieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu4Sang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu4Trua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu5Chieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu5Sang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu5Trua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu6Chieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu6Sang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu6Trua.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu7Chieu.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu7Sang.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\Thu7Trua.cshtml" />
+    <Content Include="Views\Shared\_Layout_DetailsFood.cshtml" />
+    <Content Include="Views\Shared\_Layout_Home.cshtml" />
+    <Content Include="Views\MonAn\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_ThucDon.cshtml" />
+    <Content Include="Views\Review\Index.cshtml" />
+    <Content Include="Views\QuanLyKeHoach\ThemMoi.cshtml" />
+    <Content Include="Views\BMI_Calo\Bmi.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63728</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44301/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,9 @@
+﻿@using WebDinhDuong.Models;
+@model IEnumerable<LoadNDKeHoach>
+@foreach (var groupItem in Model)
+{
+<div>
+    @groupItem.TenMon    Số lương: @groupItem.SoLuong
+    <a href="@Url.Action("Sua", "QuanLyKeHoach", new { id = groupItem.Id})">Sửa</a>
+    <a href="@Url.Action("Xoa", "QuanLyKeHoach", new { id = groupItem.Id})"> Xóa</a>
+</div>}

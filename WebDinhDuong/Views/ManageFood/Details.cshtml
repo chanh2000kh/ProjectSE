@@ -1,0 +1,69 @@
+﻿@model WebDinhDuong.Models.MonAn
+
+@{ ViewBag.Title = "Details"; }
+
+<div class="agileinfo_single">
+    <h5>@Model.Name</h5>
+    <div class="col-md-4 agileinfo_single_left">
+        <img id="example" src=@Url.Content(Model.HinhAnh) alt=" " class="img-responsive" />
+    </div>
+    <div class="col-md-8 agileinfo_single_right">
+
+        <div class="w3agile_description">
+            <h4>Description :</h4>
+            <p>
+                @Model.ThongTin
+            </p>
+        </div>
+        <div class="snipcart-item block">
+            <div class="snipcart-thumb agileinfo_single_right_snipcart">
+                <h4>@Model.Calo cal </h4>
+            </div>
+            <div class="w3agile_description">
+                @using (Html.BeginForm("Add", "ThucDon", FormMethod.Post, new { }))
+                {
+    <div class="frm-add" id="addfrm">
+        <div class="available">
+            <p>Thông tin dinh dưỡng :</p>
+            <ul>
+                <li>
+                    <p>Carb: @Model.Carb g</p>
+                </li>
+                <li>
+                    <p>Protein: @Model.Protein g</p>
+                </li>
+                <li>
+                    <p>Fat: @Model.Fat g</p>
+                </li>
+                <li>
+                    <p>
+                        Số lượng:
+                        <select id="quality" name="quality">
+                            <option value=1>1</option>
+                            <option value=2>2</option>
+                            <option value=3>3</option>
+                            <option value=4>4</option>
+                            <option value=5>5</option>
+                        </select>
+                        Đơn vị 100gr
+                    </p>
+
+
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <input type="hidden" name="idmonan" value=@Model.Id />
+        </div>
+
+        <div>
+            <span><input type="submit" value="ADD TO MENU"></span>
+        </div>
+
+    </div>}
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>

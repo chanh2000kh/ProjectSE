@@ -1,0 +1,62 @@
+﻿
+@{ ViewBag.Title = "LoadKeHoach";
+                Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+<div class="book-form">
+    <table border="1" width="1700">
+        <tr>
+            <th width="10%">Thứ</th>
+            <th width="30%">Sáng</th>
+            <th width="30%">Trưa</th>
+            <th width="30%">Chiều</th>
+        </tr>
+        <tr>
+            <th>Thứ 2</th>
+            <td>@Html.Action("Thu2Sang", "QuanLyKeHoach")</td>
+            <td>@Html.Action("Thu2Trua", "QuanLyKeHoach")</td>
+            <td>@Html.Action("Thu2Chieu", "QuanLyKeHoach")</td>
+        </tr>
+        <tr>
+            <th>Thứ 3</th>
+            <td>@Html.Action("Thu3Sang", "QuanLyKeHoach")</td>
+            <td>@Html.Action("Thu3Trua", "QuanLyKeHoach")</td>
+            <td>@Html.Action("Thu3Chieu", "QuanLyKeHoach")</td>
+        </tr>
+        <tr>
+            <th>Thứ 4</th>
+            <td>@Html.Action("Thu4Sang", "QuanLyKeHoach")</td>
+            <td>@Html.Action("Thu4Trua", "QuanLyKeHoach")</td>
+            <td>@Html.Action("Thu4Chieu", "QuanLyKeHoach")</td>
+        </tr>
+        <tr>
+            <th>Thứ 5</th>
+            <td>@Html.Action("Thu5Sang", "QuanLyKeHoach")</td>
+            <td>@Html.Action("Thu5Trua", "QuanLyKeHoach")</td>
+            <td>@Html.Action("Thu5Chieu", "QuanLyKeHoach")</td>
+        </tr>
+        <tr>
+            <th>Thứ 6</th>
+            <td>@Html.Action("Thu6Sang", "QuanLyKeHoach")</td>
+            <td>@Html.Action("Thu6Trua", "QuanLyKeHoach")</td>
+            <td>@Html.Action("Thu6Chieu", "QuanLyKeHoach")</td>
+        </tr>
+        <tr>
+            <th>Thứ 7</th>
+            <td>@Html.Action("Thu7Sang", "QuanLyKeHoach")</td>
+            <td>@Html.Action("Thu7Trua", "QuanLyKeHoach")</td>
+            <td>@Html.Action("Thu7Chieu", "QuanLyKeHoach")</td>
+        </tr>
+        <tr>
+            <th>Chủ nhật</th>
+            <td>@Html.Action("CNSang", "QuanLyKeHoach")</td>
+            <td>@Html.Action("CNTrua", "QuanLyKeHoach")</td>
+            <td>@Html.Action("CNChieu", "QuanLyKeHoach")</td>
+        </tr>
+    </table>
+</div>
+@using (Html.BeginForm("Index", "MonAn", FormMethod.Post, new { }))
+{
+<div>
+    <span><input type="submit" value="ADD TO PLAN? CLICK HERE"></span>
+</div>
+}
